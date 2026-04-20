@@ -1,0 +1,430 @@
+{
+  "placeholderImages": [
+    {
+      "id": "portfolio-web-ficc",
+      "description": "A modern website for a tech startup.",
+      "imageUrl": "/images/desarrollo web/1.png",
+      "imageHint": "website design"
+    },
+    {
+      "id": "portfolio-web-1",
+      "description": "A modern website for a tech startup.",
+      "imageUrl": "https://images.unsplash.com/photo-1678690832311-bb6e361989ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3ZWJzaXRlJTIwZGVzaWdufGVufDB8fHx8MTc2MTkzMTQwN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "website design"
+    },
+    {
+      "id": "portfolio-content-1",
+      "description": "Engaging social media content for a fashion brand.",
+      "imageUrl": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzb2NpYWwlMjBtZWRpYXxlbnwwfHx8fDE3NjE4Njk1NzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "social media"
+    },
+    {
+      "id": "portfolio-video-1",
+      "description": "Promotional video for a new product launch.",
+      "imageUrl": "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx2aWRlbyUyMHByb2R1Y3Rpb258ZW58MHx8fHwxNzYxODEzMTcwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "video production"
+    },
+    {
+      "id": "portfolio-automation-1",
+      "description": "Marketing automation setup for an e-commerce store.",
+      "imageUrl": "https://images.unsplash.com/photo-1607703703674-df96af81dffa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtYXJrZXRpbmclMjBhdXRvbWF0aW9ufGVufDB8fHx8MTc2MTg3NDMxM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "marketing automation"
+    },
+    {
+      "id": "portfolio-campaign-1",
+      "description": "Successful ad campaign for a local business.",
+      "imageUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwYWR2ZXJ0aXNpbmd8ZW58MHx8fHwxNzYxOTMxNDA3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "digital advertising"
+    },
+    {
+      "id": "portfolio-web-polar",
+      "description": "E-commerce platform for a boutique.",
+      "imageUrl": "/images/desarrollo web/5.png",
+      "imageHint": "ecommerce website"
+    },
+    {
+      "id": "testimonial-1",
+      "description": "Profile picture of Maria Garcia",
+      "imageUrl": "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjE4ODIwMzV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "testimonial-2",
+      "description": "Profile picture of Juan Rodriguez",
+      "imageUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjE4ODE5NTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "testimonial-3",
+      "description": "Profile picture of Sofia Lopez",
+      "imageUrl": "https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b21hbiUyMHNtaWxpbmd8ZW58MHx8fHwxNzYxODg1MDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman smiling"
+    },
+    {
+      "id": "service-content-creation",
+      "description": "Content creation for marketing",
+      "imageUrl": "https://images.unsplash.com/photo-1559526324-c1f275fbfa32?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjb250ZW50JTIwY3JlYXRpb258ZW58MHx8fHwxNzYyMDkzMzAyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "content creation"
+    },
+    {
+      "id": "service-web-development",
+      "description": "Web development services",
+      "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx3ZWIlMjBkZXZlbG9wbWVudHxlbnwwfHx8fDE3NjIwOTM0MTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "web development"
+    },
+    {
+      "id": "service-photo-video",
+      "description": "Photo and video production",
+      "imageUrl": "https://images.unsplash.com/photo-1526656001222-41c7b74f686c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwaG90byUyMHByb2R1Y3Rpb258ZW58MHx8fHwxNzYyMDkzNTEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "photo production"
+    },
+    {
+      "id": "service-automation",
+      "description": "Marketing automation",
+      "imageUrl": "https://images.unsplash.com/photo-1674049406295-86d11b33415c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYXJrZXRpbmclMjBhdXRvbWF0aW9ufGVufDB8fHx8MTc2MjA5MzU3NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "marketing automation"
+    },
+    {
+      "id": "service-campaigns",
+      "description": "Ad campaign management",
+      "imageUrl": "https://images.unsplash.com/photo-1557804506-669a67965ba0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhZCUyMGNhbXBhaWdufGVufDB8fHx8MTc2MjA5MzYyM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ad campaign"
+    },
+    {
+      "id": "blog-seo",
+      "description": "Person working on a laptop with charts",
+      "imageUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxTRU98ZW58MHx8fHwxNzYyMTk4ODcxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "SEO"
+    },
+    {
+      "id": "blog-visual-content",
+      "description": "Social media icons on phone screens",
+      "imageUrl": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzb2NpYWwlMjBtZWRpYXxlbnwwfHx8fDE3NjE4Njk1NzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "social media"
+    },
+    {
+      "id": "blog-email-automation",
+      "description": "Email inbox on a laptop",
+      "imageUrl": "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlbWFpbCUyMG1hcmtldGluZ3xlbnwwfHx8fDE3NjIxOTkwMDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "email marketing"
+    },
+    {
+      "id": "blog-website",
+      "description": "Team collaborating over a website design",
+      "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx3ZWIlMjBkZXZlbG9wbWVudHxlbnwwfHx8fDE3NjIwOTM0MTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "web development"
+    },
+    {
+      "id": "why-hire-us-analytics",
+      "description": "A dashboard with charts and graphs",
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhbmFseXRpY3MlMjBkYXNoYm9hcmR8ZW58MHx8fHwxNzYyMjI2MTg2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "analytics dashboard"
+    },
+    {
+      "id": "blog-checklist",
+      "description": "A person writing on a checklist",
+      "imageUrl": "https://images.unsplash.com/photo-1566576912347-94bd43d39b78?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjaGVja2xpc3R8ZW58MHx8fHwxNzYyMjMwNTk4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "checklist"
+    },
+    {
+      "id": "blog-ai-web",
+      "description": "Abstract image of artificial intelligence network",
+      "imageUrl": "https://images.unsplash.com/photo-1535223289827-42f1e9919769?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlfGVufDB8fHx8MTc2MjIzMDU5OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "artificial intelligence"
+    },
+    {
+      "id": "portfolio-web-core31",
+      "description": "CORE 31 Wod & Fitness website",
+      "imageUrl": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmaXRuZXNzJTIwZ3ltfGVufDB8fHx8MTc2MjI1NTAwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fitness gym"
+    },
+    {
+      "id": "portfolio-web-boda",
+      "description": "Wedding website for Santiago and Loreto",
+      "imageUrl": "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3ZWRkaW5nJTIwZGV0YWlsc3xlbnwwfHx8fDE3NjIyNTQ0ODJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wedding details"
+    },
+    {
+      "id": "portfolio-web-dcsolutions",
+      "description": "DC Solutions website showcasing office technology",
+      "imageUrl": "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxvZmZpY2UlMjB0ZWNoJTIwc29sdXRpb25zfGVufDB8fHx8MTc2MjI1MzYwN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "office technology"
+    },
+    {
+      "id": "portfolio-web-myteam",
+      "description": "My Team website showing collaboration in sports",
+      "imageUrl": "/images/desarrollo web/17.png",
+      "imageHint": "sports team celebrating"
+    },
+    {
+      "id": "portfolio-web-valor-compartido",
+      "description": "Valor Compartido media platform",
+      "imageUrl": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwbWVkaWElMjBsZWFkZXJzaGlwfGVufDB8fHx8MTc2MjI3NjIwNnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "digital media leadership"
+    },
+    {
+      "id": "portfolio-web-dfac",
+      "description": "DFAC website for construction supplies",
+      "imageUrl": "/images/desarrollo web/9.png",
+      "imageHint": "construction site"
+    },
+    {
+      "id": "portfolio-web-paolo",
+      "description": "Paolo Gourmet website",
+      "imageUrl": "/images/desarrollo web/13.png",
+      "imageHint": "artisanal cheese board"
+    },
+    {
+      "id": "content-salud-1",
+      "description": "Biofert Instagram post",
+      "imageUrl": "https://images.unsplash.com/photo-1631507623121-eaaba8d4e7dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxoZWFsdGglMjBjbGluaWN8ZW58MHx8fHwxNzYyMjMwNDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "health clinic"
+    },
+    {
+      "id": "content-salud-2",
+      "description": "Centro Urológico Instagram post",
+      "imageUrl": "https://images.unsplash.com/photo-1679496125396-8d01c968d071?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8dXJvbG9neSUyMGNlbnRlcnxlbnwwfHx8fDE3NjIyMzA0NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "urology center"
+    },
+    {
+      "id": "content-salud-3",
+      "description": "Huesos y Articulaciones Facebook post",
+      "imageUrl": "https://images.unsplash.com/photo-1758101512269-660feabf64fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxvcnRob3BlZGljJTIwY2xpbmljfGVufDB8fHx8MTc2MjIzMDQ0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "orthopedic clinic"
+    },
+    {
+      "id": "content-salud-4",
+      "description": "Grupo Deasa Facebook post",
+      "imageUrl": "https://images.unsplash.com/photo-1575467252250-c0e889b69d2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtZWRpY2FsJTIwZ3JvdXB8ZW58MHx8fHwxNzYyMjMwNDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "medical group"
+    },
+    {
+      "id": "content-salud-5",
+      "description": "Medical Tower TikTok video",
+      "imageUrl": "https://images.unsplash.com/photo-1648501911054-96c3bdf23270?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bW9kZXJuJTIwaG9zcGl0YWx8ZW58MHx8fHwxNzYyMTkxMTM2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern hospital"
+    },
+    {
+      "id": "content-salud-6",
+      "description": "Technosim Facebook post",
+      "imageUrl": "https://images.unsplash.com/photo-1606206873764-fd15e242df52?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtZWRpY2FsJTIwdGVjaG5vbG9neXxlbnwwfHx8fDE3NjIyMDIzMTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "medical technology"
+    },
+    {
+      "id": "content-turismo-1",
+      "description": "NIU Coliving Instagram post",
+      "imageUrl": "https://images.unsplash.com/photo-1551127481-43279ba6dec4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bW9kZXJuJTIwY29saXZpbmd8ZW58MHx8fHwxNzYyMjMwNDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern coliving"
+    },
+    {
+      "id": "content-turismo-2",
+      "description": "Cenote San Isidro Facebook post",
+      "imageUrl": "https://images.unsplash.com/photo-1741967127558-d68d6742a1ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxiZWF1dGlmdWwlMjBjZW5vdGV8ZW58MHx8fHwxNzYyMjMwNDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "beautiful cenote"
+    },
+    {
+      "id": "content-restaurante-1",
+      "description": "Saudade do Brazil Instagram post",
+      "imageUrl": "https://images.unsplash.com/photo-1628521061262-19b5cdb7eee5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxicmF6aWxpYW4lMjBmb29kfGVufDB8fHx8MTc2MjIzMDQ0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "brazilian food"
+    },
+    {
+      "id": "content-restaurante-2",
+      "description": "Polanco Santino Instagram post",
+      "imageUrl": "https://images.unsplash.com/photo-1579027989536-b7b1f875659b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxpdGFsaWFuJTIwcmVzdGF1cmFudHxlbnwwfHx8fDE3NjIxMzQ2ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "italian restaurant"
+    },
+    {
+      "id": "content-restaurante-3",
+      "description": "Santa Carne y Más Facebook post",
+      "imageUrl": "https://images.unsplash.com/photo-1628497622880-896ed64d6034?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzdGVha2hvdXNlJTIwZ3JpbGx8ZW58MHx8fHwxNzYyMjMwNDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "steakhouse grill"
+    },
+    {
+      "id": "content-restaurante-4",
+      "description": "Don José Steakhouse Instagram post",
+      "imageUrl": "https://images.unsplash.com/photo-1622215216302-2169bd5f4e5f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxnb3VybWV0JTIwc3RlYWtob3VzZXxlbnwwfHx8fDE3NjIyMzA0NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "gourmet steakhouse"
+    },
+    {
+      "id": "content-restaurante-5",
+      "description": "Las Delicias del Campo Instagram post",
+      "imageUrl": "https://images.unsplash.com/photo-1530912585210-7916cd026e59?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxmYXJtJTIwdG8lMjB0YWJsZXxlbnwwfHx8fDE3NjIyMzA0NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "farm to table"
+    },
+    {
+      "id": "content-restaurante-6",
+      "description": "Wapas TikTok video",
+      "imageUrl": "https://images.unsplash.com/photo-1612251241057-bba56516bd40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx0cmVuZHklMjBmb29kfGVufDB8fHx8MTc2MjIzMDQ0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "trendy food"
+    },
+    {
+      "id": "content-restaurante-7",
+      "description": "Paolo Gourmet Facebook post",
+      "imageUrl": "https://images.unsplash.com/photo-1630278156268-12d56c2e135f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxnb3VybWV0JTIwcHJvZHVjdHN8ZW58MHx8fHwxNzYyMjMwNDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "gourmet products"
+    },
+    {
+      "id": "content-restaurante-8",
+      "description": "Buffalo Ribs TikTok video",
+      "imageUrl": "https://images.unsplash.com/photo-1623174078579-594416790e63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxiYnElMjByaWJzfGVufDB8fHx8MTc2MjIzMDQ0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bbq ribs"
+    },
+    {
+      "id": "content-industrial-1",
+      "description": "Electrica San Miguel Facebook post",
+      "imageUrl": "https://images.unsplash.com/photo-1717943273055-c599196f5969?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxlbGVjdHJpY2FsJTIwc3VwcGxpZXN8ZW58MHx8fHwxNzYyMjMwNDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "electrical supplies"
+    },
+    {
+      "id": "content-software-1",
+      "description": "SiNube Facebook post",
+      "imageUrl": "https://images.unsplash.com/photo-1758905024964-4b4818821a04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjbG91ZCUyMHNvZnR3YXJlfGVufDB8fHx8MTc2MjIzMDQ0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cloud software"
+    },
+    {
+      "id": "content-industrial-2",
+      "description": "Gruas y Polipastos Instagram post",
+      "imageUrl": "https://images.unsplash.com/photo-1738676455943-1ceba4d60ac1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjcmFuZXMlMjBob2lzdHN8ZW58MHx8fHwxNzYyMjMwNDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cranes hoists"
+    },
+    {
+      "id": "content-industrial-3",
+      "description": "DFAC Facebook post",
+      "imageUrl": "https://images.unsplash.com/photo-1580810734898-5e1753f23337?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb25zdHJ1Y3Rpb24lMjBtYXRlcmlhbHN8ZW58MHx8fHwxNzYyMjMwNDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "construction materials"
+    },
+    {
+      "id": "content-industrial-4",
+      "description": "Turismar Facebook post",
+      "imageUrl": "https://images.unsplash.com/photo-1760014524489-47bae35ce44b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0cmFuc3BvcnQlMjBmbGVldHxlbnwwfHx8fDE3NjIyMzA0NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "transport fleet"
+    },
+    {
+      "id": "content-industrial-5",
+      "description": "Maqtech Facebook post",
+      "imageUrl": "https://images.unsplash.com/photo-1738918929491-3c102ce11c8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtYWNoaW5lcnklMjB0ZWNobm9sb2d5fGVufDB8fHx8MTc2MjIzMDQ0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "machinery technology"
+    },
+    {
+      "id": "content-influencer-1",
+      "description": "Dra Karen Carrillo Instagram post",
+      "imageUrl": "https://images.unsplash.com/photo-1659353888477-6e6aab941b55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxkb2N0b3IlMjBpbmZsdWVuY2VyfGVufDB8fHx8MTc2MjIzMDQ0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "doctor influencer"
+    },
+    {
+      "id": "content-influencer-2",
+      "description": "Ricardo Garza Instagram post",
+      "imageUrl": "https://images.unsplash.com/photo-1621343342498-a0b6a9b40510?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYWxlJTIwaW5mbHVlbmNlcnxlbnwwfHx8fDE3NjIyMzA0NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "male influencer"
+    },
+    {
+      "id": "content-influencer-3",
+      "description": "Haide Unique Instagram post",
+      "imageUrl": "https://images.unsplash.com/photo-1613053342567-924891457d16?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZmFzaGlvbiUyMGluZmx1ZW5jZXJ8ZW58MHx8fHwxNzYyMjMwNDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fashion influencer"
+    },
+    {
+      "id": "content-influencer-4",
+      "description": "Nizmenur Instagram post",
+      "imageUrl": "https://images.unsplash.com/photo-1575256561685-942a1e72f4f9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsaWZlc3R5bGUlMjBpbmZsdWVuY2VyfGVufDB8fHx8MTc2MjIzMDQ0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "lifestyle influencer"
+    },
+    {
+      "id": "content-influencer-5",
+      "description": "Gi Alpine Instagram post",
+      "imageUrl": "https://images.unsplash.com/photo-1626455530771-c69b7fb3ca40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0cmF2ZWwlMjBpbmZsdWVuY2VyfGVufDB8fHx8MTc2MjE2NTI5MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "travel influencer"
+    },
+    {
+      "id": "content-servicios-1",
+      "description": "DC Solutions TI Facebook post",
+      "imageUrl": "https://images.unsplash.com/photo-1573496773905-f5b17e717f05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxJVCUyMHNvbHV0aW9uc3xlbnwwfHx8fDE3NjIyMzA0NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "IT solutions"
+    },
+    {
+      "id": "content-servicios-2",
+      "description": "Benjamin JV Instagram post",
+      "imageUrl": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjBzZXJ2aWNlc3xlbnwwfHx8fDE3NjIyMzA0NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional services"
+    },
+    {
+      "id": "content-servicios-3",
+      "description": "Consultoría Luz Sistémica Facebook post",
+      "imageUrl": "https://images.unsplash.com/photo-1758524056096-6bedf35a33f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjb25zdWx0aW5nJTIwc2VydmljZXN8ZW58MHx8fHwxNzYyMjMwNDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "consulting services"
+    },
+    {
+      "id": "content-servicios-4",
+      "description": "CAF Consultores Facebook post",
+      "imageUrl": "https://images.unsplash.com/photo-1720289024474-946b6feabfcb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxidXNpbmVzcyUyMGNvbnN1bHRhbnRzfGVufDB8fHx8MTc2MjIzMDQ0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "business consultants"
+    },
+    {
+      "id": "content-ropa-1",
+      "description": "Epidemic Facebook post",
+      "imageUrl": "https://images.unsplash.com/photo-1512101903502-7eb0c9022c74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx1cmJhbiUyMGZhc2hpb258ZW58MHx8fHwxNzYyMTk1MTkwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "urban fashion"
+    },
+    {
+      "id": "content-ropa-2",
+      "description": "Agel Dori Instagram post",
+      "imageUrl": "https://images.unsplash.com/photo-1760287363707-851f4780b98c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxib3V0aXF1ZSUyMGNsb3RoaW5nfGVufDB8fHx8MTc2MjIzMDQ0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "boutique clothing"
+    },
+    {
+      "id": "content-ropa-3",
+      "description": "Cucu Becerra Instagram post",
+      "imageUrl": "https://images.unsplash.com/photo-1654512462970-8191bc8742bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZGVzaWduZXIlMjBjbG90aGVzfGVufDB8fHx8MTc2MjIzMDQ0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "designer clothes"
+    },
+    {
+      "id": "blog-mapa-marketing",
+      "description": "mapa-marketing-digital-influencers-masters",
+      "imageUrl": "/images/blog/Gemini_Generated_Image_lkv6c4lkv6c4lkv6.png",
+      "imageHint": "digital marketing"
+    },
+    {
+      "id": "blog-cafe-logistica",
+      "description": "estrategias-trafico-web-instagram-2026",
+      "imageUrl": "/images/blog/Gemini_Generated_Image_449hap449hap449h.png",
+      "imageHint": "digital marketing"
+    },
+    {
+      "id": "user-photo-1",
+      "description": "User in a studio, pointing.",
+      "imageUrl": "/images/user/1.png",
+      "imageHint": "YouTube thumbnail for a course on 'Las mejores herramientas de Inteligencia Artificial'"
+    },
+    {
+      "id": "user-photo-2",
+      "description": "User in a studio, pointing.",
+      "imageUrl": "/images/user/2.png",
+      "imageHint": "YouTube thumbnail for a podcast on 'Estrategias de venta'"
+    },
+    {
+      "id": "user-photo-3",
+      "description": "User in a studio, pointing.",
+      "imageUrl": "/images/user/3.png",
+      "imageHint": "YouTube thumbnail for an interview on '¿Es correcto hacer uso de bots?'"
+    },
+    {
+      "id": "user-photo-4",
+      "description": "User in a studio, pointing.",
+      "imageUrl": "/images/user/4.png",
+      "imageHint": "YouTube thumbnail for an interview on '¿Cómo generar dinero en redes sociales?'"
+    },
+    {
+      "id": "user-photo-5",
+      "description": "User in a studio.",
+      "imageUrl": "/images/user/5.png",
+      "imageHint": "YouTube thumbnail for a podcast on 'Marketing y negocios'"
+    },
+    {
+      "id": "user-photo-6",
+      "description": "User in a studio, pointing.",
+      "imageUrl": "/images/user/6.png",
+      "imageHint": "YouTube thumbnail for a podcast on 'El futuro del e-commerce'"
+    }
+  ]
+}

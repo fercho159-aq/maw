@@ -1,0 +1,239 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  :root:not(.dark) {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .typewriter {
+    overflow: hidden;
+    border-right: .15em solid hsl(var(--primary));
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .05em;
+    animation: 
+      typing 1.5s steps(30, end),
+      blink-caret .75s step-end infinite;
+  }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: hsl(var(--primary)); }
+  }
+
+  .glitch {
+    position: relative;
+    color: hsl(var(--primary));
+    text-shadow:
+      0.05em 0 0 hsl(var(--destructive) / 0.75),
+      -0.05em 0 0 hsl(var(--accent) / 0.75),
+      -0.025em 0.05em 0 hsl(var(--destructive) / 0.75),
+      0.025em -0.05em 0 hsl(var(--accent) / 0.75);
+    animation: glitch 500ms infinite;
+  }
+
+  .glitch span {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .glitch span:first-child {
+    animation: glitch 650ms infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    transform: translate(-0.025em, -0.0125em);
+    opacity: 0.8;
+  }
+
+  .glitch span:last-child {
+    animation: glitch 375ms infinite;
+    clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+    transform: translate(0.0125em, 0.025em);
+    opacity: 0.8;
+  }
+
+  @keyframes glitch {
+    0% {
+      text-shadow:
+        0.05em 0 0 hsl(var(--destructive) / 0.75),
+        -0.05em 0 0 hsl(var(--accent) / 0.75),
+        -0.025em 0.05em 0 hsl(var(--destructive) / 0.75),
+        0.025em -0.05em 0 hsl(var(--accent) / 0.75);
+    }
+    14% {
+      text-shadow:
+        0.05em 0 0 hsl(var(--destructive) / 0.75),
+        -0.05em 0 0 hsl(var(--accent) / 0.75),
+        -0.025em 0.05em 0 hsl(var(--destructive) / 0.75),
+        0.025em -0.05em 0 hsl(var(--accent) / 0.75);
+    }
+    15% {
+      text-shadow:
+        -0.05em -0.025em 0 hsl(var(--destructive) / 0.75),
+        0.025em 0.025em 0 hsl(var(--accent) / 0.75),
+        -0.05em -0.05em 0 hsl(var(--destructive) / 0.75),
+        0.05em 0.05em 0 hsl(var(--accent) / 0.75);
+    }
+    49% {
+       text-shadow:
+        -0.05em -0.025em 0 hsl(var(--destructive) / 0.75),
+        0.025em 0.025em 0 hsl(var(--accent) / 0.75),
+        -0.05em -0.05em 0 hsl(var(--destructive) / 0.75),
+        0.05em 0.05em 0 hsl(var(--accent) / 0.75);
+    }
+    50% {
+       text-shadow:
+        0.025em 0.05em 0 hsl(var(--destructive) / 0.75),
+        0.05em 0 0 hsl(var(--accent) / 0.75),
+        0 -0.05em 0 hsl(var(--destructive) / 0.75),
+        -0.025em 0 0 hsl(var(--accent) / 0.75);
+    }
+    99% {
+       text-shadow:
+        0.025em 0.05em 0 hsl(var(--destructive) / 0.75),
+        0.05em 0 0 hsl(var(--accent) / 0.75),
+        0 -0.05em 0 hsl(var(--destructive) / 0.75),
+        -0.025em 0 0 hsl(var(--accent) / 0.75);
+    }
+    100% {
+       text-shadow:
+        -0.025em 0 0 hsl(var(--destructive) / 0.75),
+        -0.025em -0.025em 0 hsl(var(--accent) / 0.75),
+        -0.025em -0.05em 0 hsl(var(--destructive) / 0.75),
+        0.025em 0.05em 0 hsl(var(--accent) / 0.75);
+    }
+  }
+
+  /* Ocultar scrollbar pero mantener funcionalidad */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Line clamp utilities */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Neon Flicker Animation */
+  @keyframes neon-flicker {
+    0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+      opacity: 0.85;
+      filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.5));
+    }
+    20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+      opacity: 0.3;
+      filter: none;
+    }
+  }
+
+  .animate-neon-flicker {
+    animation: neon-flicker 4s infinite;
+    transition: all 0.4s ease-out;
+    cursor: pointer;
+  }
+  
+  .animate-neon-flicker:hover {
+    animation: none;
+    opacity: 1 !important;
+    filter: drop-shadow(0 0 40px rgba(252, 211, 77, 0.9)) !important;
+    transform: scale(1.05);
+  }
+}
