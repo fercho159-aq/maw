@@ -274,7 +274,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Campaña de Fotos",
     "sector": "Industrial",
     "client": "Electrica San Miguel de México",
-    "image": PlaceHolderImages.find(img => img.id === 'content-industrial-1'),
+    "image": { id: "electrica-san-miguel-img", description: "Electrica San Miguel de México", imageUrl: "/images/Electrica.png", imageHint: "electrica san miguel de mexico" },
     "url": "https://www.facebook.com/electricasanmigueldemexico/?locale=es_LA"
   },
   {
@@ -283,7 +283,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Reel",
     "sector": "Software",
     "client": "SiNube",
-    "image": PlaceHolderImages.find(img => img.id === 'content-software-1'),
+    "image": { id: "sinube-img", description: "SiNube", imageUrl: "/images/Sinube.jpg", imageHint: "sinube" },
     "url": "https://www.facebook.com/sinube?locale=es_LA"
   },
   {
@@ -292,7 +292,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Reel",
     "sector": "Industrial",
     "client": "Gruas y Polipastos",
-    "image": PlaceHolderImages.find(img => img.id === 'content-industrial-2'),
+    "image": { id: "gruas-y-polipastos-img", description: "Gruas y Polipastos", imageUrl: "/images/Gruas.png", imageHint: "gruas y polipastos" },
     "url": "https://www.instagram.com/gruasypolipastos"
   },
   {
@@ -301,7 +301,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Campaña de Fotos",
     "sector": "Industrial",
     "client": "DFAC",
-    "image": PlaceHolderImages.find(img => img.id === 'content-industrial-3'),
+    "image": { id: "dfac-content-img", description: "DFAC", imageUrl: "/images/DFAC.png", imageHint: "dfac" },
     "url": "https://www.facebook.com/bandasdepvcymonosparacimbra"
   },
   {
@@ -310,7 +310,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Campaña de Fotos",
     "sector": "Industrial",
     "client": "Turismar",
-    "image": PlaceHolderImages.find(img => img.id === 'content-industrial-4'),
+    "image": { id: "turismar-content-img", description: "Turismar", imageUrl: "/images/Turismar.jpg", imageHint: "turismar" },
     "url": "https://www.facebook.com/rentaturismar"
   },
   {
@@ -319,7 +319,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Campaña de Fotos",
     "sector": "Industrial",
     "client": "Maqtech",
-    "image": PlaceHolderImages.find(img => img.id === 'content-industrial-5'),
+    "image": { id: "maqtech-img", description: "Maqtech", imageUrl: "/images/Maqtech.png", imageHint: "maqtech" },
     "url": "https://www.facebook.com/profile.php?id=61570233765991"
   },
   {
