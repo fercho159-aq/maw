@@ -148,7 +148,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Reel",
     "sector": "Salud",
     "client": "Huesos y Articulaciones",
-    "image": PlaceHolderImages.find(img => img.id === 'content-salud-3'),
+    "image": { id: "huesos-y-articulaciones-img", description: "Huesos y Articulaciones", imageUrl: "/images/Clinica.png", imageHint: "huesos y articulaciones" },
     "url": "https://www.facebook.com/HuesosyArticulaciones"
   },
   {
@@ -184,7 +184,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Reel",
     "sector": "Turismo",
     "client": "NIU Coliving",
-    "image": PlaceHolderImages.find(img => img.id === 'content-turismo-1'),
+    "image": { id: "niu-coliving-img", description: "NIU Coliving", imageUrl: "/images/Niu.png", imageHint: "niu coliving" },
     "url": "https://www.instagram.com/niu_coliving/"
   },
   {
@@ -193,7 +193,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Reel",
     "sector": "Turismo",
     "client": "Cenote San Isidro",
-    "image": PlaceHolderImages.find(img => img.id === 'content-turismo-2'),
+    "image": { id: "cenote-san-isidro-img", description: "Cenote San Isidro", imageUrl: "/images/Cenote.jpg", imageHint: "cenote san isidro" },
     "url": "https://www.facebook.com/profile.php?id=61572579834917"
   },
   {
@@ -202,7 +202,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Reel",
     "sector": "Restaurantes",
     "client": "Saudade do Brazil",
-    "image": PlaceHolderImages.find(img => img.id === 'content-restaurante-1'),
+    "image": { id: "saudade-do-brazil-img", description: "Saudade do Brazil", imageUrl: "/images/Saudade.png", imageHint: "saudade do brazil" },
     "url": "https://www.instagram.com/saudadedobrazil.mx/"
   },
   {
@@ -220,7 +220,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Reel",
     "sector": "Restaurantes",
     "client": "Santa Carne y Más",
-    "image": PlaceHolderImages.find(img => img.id === 'content-restaurante-3'),
+    "image": { id: "santa-carne-y-mas-img", description: "Santa Carne y Más", imageUrl: "/images/Santa.jpg", imageHint: "santa carne y mas" },
     "url": "https://www.facebook.com/santacarneymas/reels/"
   },
   {
@@ -229,7 +229,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Reel",
     "sector": "Restaurantes",
     "client": "Don José Steakhouse",
-    "image": PlaceHolderImages.find(img => img.id === 'content-restaurante-4'),
+    "image": { id: "don-jose-steakhouse-img", description: "Don José Steakhouse", imageUrl: "/images/Don Jose.jpg", imageHint: "don jose steakhouse" },
     "url": "https://www.instagram.com/donjosesteakhouse/"
   },
   {
@@ -238,7 +238,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Campaña de Fotos",
     "sector": "Restaurantes",
     "client": "Las Delicias del Campo",
-    "image": PlaceHolderImages.find(img => img.id === 'content-restaurante-5'),
+    "image": { id: "las-delicias-del-campo-img", description: "Las Delicias del Campo", imageUrl: "/images/Delicias.jpg", imageHint: "las delicias del campo" },
     "url": "https://www.instagram.com/lasdeliciasdelcampomexico/"
   },
   {
@@ -247,7 +247,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Reel",
     "sector": "Restaurantes",
     "client": "Wapas",
-    "image": PlaceHolderImages.find(img => img.id === 'content-restaurante-6'),
+    "image": { id: "wapas-img", description: "Wapas", imageUrl: "/images/Wapas.png", imageHint: "wapas" },
     "url": "https://www.tiktok.com/@laswapas_oficial"
   },
   {
@@ -256,7 +256,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Campaña de Fotos",
     "sector": "Restaurantes",
     "client": "Paolo Gourmet",
-    "image": PlaceHolderImages.find(img => img.id === 'content-restaurante-7'),
+    "image": { id: "paolo-gourmet-img", description: "Paolo Gourmet", imageUrl: "/images/Paolo.jpg", imageHint: "paolo gourmet" },
     "url": "https://www.facebook.com/profile.php?id=61578410386269"
   },
   {
@@ -265,7 +265,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Reel",
     "sector": "Restaurantes",
     "client": "Buffalo Ribs",
-    "image": PlaceHolderImages.find(img => img.id === 'content-restaurante-8'),
+    "image": { id: "buffalo-ribs-img", description: "Buffalo Ribs", imageUrl: "/images/Bufalo.png", imageHint: "buffalo ribs" },
     "url": "https://www.tiktok.com/@buffalo_ribs_"
   },
   {
@@ -346,7 +346,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Reel",
     "sector": "Influencers",
     "client": "Haide Unique",
-    "image": PlaceHolderImages.find(img => img.id === 'content-influencer-3'),
+    "image": { id: "haide-unique-img", description: "Haide Unique", imageUrl: "/images/Haide.jpeg", imageHint: "haide unique" },
     "url": "https://www.instagram.com/haideuniquemex/"
   },
   {
