@@ -328,7 +328,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Reel",
     "sector": "Influencers",
     "client": "Dra. Karen Carrillo",
-    "image": PlaceHolderImages.find(img => img.id === 'content-influencer-1'),
+    "image": { id: "dra-karen-img", description: "Dra. Karen Carrillo", imageUrl: "/images/Dra. Karen.png", imageHint: "dra karen carrillo" },
     "url": "https://www.instagram.com/drakarencarrillo/"
   },
   {
@@ -337,7 +337,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Reel",
     "sector": "Influencers",
     "client": "Ricardo Garza",
-    "image": PlaceHolderImages.find(img => img.id === 'content-influencer-2'),
+    "image": { id: "ricardo-img", description: "Ricardo Garza", imageUrl: "/images/Ricardo.png", imageHint: "ricardo garza" },
     "url": "https://www.instagram.com/ricardogarzamx/?hl=es"
   },
   {
@@ -355,7 +355,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Reel",
     "sector": "Influencers",
     "client": "Nizmenur",
-    "image": PlaceHolderImages.find(img => img.id === 'content-influencer-4'),
+    "image": { id: "nizmenur-img", description: "Nizmenur", imageUrl: "/images/Nizmenur.jfif", imageHint: "nizmenur" },
     "url": "https://www.instagram.com/nizmenur/?hl=es-la"
   },
   {
@@ -364,7 +364,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Reel",
     "sector": "Influencers",
     "client": "Gi Alpine",
-    "image": PlaceHolderImages.find(img => img.id === 'content-influencer-5'),
+    "image": { id: "gi-alpine-img", description: "Gi Alpine", imageUrl: "/images/alpine.png", imageHint: "gi alpine" },
     "url": "https://www.instagram.com/gi.alpine?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
   },
   {
@@ -373,7 +373,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Campaña de Fotos",
     "sector": "Servicios Profesionales",
     "client": "DC Solutions TI",
-    "image": PlaceHolderImages.find(img => img.id === 'content-servicios-1'),
+    "image": { id: "dc-solutions-ti-img", description: "DC Solutions TI", imageUrl: "/images/DC.png", imageHint: "dc solutions ti" },
     "url": "https://www.facebook.com/dcsolutionsTI"
   },
   {
@@ -382,7 +382,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Reel",
     "sector": "Servicios Profesionales",
     "client": "Benjamin JV",
-    "image": PlaceHolderImages.find(img => img.id === 'content-servicios-2'),
+    "image": { id: "benjamin-jv-img", description: "Benjamin JV", imageUrl: "/images/Benja.png", imageHint: "benjamin jv" },
     "url": "https://www.instagram.com/benjamin_jv/"
   },
   {
@@ -391,7 +391,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Campaña de Fotos",
     "sector": "Servicios Profesionales",
     "client": "Consultoría Luz Sistémica",
-    "image": PlaceHolderImages.find(img => img.id === 'content-servicios-3'),
+    "image": { id: "luz-sistemica-img", description: "Consultoría Luz Sistémica", imageUrl: "/images/Luz.jpg", imageHint: "luz sistemica" },
     "url": "https://www.facebook.com/ConsultoriaLuzSistemica/"
   },
   {
@@ -400,7 +400,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Campaña de Fotos",
     "sector": "Servicios Profesionales",
     "client": "CAF Consultores",
-    "image": PlaceHolderImages.find(img => img.id === 'content-servicios-4'),
+    "image": { id: "caf-consultores-img", description: "CAF Consultores", imageUrl: "/images/CAF.jpg", imageHint: "caf consultores" },
     "url": "https://www.facebook.com/consultorescafmx"
   },
   {
@@ -409,7 +409,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Campaña de Fotos",
     "sector": "Ropa y Moda",
     "client": "Epidemic",
-    "image": PlaceHolderImages.find(img => img.id === 'content-ropa-1'),
+    "image": { id: "epidemic-img", description: "Epidemic", imageUrl: "/images/Ropa.png", imageHint: "epidemic ropa" },
     "url": "https://www.facebook.com/profile.php?id=61579397999096"
   },
   {
@@ -418,7 +418,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Reel",
     "sector": "Ropa y Moda",
     "client": "Agel Dori",
-    "image": PlaceHolderImages.find(img => img.id === 'content-ropa-2'),
+    "image": { id: "agel-dori-img", description: "Agel Dori", imageUrl: "/images/Angel.png", imageHint: "angel dori" },
     "url": "https://www.instagram.com/angeldori_deseo_interior?igsh=enlwaWNrdWNjb2Qw"
   },
   {
@@ -427,7 +427,7 @@ export const contentPortfolioItems: ContentPortfolioItemType[] = [
     "type": "Reel",
     "sector": "Ropa y Moda",
     "client": "Cucu Becerra",
-    "image": PlaceHolderImages.find(img => img.id === 'content-ropa-3'),
+    "image": { id: "cucu-becerra-img", description: "Cucu Becerra", imageUrl: "/images/Cucu.png", imageHint: "cucu becerra" },
     "url": "https://www.instagram.com/cucubecerra_mx?igsh=NzZxcWRkeHp4NjQx"
   }
 ];
