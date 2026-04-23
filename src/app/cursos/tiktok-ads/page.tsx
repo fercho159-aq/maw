@@ -287,7 +287,7 @@ export default function CoursePage() {
 *Resultado:* ${quizScore} / ${currentTopic.questions.length} respuestas correctas.
       `.trim().replace(/\n\s*\n/g, '\n');
       
-      const whatsappUrl = `https://wa.me/525538359927?text=${encodeURIComponent(message)}`;
+      const whatsappUrl = `https://wa.me/525541314150?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
 
       const newLeads = JSON.parse(localStorage.getItem('newLeads') || '[]');
@@ -325,7 +325,7 @@ export default function CoursePage() {
 *Motivo de contacto:* ${formData.reason}
       `.trim().replace(/\n\s*\n/g, '\n');
       
-      const whatsappUrl = `https://wa.me/525538359927?text=${encodeURIComponent(message)}`;
+      const whatsappUrl = `https://wa.me/525541314150?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
   };
 

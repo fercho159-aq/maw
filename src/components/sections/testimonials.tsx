@@ -159,7 +159,7 @@ const Testimonials = () => {
             ¿Listo para ver resultados reales? Hablemos de tu proyecto.
           </p>
           <Button size="lg" className="mt-8" variant="whatsapp" asChild>
-            <a href="https://wa.me/525538359927" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/525541314150" target="_blank" rel="noopener noreferrer">
               <WhatsappIcon className="w-5 h-5 mr-2" />
               Chatea con un experto
             </a>

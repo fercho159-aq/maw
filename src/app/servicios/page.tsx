@@ -100,7 +100,7 @@ const ServicesPage = () => {
                       </Link>
                     </Button>
                     <Button variant="whatsapp" size="lg" asChild className="w-full sm:w-auto">
-                      <a href="https://wa.me/525538359927" target="_blank" rel="noopener noreferrer">
+                      <a href="https://wa.me/525541314150" target="_blank" rel="noopener noreferrer">
                         <WhatsappIcon className="w-5 h-5 mr-2" />
                         Contactar
                       </a>

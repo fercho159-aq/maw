@@ -119,7 +119,7 @@ export default function RedesYAdsPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 w-full justify-center mt-2">
             <Button size="default" className="bg-primary text-primary-foreground hover:opacity-90 font-semibold" asChild>
-              <a href="https://wa.me/525538359927?text=Hola,%20me%20interesa%20cotizar%20redes%20sociales%20y%20ads.">
+              <a href="https://wa.link/4j3gft">
                 Cotizar Estrategia
               </a>
             </Button>
@@ -229,7 +229,7 @@ export default function RedesYAdsPage() {
                         size="sm"
                         className="w-full font-semibold text-xs"
                       >
-                        <a href={`https://wa.me/525538359927?text=Hola,%20me%20interesa%20el%20${encodeURIComponent(plan.name)}.`}>
+                        <a href="https://wa.link/4j3gft">
                           Contratar <ArrowRight className="w-3 h-3 ml-1" />
                         </a>
                       </Button>

@@ -61,7 +61,7 @@ const QuoteDialog = ({ itemTitle }: { itemTitle: string }) => {
         data: formData
     });
 
-    const whatsappUrl = `https://wa.me/525538359927?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/525541314150?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
     setOpen(false);
   };

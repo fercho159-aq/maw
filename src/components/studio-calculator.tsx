@@ -97,7 +97,7 @@ export default function StudioCalculator() {
       msg += `\n\n*Total Estimado:* $${total} MXN`;
     }
     
-    const whatsappUrl = `https://wa.me/525538359927?text=${encodeURIComponent(msg)}`;
+    const whatsappUrl = `https://wa.me/525541314150?text=${encodeURIComponent(msg)}`;
     window.open(whatsappUrl, '_blank');
   };
 

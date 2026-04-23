@@ -111,7 +111,7 @@ ${selectedGoalsText}
 *Ahorro de tiempo estimado:* ${estimatedHoursSaved} horas/mes
 \n*Mi número es:* ${whatsappNumber}
     `.trim().replace(/\n\s*\n/g, '\n');
-    const whatsappUrl = `https://wa.me/525538359927?text=${encodeURIComponent(message.trim())}`;
+    const whatsappUrl = `https://wa.me/525541314150?text=${encodeURIComponent(message.trim())}`;
     window.open(whatsappUrl, '_blank');
     
     addLead({

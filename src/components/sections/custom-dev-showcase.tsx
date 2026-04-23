@@ -98,7 +98,7 @@ export default function CustomDevShowcase() {
            <p className="max-w-[700px] text-lg text-zinc-200 font-light mb-6">Creamos desde Aplicaciones Móviles Nativas hasta CRMs complejos diseñados exclusivamente para tu flujo operativo corporativo.</p>
            <div className="flex flex-col sm:flex-row gap-3">
              <Button size="lg" asChild className="font-semibold px-8 py-6 rounded-full shadow-lg">
-                 <a href="https://wa.me/525538359927?text=Hola,%20quisiera%20cotizar%20un%20proyecto%20de%20desarrollo%20a%20la%20medida.">
+                 <a href="https://wa.link/0fivs3">
                      Cotiza tu Solución <ArrowRight className="w-5 h-5 ml-2" />
                  </a>
              </Button>
@@ -257,7 +257,7 @@ export default function CustomDevShowcase() {
 
               {/* CTA */}
               <Button size="lg" asChild className="w-full md:w-fit h-12 font-bold px-8 shadow-xl">
-                <a href="https://wa.me/525538359927?text=Hola,%20quisiera%20cotizar%20un%20proyecto%20de%20desarrollo%20a%20la%20medida.">
+                <a href="https://wa.link/0fivs3">
                   Cotizar mi Proyecto <ArrowRight className="w-5 h-5 ml-2" />
                 </a>
               </Button>

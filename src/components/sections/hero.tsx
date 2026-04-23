@@ -173,7 +173,7 @@ const Hero = () => {
                       </Button>
                       <Button size="lg" variant="whatsapp" asChild>
                         <a
-                          href="https://wa.me/525538359927"
+                          href="https://wa.link/in0qhd"
                           target="_blank"
                           rel="noopener noreferrer"
                         >

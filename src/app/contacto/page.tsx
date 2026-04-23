@@ -27,11 +27,11 @@ const ContactPage = () => {
               </div>
               <div className="flex items-center gap-4">
                 <Phone className="w-5 h-5 text-primary" />
-                <a href="tel:+525538359927" className="hover:text-primary transition-colors">55 3835 9927</a>
+                <a href="tel:+525541314150" className="hover:text-primary transition-colors">55 4131 4150</a>
               </div>
                <div className="flex items-center gap-4">
                 <WhatsappIcon className="w-5 h-5 text-primary" />
-                <a href="https://wa.me/525538359927" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">55 3835 9927</a>
+                <a href="https://wa.me/525541314150" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">55 4131 4150</a>
               </div>
             </div>
             <AnimatedChatInvitation />
