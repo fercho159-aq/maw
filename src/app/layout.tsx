@@ -62,6 +62,18 @@ export default function RootLayout({
             gtag('config', 'G-RK806X2669');
           `}
         </Script>
+
+        {/* Google Ads (gtag.js) */}
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-18144008689"></Script>
+        <Script id="google-ads" strategy="lazyOnload">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-18144008689');
+          `}
+        </Script>
       </head>
       <body className={cn("font-sans antialiased", montserrat.variable)}>
         {/* Google Tag Manager (noscript) */}
