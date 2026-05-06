@@ -97,7 +97,7 @@ const SitioWebPage = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <Button size="lg" asChild className="font-semibold px-8 rounded-full shadow-lg">
-              <a href="https://wa.link/zxgh8j">
+              <a href="https://wa.me/5538359927">
                 Cotizar mi Sitio <ArrowRight className="w-5 h-5 ml-2" />
               </a>
             </Button>
@@ -195,7 +195,7 @@ const SitioWebPage = () => {
                       size="sm"
                       className={`w-full font-semibold text-xs ${!plan.highlight ? "bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white" : ""}`}
                     >
-                      <a href="https://wa.link/zxgh8j">
+                      <a href="https://wa.me/5538359927">
                         Cotizar <ArrowRight className="w-3 h-3 ml-1" />
                       </a>
                     </Button>
