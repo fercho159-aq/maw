@@ -83,7 +83,7 @@ export default function PodcastPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 w-full justify-center mt-2">
             <Button size="default" className="bg-primary text-primary-foreground hover:opacity-90 transition-opacity font-semibold" asChild>
-              <a href="https://wa.link/z47ptz">
+              <a href="https://wa.me/5633774723">
                 Cotizar y Reservar
               </a>
             </Button>

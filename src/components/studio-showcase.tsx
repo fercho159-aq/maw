@@ -153,7 +153,7 @@ export default function StudioShowcase() {
 
             <div className="pt-4">
               <Button size="lg" className="w-full sm:w-auto h-14 bg-primary text-primary-foreground hover:opacity-90 font-bold px-8 shadow-xl hover:scale-105 transition-transform" asChild>
-                <a href="https://wa.link/z47ptz">
+                <a href="https://wa.me/5633774723">
                   Reservar este Set vía WhatsApp
                 </a>
               </Button>

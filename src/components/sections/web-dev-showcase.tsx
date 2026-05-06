@@ -96,7 +96,7 @@ export default function WebDevShowcase() {
            <p className="max-w-[700px] text-lg text-zinc-200 font-light mb-6">Desde Landing Pages optimizadas para conversión hasta plataformas E-commerce robustas, diseñadas para impulsar tu negocio.</p>
            <div className="flex flex-col sm:flex-row gap-3">
              <Button size="lg" asChild className="font-semibold px-8 py-6 rounded-full shadow-lg">
-                 <a href="https://wa.me/5538359927">
+                 <a href="https://wa.me/5633774723">
                      Cotiza tu Sitio Web <ArrowRight className="w-5 h-5 ml-2" />
                  </a>
              </Button>
@@ -216,7 +216,7 @@ export default function WebDevShowcase() {
 
               {/* CTA */}
               <Button size="lg" asChild className="w-full md:w-fit h-12 font-bold px-8 shadow-xl">
-                <a href="https://wa.me/5538359927">
+                <a href="https://wa.me/5633774723">
                   Cotizar mi Sitio Web <ArrowRight className="w-5 h-5 ml-2" />
                 </a>
               </Button>

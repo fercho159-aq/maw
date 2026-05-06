@@ -119,7 +119,7 @@ export default function RedesYAdsPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 w-full justify-center mt-2">
             <Button size="default" className="bg-primary text-primary-foreground hover:opacity-90 font-semibold" asChild>
-              <a href="https://wa.link/4j3gft">
+              <a href="https://wa.me/5633774723">
                 Cotizar Estrategia
               </a>
             </Button>
@@ -229,7 +229,7 @@ export default function RedesYAdsPage() {
                         size="sm"
                         className="w-full font-semibold text-xs"
                       >
-                        <a href="https://wa.link/4j3gft">
+                        <a href="https://wa.me/5633774723">
                           Contratar <ArrowRight className="w-3 h-3 ml-1" />
                         </a>
                       </Button>

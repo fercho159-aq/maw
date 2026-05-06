@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import WhatsappIcon from "@/components/icons/whatsapp-icon";
 
 const ChatBubble = () => {
-  const whatsappUrl = "https://wa.link/in0qhd";
+  const whatsappUrl = "https://wa.me/5633774723";
 
   return (
     <motion.div
