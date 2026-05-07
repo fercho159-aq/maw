@@ -1,13 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import WhatsappIcon from "@/components/icons/whatsapp-icon";
 
 const ChatBubble = () => {
   const whatsappUrl = "https://wa.me/5633774723";
 
   return (
-    <motion.div
+    <m.div
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       transition={{ delay: 1, duration: 0.5, ease: "backOut" }}
@@ -22,7 +22,7 @@ const ChatBubble = () => {
       >
         <WhatsappIcon className="w-8 h-8 text-white" />
       </a>
-    </motion.div>
+    </m.div>
   );
 };
 

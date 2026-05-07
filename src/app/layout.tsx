@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster"
 import ChatBubble from '@/components/chat-bubble';
 import { ThemeProvider } from '@/components/theme-provider';
 import { AuthProvider } from '@/lib/auth-provider';
+import { MotionProvider } from '@/components/motion-provider';
 import Script from 'next/script';
 
 const montserrat = Montserrat({
@@ -30,6 +31,10 @@ export default function RootLayout({
   return (
     <html lang="es" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        {/* Resource hints for faster loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preload" href="/videos/podcast_bg.mov" as="video" type="video/mp4" />
         {/* Google Tag Manager */}
         <Script id="gtm" strategy="lazyOnload" dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -64,7 +69,7 @@ export default function RootLayout({
         </Script>
 
         {/* Google Ads (gtag.js) */}
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-18144008689"></Script>
+        <Script strategy="lazyOnload" src="https://www.googletagmanager.com/gtag/js?id=AW-18144008689"></Script>
         <Script id="google-ads" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -87,11 +92,13 @@ export default function RootLayout({
             enableSystem={false}
             disableTransitionOnChange
         >
-            <AuthProvider>
-              {children}
-              <ChatBubble />
-              <Toaster />
-            </AuthProvider>
+            <MotionProvider>
+              <AuthProvider>
+                {children}
+                <ChatBubble />
+                <Toaster />
+              </AuthProvider>
+            </MotionProvider>
         </ThemeProvider>
       </body>
     </html>

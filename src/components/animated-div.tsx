@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { m, type Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface AnimatedDivProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -31,7 +31,7 @@ const AnimatedDiv: React.FC<AnimatedDivProps> = ({
   ...props
 }) => {
   return (
-    <motion.div
+    <m.div
       className={cn(className)}
       variants={variants}
       initial={initial}
@@ -41,7 +41,7 @@ const AnimatedDiv: React.FC<AnimatedDivProps> = ({
       {...props}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 };
 

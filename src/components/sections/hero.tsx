@@ -3,7 +3,7 @@
 
 import * as React from "react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 import WhatsappIcon from "../icons/whatsapp-icon";
 import { cn } from "@/lib/utils";
@@ -48,7 +48,9 @@ const slides: Slide[] = [
 const Hero = () => {
     const [api, setApi] = React.useState<CarouselApi>()
     const [current, setCurrent] = React.useState(0)
-    
+    // Track which slides have been visited to keep their video loaded
+    const [loadedSlides, setLoadedSlides] = React.useState<Set<number>>(new Set([0]))
+
     const plugin = React.useRef(
       Autoplay({ delay: 5000, stopOnInteraction: true })
     )
@@ -58,13 +60,25 @@ const Hero = () => {
         return
         }
 
-        setCurrent(api.selectedScrollSnap() + 1)
+        const updateCurrent = () => {
+          const idx = api.selectedScrollSnap()
+          setCurrent(idx + 1)
+          // Pre-load current and next slide
+          setLoadedSlides(prev => {
+            const next = new Set(prev)
+            next.add(idx)
+            next.add((idx + 1) % slides.length)
+            return next
+          })
+        }
 
-        api.on("select", () => {
-        setCurrent(api.selectedScrollSnap() + 1)
-        })
+        updateCurrent()
+        api.on("select", updateCurrent)
     }, [api])
 
+  // Determine if a slide should have its video src loaded
+  const isSlideActive = (index: number) => current === 0 ? index === 0 : current === index + 1
+  const shouldLoadVideo = (index: number) => loadedSlides.has(index)
 
   return (
     <section
@@ -82,7 +96,7 @@ const Hero = () => {
           {slides.map((slide, index) => (
             <CarouselItem key={index} className="h-full">
               <div className="relative flex items-center justify-center min-h-[70vh] md:min-h-screen h-full py-24 sm:py-32 md:py-40">
-                <motion.div
+                <m.div
                   className="absolute inset-0 z-0 bg-black"
                   initial={{ opacity: 0.8 }}
                   animate={{ opacity: 0.5 }}
@@ -90,11 +104,12 @@ const Hero = () => {
                 >
                   {slide.video ? (
                     <video
-                      src={slide.video}
-                      autoPlay
+                      src={shouldLoadVideo(index) ? slide.video : undefined}
+                      autoPlay={isSlideActive(index)}
                       loop
                       muted
                       playsInline
+                      preload={index === 0 ? "auto" : "none"}
                       className="absolute inset-0 w-full h-full object-cover opacity-60"
                     />
                   ) : (
@@ -109,10 +124,10 @@ const Hero = () => {
                       data-ai-hint={slide.imageHint}
                     />
                   )}
-                </motion.div>
+                </m.div>
                 <div className="absolute inset-0 z-10 bg-black/60" />
                 <div className="relative z-20 container mx-auto px-4 md:px-6">
-                  <motion.div
+                  <m.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
@@ -131,7 +146,7 @@ const Hero = () => {
                     }}
                     className="max-w-4xl text-center mx-auto"
                   >
-                    <motion.h1
+                    <m.h1
                       variants={{
                         hidden: { opacity: 0, y: 20 },
                         visible: {
@@ -143,8 +158,8 @@ const Hero = () => {
                       className="font-headline text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white"
                     >
                       {slide.headline}
-                    </motion.h1>
-                    <motion.p
+                    </m.h1>
+                    <m.p
                       variants={{
                         hidden: { opacity: 0, y: 20 },
                         visible: {
@@ -156,8 +171,8 @@ const Hero = () => {
                       className="mt-6 text-lg sm:text-xl text-white/80 max-w-2xl mx-auto"
                     >
                       {slide.subheadline}
-                    </motion.p>
-                    <motion.div
+                    </m.p>
+                    <m.div
                       variants={{
                         hidden: { opacity: 0, y: 20 },
                         visible: {
@@ -181,8 +196,8 @@ const Hero = () => {
                           Chatea con nosotros
                         </a>
                       </Button>
-                    </motion.div>
-                  </motion.div>
+                    </m.div>
+                  </m.div>
                 </div>
               </div>
             </CarouselItem>
