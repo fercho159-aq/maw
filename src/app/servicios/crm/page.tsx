@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+export const metadata: Metadata = {
+  title: 'CRM y Gestión de Clientes para Empresas en México',
+  description: 'Implementa un CRM a medida para gestionar tus clientes, pipeline de ventas y seguimiento automatizado. MAW Soluciones, expertos en CRM para pymes y empresas en México.',
+  keywords: ['CRM para empresas México', 'sistema CRM México', 'gestión de clientes', 'pipeline de ventas', 'software CRM pymes México', 'seguimiento de clientes'],
+  alternates: { canonical: 'https://mawsoluciones.com/servicios/crm' },
+  openGraph: { url: 'https://mawsoluciones.com/servicios/crm', title: 'CRM y Gestión de Clientes México | MAW Soluciones', description: 'Centraliza tus clientes, automatiza el seguimiento y cierra más ventas con un CRM diseñado para tu empresa en México.' },
+};
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";

@@ -1,3 +1,17 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contacto | Agencia de Marketing Digital y Desarrollo Web México',
+  description: 'Contáctanos para impulsar tu empresa con marketing digital, desarrollo web y apps en México. Solicita una sesión estratégica gratuita con nuestros expertos.',
+  keywords: ['contacto agencia marketing México', 'contratar agencia digital México', 'consultoría marketing digital', 'agencia desarrollo web contacto'],
+  alternates: { canonical: 'https://mawsoluciones.com/contacto' },
+  openGraph: {
+    url: 'https://mawsoluciones.com/contacto',
+    title: 'Contáctanos | MAW Soluciones - Agencia Digital México',
+    description: 'Reserva tu sesión estratégica gratuita. Expertos en marketing digital, desarrollo web y apps listos para potenciar tu negocio en México.',
+  },
+};
+
 import ContactForm from "@/components/contact-form";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, Megaphone } from "lucide-react";

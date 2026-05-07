@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+export const metadata: Metadata = {
+  title: 'Automatización de Marketing y Procesos Empresariales en México',
+  description: 'Automatiza tus ventas, seguimiento de clientes y procesos de negocio con MAW Soluciones. Chatbots, CRM automatizado, cobranza recurrente y más para empresas en México.',
+  keywords: ['automatización marketing México', 'chatbot para empresas', 'CRM automatizado México', 'automatización ventas', 'n8n México', 'procesos automatizados empresa'],
+  alternates: { canonical: 'https://mawsoluciones.com/servicios/automatizacion' },
+  openGraph: { url: 'https://mawsoluciones.com/servicios/automatizacion', title: 'Automatización de Marketing y Procesos | MAW Soluciones México', description: 'Ahorra tiempo y escala tu negocio con automatización inteligente. Chatbots, flujos de ventas y CRM automatizado para empresas mexicanas.' },
+};
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Image from "next/image";

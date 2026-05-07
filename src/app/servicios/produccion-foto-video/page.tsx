@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+export const metadata: Metadata = {
+  title: 'Producción de Foto y Video Profesional en México',
+  description: 'Servicio de fotografía y videografía profesional para marcas y empresas en México. Producción de contenido audiovisual de alta calidad para redes sociales, web y publicidad.',
+  keywords: ['producción de video México', 'fotografía profesional empresas', 'videografía para marcas México', 'contenido audiovisual México', 'producción publicitaria México'],
+  alternates: { canonical: 'https://mawsoluciones.com/servicios/produccion-foto-video' },
+  openGraph: { url: 'https://mawsoluciones.com/servicios/produccion-foto-video', title: 'Producción de Foto y Video para Empresas México | MAW Soluciones', description: 'Contenido audiovisual profesional que impulsa tu marca. Fotografía y video para redes sociales, sitios web y campañas publicitarias en México.' },
+};
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Image from "next/image";

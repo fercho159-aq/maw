@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+export const metadata: Metadata = {
+  title: 'Creación de Contenido Digital para Marcas en México',
+  description: 'Producción de contenido de alto impacto: videos, fotos, reels, posts y estrategia de contenidos para redes sociales y web. Agencia de contenido digital líder en México.',
+  keywords: ['creación de contenido México', 'producción de contenido digital', 'agencia de contenido México', 'estrategia de contenidos', 'videos para redes sociales', 'content marketing México'],
+  alternates: { canonical: 'https://mawsoluciones.com/servicios/creacion-de-contenido' },
+  openGraph: { url: 'https://mawsoluciones.com/servicios/creacion-de-contenido', title: 'Creación de Contenido Digital México | MAW Soluciones', description: 'Contenido que conecta con tu audiencia y convierte seguidores en clientes. Videos, fotos y estrategia de contenidos para empresas en México.' },
+};
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
