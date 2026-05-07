@@ -1,10 +1,19 @@
 
+import dynamic from "next/dynamic";
 import Header from "@/components/header";
 import Hero from "@/components/sections/hero";
-import AboutSection from "@/components/sections/about";
-import Testimonials from "@/components/sections/testimonials";
-import BlogSection from "@/components/sections/blog";
 import Footer from "@/components/footer";
+
+// Below-fold sections loaded lazily — don't block initial paint
+const AboutSection = dynamic(() => import("@/components/sections/about"), {
+  ssr: true,
+});
+const BlogSection = dynamic(() => import("@/components/sections/blog"), {
+  ssr: true,
+});
+const Testimonials = dynamic(() => import("@/components/sections/testimonials"), {
+  ssr: true,
+});
 
 export default function Home() {
   return (

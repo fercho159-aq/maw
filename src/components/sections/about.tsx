@@ -1,11 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import AnimatedDiv from "../animated-div";
 import { Button } from "../ui/button";
-import { FileText } from "lucide-react";
+import { FileText, Play } from "lucide-react";
 
 export default function AboutSection() {
+  const [tiktokLoaded, setTiktokLoaded] = useState(false);
+
   return (
     <section className="py-10 md:py-16 bg-background border-t border-border/20">
       <div className="container mx-auto px-4 md:px-6">
@@ -29,17 +31,30 @@ export default function AboutSection() {
               </div>
             </AnimatedDiv>
           </div>
-          {/* Video embed */}
+
+          {/* TikTok embed — click-to-load to avoid third-party script penalty */}
           <div className="flex justify-center w-full">
             <AnimatedDiv className="relative aspect-[9/16] w-full max-w-[300px] rounded-2xl overflow-hidden shadow-2xl border border-border/50 bg-black">
-              <iframe
-                className="absolute inset-0 w-full h-full"
-                src="https://www.tiktok.com/player/v1/7623929156471950600?autoplay=1&loop=1&music_info=0&description=0"
-                title="MAW Soluciones Nosotros"
-                loading="lazy"
-                allow="autoplay; encrypted-media; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              {tiktokLoaded ? (
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.tiktok.com/player/v1/7623929156471950600?autoplay=1&loop=1&music_info=0&description=0"
+                  title="MAW Soluciones Nosotros"
+                  allow="autoplay; encrypted-media; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <button
+                  onClick={() => setTiktokLoaded(true)}
+                  className="absolute inset-0 w-full h-full flex flex-col items-center justify-center gap-3 bg-gradient-to-b from-gray-900 to-black hover:from-gray-800 transition-colors group"
+                  aria-label="Cargar video de TikTok"
+                >
+                  <div className="w-14 h-14 rounded-full bg-white/10 border border-white/20 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                    <Play className="w-6 h-6 text-white fill-white ml-1" />
+                  </div>
+                  <span className="text-white/70 text-sm">Ver video</span>
+                </button>
+              )}
             </AnimatedDiv>
           </div>
         </div>

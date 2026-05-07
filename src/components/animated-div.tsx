@@ -1,47 +1,48 @@
 "use client";
 
-import { m, type Variants } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 interface AnimatedDivProps extends React.HTMLAttributes<HTMLDivElement> {
-  variants?: Variants;
-  initial?: string;
-  whileInView?: string;
-  viewport?: {
-    once?: boolean;
-    margin?: string;
-    amount?: number;
-  };
-  transition?: object;
+  delay?: number;
 }
-
-const defaultVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-};
 
 const AnimatedDiv: React.FC<AnimatedDivProps> = ({
   children,
   className,
-  variants = defaultVariants,
-  initial = "hidden",
-  whileInView = "visible",
-  viewport = { once: true, margin: "0px 0px -100px 0px" },
-  transition = { duration: 0.7, ease: [0.25, 1, 0.5, 1] },
+  delay = 0,
+  style,
   ...props
 }) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add("visible");
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -80px 0px", threshold: 0.01 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <m.div
-      className={cn(className)}
-      variants={variants}
-      initial={initial}
-      whileInView={whileInView}
-      viewport={viewport}
-      transition={transition}
+    <div
+      ref={ref}
+      className={cn("reveal", className)}
+      style={{ transitionDelay: delay ? `${delay}ms` : undefined, ...style }}
       {...props}
     >
       {children}
-    </m.div>
+    </div>
   );
 };
 

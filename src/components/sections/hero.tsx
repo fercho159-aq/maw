@@ -3,8 +3,6 @@
 
 import * as React from "react";
 import { Button } from "@/components/ui/button";
-import { m } from "framer-motion";
-import Image from "next/image";
 import WhatsappIcon from "../icons/whatsapp-icon";
 import { cn } from "@/lib/utils";
 import {
@@ -17,9 +15,7 @@ import Autoplay from "embla-carousel-autoplay";
 import Link from "next/link";
 
 interface Slide {
-  video?: string;
-  image?: string;
-  imageHint?: string;
+  video: string;
   headline: string;
   subheadline: string;
 }
@@ -46,44 +42,60 @@ const slides: Slide[] = [
 ];
 
 const Hero = () => {
-    const [api, setApi] = React.useState<CarouselApi>()
-    const [current, setCurrent] = React.useState(0)
-    // Track which slides have been visited to keep their video loaded
-    const [loadedSlides, setLoadedSlides] = React.useState<Set<number>>(new Set([0]))
+  const [api, setApi] = React.useState<CarouselApi>();
+  const [current, setCurrent] = React.useState(0);
+  const [videosReady, setVideosReady] = React.useState(false);
+  // Tracks which slide indices have had their video loaded
+  const [loadedSlides, setLoadedSlides] = React.useState<Set<number>>(new Set());
 
-    const plugin = React.useRef(
-      Autoplay({ delay: 5000, stopOnInteraction: true })
-    )
+  const plugin = React.useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: true })
+  );
 
-    React.useEffect(() => {
-        if (!api) {
-        return
-        }
+  // Defer video loading until after first paint
+  React.useEffect(() => {
+    const id = requestIdleCallback
+      ? requestIdleCallback(() => {
+          setVideosReady(true);
+          setLoadedSlides(new Set([0, 1]));
+        }, { timeout: 2000 })
+      : setTimeout(() => {
+          setVideosReady(true);
+          setLoadedSlides(new Set([0, 1]));
+        }, 500);
 
-        const updateCurrent = () => {
-          const idx = api.selectedScrollSnap()
-          setCurrent(idx + 1)
-          // Pre-load current and next slide
-          setLoadedSlides(prev => {
-            const next = new Set(prev)
-            next.add(idx)
-            next.add((idx + 1) % slides.length)
-            return next
-          })
-        }
+    return () => {
+      if (requestIdleCallback) cancelIdleCallback(id as number);
+      else clearTimeout(id as ReturnType<typeof setTimeout>);
+    };
+  }, []);
 
-        updateCurrent()
-        api.on("select", updateCurrent)
-    }, [api])
+  React.useEffect(() => {
+    if (!api) return;
 
-  // Determine if a slide should have its video src loaded
-  const isSlideActive = (index: number) => current === 0 ? index === 0 : current === index + 1
-  const shouldLoadVideo = (index: number) => loadedSlides.has(index)
+    const updateCurrent = () => {
+      const idx = api.selectedScrollSnap();
+      setCurrent(idx + 1);
+      // Pre-load next slide when navigating
+      setLoadedSlides(prev => {
+        const next = new Set(prev);
+        next.add(idx);
+        next.add((idx + 1) % slides.length);
+        return next;
+      });
+    };
+
+    updateCurrent();
+    api.on("select", updateCurrent);
+  }, [api]);
+
+  const isActive = (index: number) =>
+    current === 0 ? index === 0 : current === index + 1;
 
   return (
     <section
       id="home"
-      className="relative min-h-[70vh] md:min-h-screen bg-background overflow-hidden"
+      className="relative min-h-[70vh] md:min-h-screen bg-black overflow-hidden"
     >
       <Carousel
         setApi={setApi}
@@ -96,92 +108,40 @@ const Hero = () => {
           {slides.map((slide, index) => (
             <CarouselItem key={index} className="h-full">
               <div className="relative flex items-center justify-center min-h-[70vh] md:min-h-screen h-full py-24 sm:py-32 md:py-40">
-                <m.div
-                  className="absolute inset-0 z-0 bg-black"
-                  initial={{ opacity: 0.8 }}
-                  animate={{ opacity: 0.5 }}
-                  transition={{ duration: 1.5, ease: "easeInOut" }}
-                >
-                  {slide.video ? (
+                {/* Background: gradient shown instantly, video fades in when ready */}
+                <div className="absolute inset-0 z-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+                  {videosReady && loadedSlides.has(index) && (
                     <video
-                      src={shouldLoadVideo(index) ? slide.video : undefined}
-                      autoPlay={isSlideActive(index)}
+                      src={slide.video}
+                      autoPlay={isActive(index)}
                       loop
                       muted
                       playsInline
-                      preload={index === 0 ? "auto" : "none"}
-                      className="absolute inset-0 w-full h-full object-cover opacity-60"
-                    />
-                  ) : (
-                    <Image
-                      src={slide.image!}
-                      alt={slide.headline}
-                      fill
-                      priority={index === 0}
-                      quality={85}
-                      sizes="100vw"
-                      className="object-cover opacity-50"
-                      data-ai-hint={slide.imageHint}
+                      preload="none"
+                      className="absolute inset-0 w-full h-full object-cover opacity-60 animate-fade-in"
                     />
                   )}
-                </m.div>
+                </div>
+
                 <div className="absolute inset-0 z-10 bg-black/60" />
+
                 <div className="relative z-20 container mx-auto px-4 md:px-6">
-                  <m.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={{
-                      hidden: { opacity: 0, y: 30 },
-                      visible: {
-                        opacity: 1,
-                        y: 0,
-                        transition: {
-                          staggerChildren: 0.2,
-                          delayChildren: 0.2,
-                          duration: 0.6,
-                          ease: "easeOut",
-                        },
-                      },
-                    }}
-                    className="max-w-4xl text-center mx-auto"
-                  >
-                    <m.h1
-                      variants={{
-                        hidden: { opacity: 0, y: 20 },
-                        visible: {
-                          opacity: 1,
-                          y: 0,
-                          transition: { duration: 0.8, ease: "easeOut" },
-                        },
-                      }}
-                      className="font-headline text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white"
+                  <div className="max-w-4xl text-center mx-auto">
+                    <h1
+                      className="font-headline text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white animate-slide-down"
+                      style={{ animationDelay: "0.1s", opacity: 0, animationFillMode: "forwards" }}
                     >
                       {slide.headline}
-                    </m.h1>
-                    <m.p
-                      variants={{
-                        hidden: { opacity: 0, y: 20 },
-                        visible: {
-                          opacity: 1,
-                          y: 0,
-                          transition: { duration: 0.8, ease: "easeOut" },
-                        },
-                      }}
-                      className="mt-6 text-lg sm:text-xl text-white/80 max-w-2xl mx-auto"
+                    </h1>
+                    <p
+                      className="mt-6 text-lg sm:text-xl text-white/80 max-w-2xl mx-auto animate-fade-in-up"
+                      style={{ animationDelay: "0.3s", opacity: 0, animationFillMode: "forwards" }}
                     >
                       {slide.subheadline}
-                    </m.p>
-                    <m.div
-                      variants={{
-                        hidden: { opacity: 0, y: 20 },
-                        visible: {
-                          opacity: 1,
-                          y: 0,
-                          transition: { duration: 0.8, ease: "easeOut" },
-                        },
-                      }}
-                      className="mt-10 flex flex-col sm:flex-row justify-center gap-4"
+                    </p>
+                    <div
+                      className="mt-10 flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up"
+                      style={{ animationDelay: "0.5s", opacity: 0, animationFillMode: "forwards" }}
                     >
                       <Button size="lg" asChild>
                         <Link href="/contacto">Reserva tu Sesión Estratégica</Link>
@@ -196,25 +156,26 @@ const Hero = () => {
                           Chatea con nosotros
                         </a>
                       </Button>
-                    </m.div>
-                  </m.div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
+
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
-            {slides.map((_, index) => (
-                <button
-                    key={index}
-                    onClick={() => api?.scrollTo(index)}
-                    className={cn(
-                        "w-2 h-2 rounded-full transition-all duration-300",
-                        current === index + 1 ? 'w-6 bg-primary' : 'bg-white/50 hover:bg-white'
-                    )}
-                    aria-label={`Ir a la diapositiva ${index + 1}`}
-                />
-            ))}
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => api?.scrollTo(index)}
+              className={cn(
+                "w-2 h-2 rounded-full transition-all duration-300",
+                isActive(index) ? "w-6 bg-primary" : "bg-white/50 hover:bg-white"
+              )}
+              aria-label={`Ir a la diapositiva ${index + 1}`}
+            />
+          ))}
         </div>
       </Carousel>
     </section>
