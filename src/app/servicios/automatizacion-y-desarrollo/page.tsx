@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+export const metadata: Metadata = {
+  title: 'Automatización y Desarrollo Digital para Empresas en México',
+  description: 'Combina automatización de procesos con desarrollo digital personalizado. MAW Soluciones integra tecnología avanzada para hacer crecer tu empresa en México.',
+  keywords: ['automatización y desarrollo México', 'transformación digital México', 'integración de sistemas', 'desarrollo digital para empresas México'],
+  alternates: { canonical: 'https://mawsoluciones.com/servicios/automatizacion-y-desarrollo' },
+  openGraph: { url: 'https://mawsoluciones.com/servicios/automatizacion-y-desarrollo', title: 'Automatización y Desarrollo Digital México | MAW Soluciones', description: 'Lleva tu empresa al siguiente nivel con automatización inteligente y desarrollo digital a medida en México.' },
+};
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Image from "next/image";

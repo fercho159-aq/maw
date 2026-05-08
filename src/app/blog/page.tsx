@@ -1,3 +1,17 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Blog de Marketing Digital y Tecnología en México',
+  description: 'Aprende sobre marketing digital, desarrollo web, redes sociales, SEO y tendencias tecnológicas para empresas en México. Contenido de expertos de MAW Soluciones.',
+  keywords: ['blog marketing digital México', 'tendencias digitales', 'SEO para empresas', 'estrategias de contenido', 'desarrollo web tips'],
+  alternates: { canonical: 'https://mawsoluciones.com/blog' },
+  openGraph: {
+    url: 'https://mawsoluciones.com/blog',
+    title: 'Blog | Tendencias y Estrategias de Marketing Digital México',
+    description: 'Artículos, guías y recursos para potenciar tu presencia digital. Expertos en marketing, desarrollo web y tecnología en México.',
+  },
+};
+
 import AnimatedDiv from '@/components/animated-div';
 import TypewriterTitle from '@/components/typewriter-title';
 import { Suspense } from 'react';

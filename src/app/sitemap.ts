@@ -2,36 +2,60 @@ import { MetadataRoute } from 'next';
 import { getBlogPosts } from '@/app/blog/_actions';
 import { portfolioItems } from '@/lib/portfolio-data';
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://mawsoluciones.com';
+const baseUrl = 'https://mawsoluciones.com';
 
-  // Obtener posts del blog
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getBlogPosts();
   const blogPostUrls = posts.map(post => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.date),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
   }));
 
-  // Obtener items del portafolio
   const portfolioUrls = portfolioItems.map(item => ({
     url: `${baseUrl}/portafolio/${item.id}`,
-    lastModified: new Date(), // Asumiendo fecha actual si no hay una específica
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.5,
   }));
 
-  // Páginas estáticas y de servicios
-  const staticRoutes = [
-    '/',
-    '/servicios',
+  // High priority — core pages
+  const coreRoutes: MetadataRoute.Sitemap = [
+    { url: baseUrl, lastModified: new Date(), changeFrequency: 'weekly', priority: 1.0 },
+    { url: `${baseUrl}/servicios`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/contacto`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/portafolio`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
+  ];
+
+  // Service pages
+  const serviceRoutes: MetadataRoute.Sitemap = [
     '/servicios/desarrollo-web',
+    '/servicios/apps',
+    '/servicios/redes-sociales',
     '/servicios/creacion-de-contenido',
-    '/servicios/gestion-de-campanas',
     '/servicios/automatizacion',
-    '/servicios/produccion-foto-video',
-    '/servicios/desarrollo-a-la-medida',
     '/servicios/automatizacion-y-desarrollo',
-    '/portafolio',
-    '/blog',
-    '/contacto',
+    '/servicios/desarrollo-a-la-medida',
+    '/servicios/produccion-foto-video',
+    '/servicios/podcast',
+    '/servicios/sitio-web',
+    '/servicios/crm',
+    '/servicios/automatizacion/chatbot',
+    '/servicios/automatizacion/cobranza-recurrente',
+    '/servicios/automatizacion/analisis-tendencias',
+    '/servicios/automatizacion/agendamiento-automatico',
+    '/servicios/automatizacion/seguimiento-pendientes',
+  ].map(route => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  // Course pages
+  const courseRoutes: MetadataRoute.Sitemap = [
     '/cursos/facebook-ads',
     '/cursos/google-ads',
     '/cursos/tiktok-ads',
@@ -39,14 +63,39 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/cursos/ventas',
     '/cursos/finanzas-personales',
     '/cursos/firebase-web',
-    '/politicas',
-    '/terminos',
-  ];
-
-  const staticUrls = staticRoutes.map(route => ({
+  ].map(route => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
   }));
 
-  return [...staticUrls, ...blogPostUrls, ...portfolioUrls];
+  // Tool pages
+  const toolRoutes: MetadataRoute.Sitemap = [
+    '/herramientas',
+    '/herramientas/generador-qr',
+    '/herramientas/extractor-maps',
+    '/herramientas/diagnostico-web',
+  ].map(route => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.5,
+  }));
+
+  // Legal pages (low priority, no-index)
+  const legalRoutes: MetadataRoute.Sitemap = [
+    { url: `${baseUrl}/politicas`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.1 },
+    { url: `${baseUrl}/terminos`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.1 },
+  ];
+
+  return [
+    ...coreRoutes,
+    ...serviceRoutes,
+    ...courseRoutes,
+    ...toolRoutes,
+    ...legalRoutes,
+    ...blogPostUrls,
+    ...portfolioUrls,
+  ];
 }

@@ -1,3 +1,17 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Servicios de Marketing Digital, Desarrollo Web y Apps en México',
+  description: 'Descubre todos los servicios de MAW Soluciones: desarrollo web, apps a medida, gestión de redes sociales, automatización, publicidad digital y más. Agencia líder en México.',
+  keywords: ['servicios marketing digital México', 'desarrollo web México', 'apps a medida México', 'gestión redes sociales', 'automatización empresarial México'],
+  alternates: { canonical: 'https://mawsoluciones.com/servicios' },
+  openGraph: {
+    url: 'https://mawsoluciones.com/servicios',
+    title: 'Servicios Digitales para Empresas en México | MAW Soluciones',
+    description: 'Desarrollo web, apps, marketing digital, automatización y más. Todo lo que tu empresa necesita para crecer en el mundo digital.',
+  },
+};
+
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';

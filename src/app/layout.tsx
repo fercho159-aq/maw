@@ -16,9 +16,56 @@ const montserrat = Montserrat({
   display: 'swap',
 });
 
+const siteUrl = 'https://mawsoluciones.com';
+
 export const metadata: Metadata = {
-  title: 'MAW Soluciones | Agencia de Marketing Digital',
-  description: 'Potenciamos tu marca con estrategias de marketing digital innovadoras. Creación de contenido, desarrollo web, y más.',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'MAW Soluciones | Agencia de Marketing Digital y Desarrollo Web en México',
+    template: '%s | MAW Soluciones',
+  },
+  description: 'MAW Soluciones es la agencia líder de marketing digital, desarrollo web y desarrollo de apps en México. Estrategias creativas, tecnología de vanguardia y resultados comprobados para tu negocio.',
+  keywords: [
+    'agencia de marketing digital México',
+    'desarrollo web México',
+    'desarrollo de apps México',
+    'diseño web profesional México',
+    'agencia digital CDMX',
+    'marketing digital para empresas',
+    'creación de sitios web México',
+    'automatización de marketing',
+    'gestión de redes sociales México',
+    'agencia de publicidad digital',
+    'SEO México',
+    'MAW Soluciones',
+  ],
+  authors: [{ name: 'MAW Soluciones', url: siteUrl }],
+  creator: 'MAW Soluciones',
+  publisher: 'MAW Soluciones',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-snippet': -1, 'max-image-preview': 'large', 'max-video-preview': -1 },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'es_MX',
+    url: siteUrl,
+    siteName: 'MAW Soluciones',
+    title: 'MAW Soluciones | Agencia de Marketing Digital y Desarrollo Web en México',
+    description: 'Agencia líder en marketing digital, desarrollo web y apps en México. Creatividad, tecnología y resultados reales para tu empresa.',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'MAW Soluciones - Agencia de Marketing Digital México' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'MAW Soluciones | Agencia de Marketing Digital México',
+    description: 'Marketing digital, desarrollo web y apps en México. Impulsamos tu marca al siguiente nivel.',
+    images: ['/og-image.jpg'],
+    creator: '@mawsoluciones',
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
 };
 
 export default function RootLayout({
@@ -67,6 +114,58 @@ export default function RootLayout({
 
       </head>
       <body className={cn("font-sans antialiased", montserrat.variable)}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": ["Organization", "LocalBusiness"],
+                "@id": `${siteUrl}/#organization`,
+                "name": "MAW Soluciones",
+                "url": siteUrl,
+                "logo": { "@type": "ImageObject", "url": `${siteUrl}/images/logo.png` },
+                "image": `${siteUrl}/og-image.jpg`,
+                "description": "Agencia líder de marketing digital, desarrollo web y desarrollo de apps en México.",
+                "telephone": "+5633774723",
+                "email": "contacto@mawsoluciones.com",
+                "areaServed": { "@type": "Country", "name": "México" },
+                "address": { "@type": "PostalAddress", "addressCountry": "MX", "addressRegion": "México" },
+                "priceRange": "$$",
+                "sameAs": [
+                  "https://www.instagram.com/mawsoluciones",
+                  "https://www.facebook.com/mawsoluciones",
+                  "https://www.youtube.com/@mawsoluciones",
+                  "https://www.tiktok.com/@mawsoluciones"
+                ],
+                "hasOfferCatalog": {
+                  "@type": "OfferCatalog",
+                  "name": "Servicios de Agencia Digital",
+                  "itemListElement": [
+                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Desarrollo Web Profesional" } },
+                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Desarrollo de Apps" } },
+                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Marketing en Redes Sociales" } },
+                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automatización de Marketing" } },
+                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Producción de Contenido Digital" } },
+                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Publicidad Digital (Google Ads & Meta Ads)" } }
+                  ]
+                }
+              },
+              {
+                "@type": "WebSite",
+                "@id": `${siteUrl}/#website`,
+                "url": siteUrl,
+                "name": "MAW Soluciones",
+                "publisher": { "@id": `${siteUrl}/#organization` },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": { "@type": "EntryPoint", "urlTemplate": `${siteUrl}/blog?q={search_term_string}` },
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]
+          }) }}
+        />
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9N39GJK"
         height="0" width="0" style={{display:'none',visibility:'hidden'}}></iframe></noscript>
 
