@@ -112,6 +112,20 @@ export default function RootLayout({
           `}
         </Script>
 
+        {/* Event snippet for Descarga Brochure - Google Ads conversion */}
+        <Script id="conversion-brochure" strategy="lazyOnload">
+          {`
+            gtag('event', 'conversion', {'send_to': 'AW-18144008689/wErWCN_4tqgcEPGz3stD'});
+          `}
+        </Script>
+
+        {/* Event snippet for Clic WhatsApp - Google Ads conversion */}
+        <Script id="conversion-whatsapp" strategy="lazyOnload">
+          {`
+            gtag('event', 'conversion', {'send_to': 'AW-18144008689/5h6uCPqgz6gcEPGz3stD'});
+          `}
+        </Script>
+
       </head>
       <body className={cn("font-sans antialiased", montserrat.variable)}>
         <script
