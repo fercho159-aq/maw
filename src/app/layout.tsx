@@ -112,6 +112,17 @@ export default function RootLayout({
           `}
         </Script>
 
+        {/* Google Ads */}
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-18144008689"></Script>
+        <Script id="google-ads" strategy="lazyOnload">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-18144008689');
+          `}
+        </Script>
+
         {/* Event snippet for Descarga Brochure - Google Ads conversion */}
         <Script id="conversion-brochure" strategy="lazyOnload">
           {`
