@@ -77,6 +77,14 @@ export default function RootLayout({
   return (
     <html lang="es" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        {/* Polyfill requestIdleCallback / cancelIdleCallback para Safari antiguo (iOS < 15.4) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){if(typeof window==='undefined')return;if(typeof window.requestIdleCallback!=='function'){window.requestIdleCallback=function(cb,opts){var start=Date.now();var timeout=opts&&opts.timeout?opts.timeout:1;return setTimeout(function(){cb({didTimeout:false,timeRemaining:function(){return Math.max(0,50-(Date.now()-start));}});},timeout);};}if(typeof window.cancelIdleCallback!=='function'){window.cancelIdleCallback=function(id){clearTimeout(id);};}})();",
+          }}
+        />
+
         {/* Resource hints */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
