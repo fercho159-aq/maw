@@ -153,7 +153,7 @@ export default function StudioShowcase() {
 
             <div className="pt-4">
               <Button size="lg" className="w-full sm:w-auto h-14 bg-primary text-primary-foreground hover:opacity-90 font-bold px-8 shadow-xl hover:scale-105 transition-transform" asChild>
-                <a href="https://wa.me/5633774723">
+                <a href="https://wa.me/5633774723?text=Hola%2C%20quiero%20grabar%20mi%20podcast%20con%20calidad%20profesional.%20He%20estado%20posponiendo%20esto%20demasiado%20tiempo%20y%20s%C3%A9%20que%20necesito%20empezar%20ya.%20%C2%BFCu%C3%A1ndo%20tienen%20disponibilidad%20en%20el%20estudio%3F">
                   Reservar este Set vía WhatsApp
                 </a>
               </Button>

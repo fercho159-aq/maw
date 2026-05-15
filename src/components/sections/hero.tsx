@@ -148,7 +148,7 @@ const Hero = () => {
                       </Button>
                       <Button size="lg" variant="whatsapp" asChild>
                         <a
-                          href="https://wa.me/5633774723"
+                          href="https://wa.me/5633774723?text=Hola%2C%20quiero%20hacer%20crecer%20mi%20negocio%20digitalmente%20pero%20siento%20que%20me%20estoy%20quedando%20atr%C3%A1s.%20%C2%BFPueden%20orientarme%20por%20d%C3%B3nde%20empezar%3F"
                           target="_blank"
                           rel="noopener noreferrer"
                         >

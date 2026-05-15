@@ -41,7 +41,7 @@ const Contact = () => {
               </div>
               <div className="flex items-center gap-4">
                 <WhatsappIcon className="w-5 h-5 text-primary" />
-                <a href="https://wa.me/5633774723" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">55 4131 4150</a>
+                <a href="https://wa.me/5633774723?text=Hola%2C%20me%20interesa%20trabajar%20con%20ustedes.%20%C2%BFPor%20d%C3%B3nde%20empezamos%3F" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">55 4131 4150</a>
               </div>
               <div className="flex items-center gap-4">
                 <span className="text-primary font-bold text-lg w-5 text-center">@</span>
