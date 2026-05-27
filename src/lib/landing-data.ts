@@ -3,10 +3,10 @@ import type { Metadata } from "next";
 /**
  * Contenido de las landings de servicio (dirigido por datos).
  *
- * ⚠️ TODO PRECIOS: los valores `price` están como placeholder ("$ —").
- * Reemplázalos con los precios reales antes de publicar. El flag
- * `pricesArePlaceholder: true` en cada bloque `packages` es un recordatorio
- * deliberado; cámbialo a `false` cuando ya tengan precio real.
+ * PRECIOS: definidos según investigación de mercado MX 2025-2026 (agencias
+ * PyME y competidores como marketinglab.mx). Proyectos (web/apps) usan precio
+ * "Desde" porque varían por alcance; servicios recurrentes (redes, contenido,
+ * automatización) son mensualidad. Ajústalos cuando cambie tu lista de precios.
  *
  * Este archivo es TS plano (sin JSX ni "use client") para poder importarse
  * desde server components y construir metadata.
@@ -78,7 +78,6 @@ export type ServiceLanding = {
 };
 
 const WA = "https://wa.me/5633774723";
-const PRICE = "$ —"; // TODO PRECIOS
 
 export const landings: Record<string, ServiceLanding> = {
   // ─────────────────────────────────────────────────────────────────────────
@@ -133,14 +132,14 @@ export const landings: Record<string, ServiceLanding> = {
     packages: {
       heading: "Planes de desarrollo web",
       subheading: "Elige el nivel que se ajusta a tu operación. Transparencia total.",
-      pricesArePlaceholder: true,
+      pricesArePlaceholder: false,
       note: "Todos los planes incluyen dominio y hosting el primer año, certificado SSL y capacitación de uso.",
       tiers: [
         {
           id: "landing",
           name: "Landing Page",
           tagline: "Presencia esencial",
-          price: PRICE,
+          price: "Desde $7,900",
           priceNote: "/ proyecto",
           features: ["1 página de alta conversión", "Diseño responsive", "Dominio + hosting (1er año)", "SEO On-Page básico", "Formulario de contacto", "Google My Business"],
           ctaLabel: "Cotizar Landing",
@@ -149,7 +148,7 @@ export const landings: Record<string, ServiceLanding> = {
           id: "empresarial",
           name: "Sitio Empresarial",
           tagline: "Crecimiento y autoridad",
-          price: PRICE,
+          price: "Desde $24,900",
           priceNote: "/ proyecto",
           highlight: true,
           features: ["Hasta 6 páginas", "SEO On-Page completo", "Google Analytics 4 + Search Console", "10 correos corporativos", "Respaldos automáticos", "Mantenimiento anual incluido"],
@@ -159,7 +158,7 @@ export const landings: Record<string, ServiceLanding> = {
           id: "ecommerce",
           name: "E-Commerce",
           tagline: "Tienda en línea completa",
-          price: PRICE,
+          price: "Desde $44,900",
           priceNote: "/ proyecto",
           features: ["Tienda WooCommerce o a la medida", "Pasarelas: Mercado Pago y PayPal", "Alta de los primeros 20 productos", "SEO avanzado e-commerce", "Respaldos automáticos", "Mantenimiento anual incluido"],
           ctaLabel: "Cotizar Tienda",
@@ -244,14 +243,14 @@ export const landings: Record<string, ServiceLanding> = {
     packages: {
       heading: "Planes de automatización",
       subheading: "Desde un chatbot hasta un ecosistema completo de procesos.",
-      pricesArePlaceholder: true,
-      note: "Incluye levantamiento de procesos, implementación y capacitación del equipo.",
+      pricesArePlaceholder: false,
+      note: "Mensualidad por gestión. Aplica una inversión inicial de implementación según el alcance del proyecto.",
       tiers: [
         {
           id: "inicial",
           name: "Inicial",
           tagline: "Da el primer paso",
-          price: PRICE,
+          price: "$2,490",
           priceNote: "/ mes",
           features: ["Chatbot en WhatsApp", "Respuestas automáticas", "Captura de leads", "1 integración", "Reporte mensual"],
           ctaLabel: "Empezar",
@@ -260,7 +259,7 @@ export const landings: Record<string, ServiceLanding> = {
           id: "crecimiento",
           name: "Crecimiento",
           tagline: "Escala tus ventas",
-          price: PRICE,
+          price: "$4,990",
           priceNote: "/ mes",
           highlight: true,
           features: ["Todo lo del plan Inicial", "Flujos de seguimiento de ventas", "Agendamiento automático", "Hasta 3 integraciones", "Dashboard de métricas"],
@@ -270,7 +269,7 @@ export const landings: Record<string, ServiceLanding> = {
           id: "integral",
           name: "Integral",
           tagline: "Automatiza todo el negocio",
-          price: PRICE,
+          price: "$8,900",
           priceNote: "/ mes",
           features: ["Todo lo del plan Crecimiento", "Cobranza recurrente automática", "CRM automatizado", "Integraciones ilimitadas", "Soporte prioritario"],
           ctaLabel: "Cotizar Integral",
@@ -355,14 +354,14 @@ export const landings: Record<string, ServiceLanding> = {
     packages: {
       heading: "Planes de contenido",
       subheading: "Producción constante para mantener tu marca viva y creciendo.",
-      pricesArePlaceholder: true,
+      pricesArePlaceholder: false,
       note: "Incluye estrategia, producción, edición y publicación. Grabación en nuestro estudio en planes superiores.",
       tiers: [
         {
           id: "esencial",
           name: "Esencial",
           tagline: "Presencia constante",
-          price: PRICE,
+          price: "$5,900",
           priceNote: "/ mes",
           features: ["12 publicaciones al mes", "8 videos + 4 posts", "1 sesión de grabación", "Estrategia básica", "Reporte mensual"],
           ctaLabel: "Empezar",
@@ -371,7 +370,7 @@ export const landings: Record<string, ServiceLanding> = {
           id: "pro",
           name: "Pro",
           tagline: "Acelera tu crecimiento",
-          price: PRICE,
+          price: "$9,900",
           priceNote: "/ mes",
           highlight: true,
           features: ["16 publicaciones al mes", "12 videos + 4 posts", "2 sesiones en estudio", "Estrategia de contenidos", "Reels optimizados para alcance"],
@@ -381,7 +380,7 @@ export const landings: Record<string, ServiceLanding> = {
           id: "premium",
           name: "Premium",
           tagline: "Marca de alto impacto",
-          price: PRICE,
+          price: "$15,900",
           priceNote: "/ mes",
           features: ["20 publicaciones al mes", "12 videos + 8 posts", "2 sesiones en estudio", "Estrategia + guion completo", "Video podcast mensual"],
           ctaLabel: "Cotizar Premium",
@@ -465,14 +464,14 @@ export const landings: Record<string, ServiceLanding> = {
     packages: {
       heading: "Modelos de proyecto",
       subheading: "Desde un MVP hasta una plataforma completa a la medida.",
-      pricesArePlaceholder: true,
+      pricesArePlaceholder: false,
       note: "Cada proyecto a la medida se cotiza según alcance. Estos rangos son orientativos.",
       tiers: [
         {
           id: "mvp",
           name: "MVP",
           tagline: "Valida tu idea",
-          price: PRICE,
+          price: "Desde $69,900",
           priceNote: "/ proyecto",
           features: ["Producto mínimo viable", "1 plataforma (web o móvil)", "Funcionalidades core", "Diseño UX/UI", "Despliegue inicial"],
           ctaLabel: "Cotizar MVP",
@@ -481,7 +480,7 @@ export const landings: Record<string, ServiceLanding> = {
           id: "plataforma",
           name: "Plataforma",
           tagline: "Tu sistema completo",
-          price: PRICE,
+          price: "Desde $149,900",
           priceNote: "/ proyecto",
           highlight: true,
           features: ["App web + móvil", "Panel de administración", "Integraciones y APIs", "Base de datos a la medida", "Soporte 3 meses incluido"],
@@ -491,7 +490,7 @@ export const landings: Record<string, ServiceLanding> = {
           id: "enterprise",
           name: "Enterprise",
           tagline: "Operación a gran escala",
-          price: PRICE,
+          price: "Desde $300,000",
           priceNote: "/ proyecto",
           features: ["Arquitectura escalable", "Múltiples módulos", "Integraciones avanzadas", "SLA y soporte prioritario", "Roadmap de evolución"],
           ctaLabel: "Agendar reunión",
@@ -576,14 +575,14 @@ export const landings: Record<string, ServiceLanding> = {
     packages: {
       heading: "Modelos de proyecto",
       subheading: "Desde un MVP para validar hasta una app de producción completa.",
-      pricesArePlaceholder: true,
+      pricesArePlaceholder: false,
       note: "Cada app se cotiza según alcance y plataformas. Estos rangos son orientativos.",
       tiers: [
         {
           id: "mvp",
           name: "MVP",
           tagline: "Lanza y valida",
-          price: PRICE,
+          price: "Desde $59,900",
           priceNote: "/ proyecto",
           features: ["1 plataforma", "Funciones esenciales", "Diseño UX/UI", "Publicación en tienda", "Analítica básica"],
           ctaLabel: "Cotizar MVP",
@@ -592,7 +591,7 @@ export const landings: Record<string, ServiceLanding> = {
           id: "completa",
           name: "App Completa",
           tagline: "Producto de producción",
-          price: PRICE,
+          price: "Desde $129,900",
           priceNote: "/ proyecto",
           highlight: true,
           features: ["iOS + Android", "Backend y panel admin", "Notificaciones push", "Integraciones de pago", "Soporte 3 meses"],
@@ -602,7 +601,7 @@ export const landings: Record<string, ServiceLanding> = {
           id: "escalable",
           name: "Escalable",
           tagline: "Crece sin límites",
-          price: PRICE,
+          price: "Desde $249,900",
           priceNote: "/ proyecto",
           features: ["Arquitectura escalable", "Módulos avanzados", "Integraciones a la medida", "SLA y soporte prioritario", "Roadmap de evolución"],
           ctaLabel: "Agendar reunión",

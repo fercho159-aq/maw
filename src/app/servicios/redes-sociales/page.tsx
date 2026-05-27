@@ -32,9 +32,9 @@ const socialReels = [
 ];
 
 const plans = [
-  { id: "emprendedor", icon: Sparkles, name: "Plan Emprendedor", tagline: "Arranca con presencia constante", highlight: false },
-  { id: "negocios", icon: Rocket, name: "Plan Negocios", tagline: "Acelera tu crecimiento", highlight: true },
-  { id: "empresa", icon: Crown, name: "Plan Empresa", tagline: "La solución integral premium", highlight: false },
+  { id: "emprendedor", icon: Sparkles, name: "Plan Emprendedor", tagline: "Arranca con presencia constante", price: "$5,900", highlight: false },
+  { id: "negocios", icon: Rocket, name: "Plan Negocios", tagline: "Acelera tu crecimiento", price: "$9,900", highlight: true },
+  { id: "empresa", icon: Crown, name: "Plan Empresa", tagline: "La solución integral premium", price: "$16,900", highlight: false },
 ];
 
 type CellValue = string | boolean;
@@ -188,6 +188,7 @@ export default function RedesYAdsPage() {
                         </div>
                         <h3 className="font-bold text-sm leading-tight">{plan.name.replace("Plan ", "")}</h3>
                         <p className="text-[10px] text-foreground/60 mt-0.5 leading-tight">{plan.tagline}</p>
+                        <p className="text-base font-extrabold text-foreground mt-1.5">{plan.price}<span className="text-[10px] font-normal text-foreground/50">/mes</span></p>
                       </div>
                     );
                   })}

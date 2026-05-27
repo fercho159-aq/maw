@@ -19,9 +19,9 @@ const landing = getLandingData("sitio-web")!;
 type CellValue = string | boolean;
 
 const webPlans = [
-  { id: "landing", name: "Landing Page", tagline: "Presencia esencial", highlight: false },
-  { id: "empresarial", name: "Sitio Empresarial", tagline: "Crecimiento y autoridad", highlight: false },
-  { id: "ecommerce", name: "E-Commerce", tagline: "Tienda en línea completa", highlight: false },
+  { id: "landing", name: "Landing Page", tagline: "Presencia esencial", price: "Desde $7,900", highlight: false },
+  { id: "empresarial", name: "Sitio Empresarial", tagline: "Crecimiento y autoridad", price: "Desde $24,900", highlight: true },
+  { id: "ecommerce", name: "E-Commerce", tagline: "Tienda en línea completa", price: "Desde $44,900", highlight: false },
 ];
 
 const sections: { title: string; icon: typeof Layers; rows: { label: string; values: [CellValue, CellValue, CellValue] }[] }[] = [
@@ -149,6 +149,7 @@ const SitioWebPage = () => {
                   >
                     <h3 className="font-bold text-base md:text-lg leading-tight text-white">{plan.name}</h3>
                     <p className="text-[11px] text-white/50 mt-1 tracking-wide">{plan.tagline}</p>
+                    <p className="text-base md:text-lg font-extrabold text-white mt-2">{plan.price}</p>
                   </div>
                 ))}
               </div>
