@@ -176,10 +176,10 @@ export default function RedesYAdsPage() {
                     return (
                       <div
                         key={plan.id}
-                        className={`relative p-4 text-center border-l border-border/50 ${plan.highlight ? "bg-primary/10" : ""}`}
+                        className={`relative px-4 pb-4 pt-7 text-center border-l border-border/50 ${plan.highlight ? "bg-primary/10" : ""}`}
                       >
                         {plan.highlight && (
-                          <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-[9px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full shadow-md whitespace-nowrap">
+                          <div className="absolute top-2 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-[9px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full shadow-md whitespace-nowrap">
                             Más Popular
                           </div>
                         )}
