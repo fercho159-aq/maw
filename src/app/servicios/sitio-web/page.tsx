@@ -8,6 +8,13 @@ import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { portfolioItems, portfolioCategories, portfolioSectors } from "@/lib/portfolio-data";
+import LandingStats from "@/components/landing/landing-stats";
+import LandingProcess from "@/components/landing/landing-process";
+import LandingFaq from "@/components/landing/landing-faq";
+import LandingLeadForm from "@/components/landing/landing-lead-form";
+import { getLandingData } from "@/lib/landing-data";
+
+const landing = getLandingData("sitio-web")!;
 
 type CellValue = string | boolean;
 
@@ -225,6 +232,11 @@ const SitioWebPage = () => {
       </section>
 
       <WebsitesPortfolioCarousel />
+
+      {landing.stats && <LandingStats data={landing.stats} />}
+      {landing.process && <LandingProcess data={landing.process} />}
+      {landing.faq && <LandingFaq data={landing.faq} />}
+      <LandingLeadForm config={landing.leadForm} />
     </div>
   );
 };

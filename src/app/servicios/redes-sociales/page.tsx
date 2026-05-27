@@ -8,6 +8,13 @@ import { contentPortfolioItems } from "@/lib/portfolio-data";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import StudioShowcase from "@/components/studio-showcase";
+import LandingStats from "@/components/landing/landing-stats";
+import LandingProcess from "@/components/landing/landing-process";
+import LandingFaq from "@/components/landing/landing-faq";
+import LandingLeadForm from "@/components/landing/landing-lead-form";
+import { getLandingData } from "@/lib/landing-data";
+
+const landing = getLandingData("redes-sociales")!;
 
 const socialReels = [
   {
@@ -307,6 +314,11 @@ export default function RedesYAdsPage() {
 
       {/* CASOS DE ÉXITO - CAROUSEL FILTRABLE */}
       <ContentSuccessCarousel />
+
+      {landing.stats && <LandingStats data={landing.stats} />}
+      {landing.process && <LandingProcess data={landing.process} />}
+      {landing.faq && <LandingFaq data={landing.faq} />}
+      <LandingLeadForm config={landing.leadForm} />
     </div>
   );
 }
