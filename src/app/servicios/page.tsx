@@ -114,7 +114,7 @@ const ServicesPage = () => {
                       </Link>
                     </Button>
                     <Button variant="whatsapp" size="lg" asChild className="w-full sm:w-auto">
-                      <a href="https://wa.me/5633774723?text=Hola%2C%20estoy%20buscando%20servicios%20digitales%20para%20mi%20negocio.%20Siento%20que%20me%20estoy%20quedando%20atr%C3%A1s%20y%20necesito%20una%20soluci%C3%B3n.%20%C2%BFPodemos%20hablar%20hoy%3F" target="_blank" rel="noopener noreferrer">
+                      <a href="https://wa.me/5538359927?text=Hola%2C%20estoy%20buscando%20servicios%20digitales%20para%20mi%20negocio.%20Siento%20que%20me%20estoy%20quedando%20atr%C3%A1s%20y%20necesito%20una%20soluci%C3%B3n.%20%C2%BFPodemos%20hablar%20hoy%3F" target="_blank" rel="noopener noreferrer">
                         <WhatsappIcon className="w-5 h-5 mr-2" />
                         Contactar
                       </a>

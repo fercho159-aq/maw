@@ -77,7 +77,7 @@ export type ServiceLanding = {
   leadForm: LeadFormConfig;
 };
 
-const WA = "https://wa.me/5633774723";
+const WA = "https://wa.me/5538359927";
 
 export const landings: Record<string, ServiceLanding> = {
   // ─────────────────────────────────────────────────────────────────────────

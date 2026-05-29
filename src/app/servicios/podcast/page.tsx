@@ -83,7 +83,7 @@ export default function PodcastPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 w-full justify-center mt-2">
             <Button size="default" className="bg-primary text-primary-foreground hover:opacity-90 transition-opacity font-semibold" asChild>
-              <a href="https://wa.me/5633774723?text=Hola%2C%20quiero%20grabar%20mi%20podcast%20con%20calidad%20profesional.%20He%20estado%20posponiendo%20esto%20demasiado%20tiempo%20y%20s%C3%A9%20que%20necesito%20empezar%20ya.%20%C2%BFCu%C3%A1ndo%20tienen%20disponibilidad%20en%20el%20estudio%3F">
+              <a href="https://wa.me/5538359927?text=Hola%2C%20quiero%20grabar%20mi%20podcast%20con%20calidad%20profesional.%20He%20estado%20posponiendo%20esto%20demasiado%20tiempo%20y%20s%C3%A9%20que%20necesito%20empezar%20ya.%20%C2%BFCu%C3%A1ndo%20tienen%20disponibilidad%20en%20el%20estudio%3F">
                 Cotizar y Reservar
               </a>
             </Button>

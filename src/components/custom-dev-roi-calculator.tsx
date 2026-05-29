@@ -70,7 +70,7 @@ const CustomDevRoiCalculator = () => {
 *Ahorro anual estimado:* ${annualSavings.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}
 \n*Mi número es:* ${whatsappNumber}
     `.trim().replace(/\n\s*\n/g, '\n');
-    const whatsappUrl = `https://wa.me/5633774723?text=${encodeURIComponent(message.trim())}`;
+    const whatsappUrl = `https://wa.me/5538359927?text=${encodeURIComponent(message.trim())}`;
     window.open(whatsappUrl, '_blank');
     
     addLead({

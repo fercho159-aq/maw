@@ -160,7 +160,7 @@ export default function RootLayout({
                 "logo": { "@type": "ImageObject", "url": `${siteUrl}/images/logo.png` },
                 "image": `${siteUrl}/og-image.jpg`,
                 "description": "Agencia líder de marketing digital, desarrollo web y desarrollo de apps en México.",
-                "telephone": "+5633774723",
+                "telephone": "+5538359927",
                 "email": "contacto@mawsoluciones.com",
                 "areaServed": { "@type": "Country", "name": "México" },
                 "address": { "@type": "PostalAddress", "addressCountry": "MX", "addressRegion": "México" },

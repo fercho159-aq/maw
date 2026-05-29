@@ -3,7 +3,7 @@
 import WhatsappIcon from "@/components/icons/whatsapp-icon";
 
 const ChatBubble = () => {
-  const whatsappUrl = "https://wa.me/5633774723?text=Hola%2C%20me%20interesa%20trabajar%20con%20ustedes.%20%C2%BFPor%20d%C3%B3nde%20empezamos%3F";
+  const whatsappUrl = "https://wa.me/5538359927?text=Hola%2C%20me%20interesa%20trabajar%20con%20ustedes.%20%C2%BFPor%20d%C3%B3nde%20empezamos%3F";
 
   return (
     <div className="fixed bottom-6 right-6 z-50 animate-scale-in">

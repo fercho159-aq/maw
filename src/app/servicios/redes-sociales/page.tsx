@@ -126,7 +126,7 @@ export default function RedesYAdsPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 w-full justify-center mt-2">
             <Button size="default" className="bg-primary text-primary-foreground hover:opacity-90 font-semibold" asChild>
-              <a href="https://wa.me/5633774723?text=Hola%2C%20necesito%20ayuda%20con%20marketing%20en%20redes%20sociales.%20Mi%20negocio%20no%20est%C3%A1%20creciendo%20como%20deber%C3%ADa%20y%20ya%20no%20puedo%20seguirlo%20ignorando.%20%C2%BFPodemos%20hablar%20hoy%3F">
+              <a href="https://wa.me/5538359927?text=Hola%2C%20necesito%20ayuda%20con%20marketing%20en%20redes%20sociales.%20Mi%20negocio%20no%20est%C3%A1%20creciendo%20como%20deber%C3%ADa%20y%20ya%20no%20puedo%20seguirlo%20ignorando.%20%C2%BFPodemos%20hablar%20hoy%3F">
                 Cotizar Estrategia
               </a>
             </Button>
@@ -237,7 +237,7 @@ export default function RedesYAdsPage() {
                         size="sm"
                         className="w-full font-semibold text-xs"
                       >
-                        <a href="https://wa.me/5633774723?text=Hola%2C%20necesito%20ayuda%20con%20marketing%20en%20redes%20sociales.%20Mi%20negocio%20no%20est%C3%A1%20creciendo%20como%20deber%C3%ADa%20y%20ya%20no%20puedo%20seguirlo%20ignorando.%20%C2%BFPodemos%20hablar%20hoy%3F">
+                        <a href="https://wa.me/5538359927?text=Hola%2C%20necesito%20ayuda%20con%20marketing%20en%20redes%20sociales.%20Mi%20negocio%20no%20est%C3%A1%20creciendo%20como%20deber%C3%ADa%20y%20ya%20no%20puedo%20seguirlo%20ignorando.%20%C2%BFPodemos%20hablar%20hoy%3F">
                           Contratar <ArrowRight className="w-3 h-3 ml-1" />
                         </a>
                       </Button>
