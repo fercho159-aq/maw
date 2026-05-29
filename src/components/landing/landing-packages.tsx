@@ -26,12 +26,12 @@ export default function LandingPackages({ data }: { data: PackagesData }) {
               className={cn(
                 "relative flex flex-col rounded-3xl border bg-card p-8 transition-all duration-300",
                 tier.highlight
-                  ? "border-primary/50 ring-1 ring-primary/30 shadow-xl shadow-primary/10 lg:scale-[1.03]"
-                  : "border-border/60 hover:border-primary/30 hover:shadow-lg"
+                  ? "border-primary/50 ring-1 ring-primary/30 shadow-2xl shadow-primary/20 lg:scale-[1.04] bg-gradient-to-b from-primary/[0.06] to-transparent"
+                  : "border-border/60 hover:border-primary/30 hover:shadow-lg hover:-translate-y-1"
               )}
             >
               {tier.highlight && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-[10px] uppercase tracking-wider font-bold px-3 py-1 rounded-full shadow-md whitespace-nowrap">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-[10px] uppercase tracking-[0.15em] font-bold px-3.5 py-1 rounded-full shadow-lg shadow-primary/30 whitespace-nowrap">
                   Más Popular
                 </div>
               )}
@@ -49,7 +49,9 @@ export default function LandingPackages({ data }: { data: PackagesData }) {
               <ul className="space-y-3 my-6 flex-grow">
                 {tier.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5 text-sm text-foreground/80">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="mt-0.5 flex-shrink-0 rounded-full bg-primary/10 p-0.5">
+                      <Check className="w-3.5 h-3.5 text-primary" />
+                    </span>
                     <span>{f}</span>
                   </li>
                 ))}
@@ -58,10 +60,14 @@ export default function LandingPackages({ data }: { data: PackagesData }) {
               <Button
                 asChild
                 variant={tier.highlight ? "default" : "outline"}
-                className="w-full font-semibold rounded-full"
+                className={cn(
+                  "group/cta w-full font-semibold rounded-full",
+                  tier.highlight && "shadow-lg shadow-primary/25"
+                )}
               >
                 <a href={tier.ctaHref ?? "#cotizar"}>
-                  {tier.ctaLabel} <ArrowRight className="w-4 h-4 ml-1.5" />
+                  {tier.ctaLabel}
+                  <ArrowRight className="w-4 h-4 ml-1.5 transition-transform group-hover/cta:translate-x-1" />
                 </a>
               </Button>
             </AnimatedDiv>

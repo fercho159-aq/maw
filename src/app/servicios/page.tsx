@@ -47,7 +47,7 @@ const services: Service[] = [
     title: 'Gestión de Campañas',
     description:
       'Planificamos, ejecutamos y medimos campañas publicitarias en plataformas clave como Google Ads y redes sociales para maximizar tu retorno de inversión (ROI). A través de un enfoque basado en datos, atraemos a tu público objetivo y alcanzamos tus metas comerciales con estrategias precisas y optimizadas continuamente.',
-    href: '/servicios/gestion-de-campanas',
+    href: '/servicios/redes-sociales',
     image: PlaceHolderImages.find(img => img.id === 'service-campaigns'),
   },
   {

@@ -20,9 +20,12 @@ export default function LandingProcess({ data }: { data: ProcessData }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {data.steps.map((step, i) => (
             <AnimatedDiv key={step.step} delay={i * 100} className="relative">
-              <div className="rounded-2xl border border-border/60 bg-background p-7 h-full">
-                <div className="font-headline text-5xl font-extrabold text-primary/20 mb-3">
-                  {String(step.step).padStart(2, "0")}
+              <div className="group rounded-2xl border border-border/60 bg-background p-7 h-full transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5">
+                <div className="flex items-baseline gap-2 mb-3">
+                  <span className="font-headline text-5xl font-extrabold text-primary/20 transition-colors group-hover:text-primary/40">
+                    {String(step.step).padStart(2, "0")}
+                  </span>
+                  <span className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
                 </div>
                 <h3 className="font-semibold text-lg mb-2 text-foreground">{step.title}</h3>
                 <p className="text-sm text-foreground/70 leading-relaxed">{step.description}</p>

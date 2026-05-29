@@ -18,10 +18,14 @@ export default function LandingFaq({ data }: { data: FaqData }) {
         </AnimatedDiv>
 
         <AnimatedDiv>
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion type="single" collapsible className="w-full space-y-3">
             {data.items.map((item, i) => (
-              <AccordionItem key={i} value={`item-${i}`}>
-                <AccordionTrigger className="text-left text-base font-medium text-foreground">
+              <AccordionItem
+                key={i}
+                value={`item-${i}`}
+                className="border-b-0 rounded-2xl border border-border/60 bg-card px-5 transition-colors hover:border-primary/30 data-[state=open]:border-primary/40 data-[state=open]:bg-card/80"
+              >
+                <AccordionTrigger className="text-left text-base font-medium text-foreground hover:no-underline [&[data-state=open]>svg]:text-primary">
                   {item.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-foreground/70 text-base leading-relaxed">
