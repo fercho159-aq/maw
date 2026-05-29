@@ -23,6 +23,7 @@ export default function LandingPackages({ data }: { data: PackagesData }) {
             <AnimatedDiv
               key={tier.id}
               delay={i * 100}
+              variant="scale"
               className={cn(
                 "relative flex flex-col rounded-3xl border bg-card p-8 transition-all duration-300",
                 tier.highlight

@@ -1,4 +1,5 @@
 import AnimatedDiv from "@/components/animated-div";
+import AnimatedCounter from "@/components/animated-counter";
 import type { ServiceLanding } from "@/lib/landing-data";
 
 type StatsData = NonNullable<ServiceLanding["stats"]>;
@@ -18,10 +19,11 @@ export default function LandingStats({ data }: { data: StatsData }) {
         )}
         <div className="grid grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto divide-y divide-x divide-white/10 sm:divide-y-0 lg:[&>*]:px-6">
           {data.items.map((stat, i) => (
-            <AnimatedDiv key={stat.label} delay={i * 80} className="text-center py-6 sm:py-4">
-              <div className="font-headline text-4xl md:text-6xl font-extrabold tracking-tighter bg-gradient-to-br from-white to-zinc-400 bg-clip-text text-transparent">
-                {stat.value}
-              </div>
+            <AnimatedDiv key={stat.label} delay={i * 80} variant="scale" className="text-center py-6 sm:py-4">
+              <AnimatedCounter
+                value={stat.value}
+                className="block font-headline text-4xl md:text-6xl font-extrabold tracking-tighter bg-gradient-to-br from-white to-zinc-400 bg-clip-text text-transparent"
+              />
               <p className="text-sm md:text-base text-white/60 mt-2">{stat.label}</p>
             </AnimatedDiv>
           ))}

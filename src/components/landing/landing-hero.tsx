@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import WhatsappIcon from "@/components/icons/whatsapp-icon";
 import AnimatedDiv from "@/components/animated-div";
@@ -17,7 +17,7 @@ export default function LandingHero({ data }: { data: LandingHeroData }) {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-50"
+          className="maw-kenburns absolute inset-0 w-full h-full object-cover opacity-50"
         />
       )}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-background" />
@@ -64,6 +64,15 @@ export default function LandingHero({ data }: { data: LandingHeroData }) {
             ))}
         </div>
       </AnimatedDiv>
+
+      {/* Indicador de scroll: invita a seguir bajando */}
+      <a
+        href="#planes"
+        aria-label="Desplázate hacia abajo"
+        className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 text-white/60 hover:text-white transition-colors"
+      >
+        <ChevronDown className="maw-scroll-cue w-7 h-7" />
+      </a>
     </section>
   );
 }

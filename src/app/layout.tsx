@@ -5,6 +5,7 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from "@/components/ui/toaster"
 import ChatBubble from '@/components/chat-bubble';
+import SmoothScroll from '@/components/smooth-scroll';
 import { ThemeProvider } from '@/components/theme-provider';
 import { AuthProvider } from '@/lib/auth-provider';
 import Script from 'next/script';
@@ -75,7 +76,7 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="es" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <head>
         {/* Polyfill requestIdleCallback / cancelIdleCallback para Safari antiguo (iOS < 15.4) */}
         <script
@@ -209,6 +210,7 @@ export default function RootLayout({
             disableTransitionOnChange
         >
           <AuthProvider>
+            <SmoothScroll />
             {children}
             <ChatBubble />
             <Toaster />

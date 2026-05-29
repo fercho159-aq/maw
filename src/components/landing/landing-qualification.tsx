@@ -28,7 +28,7 @@ export default function LandingQualification({
         </AnimatedDiv>
 
         <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
-          <AnimatedDiv className="relative overflow-hidden rounded-3xl border border-primary/40 bg-gradient-to-b from-primary/[0.07] to-card p-8 shadow-lg shadow-primary/5">
+          <AnimatedDiv variant="left" className="relative overflow-hidden rounded-3xl border border-primary/40 bg-gradient-to-b from-primary/[0.07] to-card p-8 shadow-lg shadow-primary/5">
             <div className="pointer-events-none absolute -top-20 -right-20 h-44 w-44 rounded-full bg-primary/15 blur-3xl" />
             <h3 className="relative font-headline text-lg font-bold text-foreground mb-5">
               Esto es para ti si…
@@ -45,7 +45,7 @@ export default function LandingQualification({
             </ul>
           </AnimatedDiv>
 
-          <AnimatedDiv delay={100} className="rounded-3xl border border-border/60 bg-card p-8">
+          <AnimatedDiv variant="right" delay={100} className="rounded-3xl border border-border/60 bg-card p-8">
             <h3 className="font-headline text-lg font-bold text-foreground mb-5">
               Quizá no es para ti si…
             </h3>
