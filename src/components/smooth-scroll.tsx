@@ -13,11 +13,13 @@ export default function SmoothScroll() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const lenis = new Lenis({
-      duration: 1.1,
-      // expo.out: arranca rápido y desacelera suave.
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      // lerp bajo = la página "alcanza" el scroll de forma continua y suave,
+      // con glide largo tipo Apple (en vez de duration+easing por gesto).
+      lerp: 0.07,
       smoothWheel: true,
-      touchMultiplier: 1.6,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.4,
+      syncTouch: true,
     });
 
     let raf = 0;
@@ -37,7 +39,11 @@ export default function SmoothScroll() {
       const target = document.querySelector(hash);
       if (!target) return;
       e.preventDefault();
-      lenis.scrollTo(target as HTMLElement, { offset: -80 });
+      lenis.scrollTo(target as HTMLElement, {
+        offset: -80,
+        duration: 1.6,
+        easing: (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
+      });
     };
     document.addEventListener("click", onClick);
 
