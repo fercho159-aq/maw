@@ -34,6 +34,9 @@ const AboutSection = dynamic(() => import("@/components/sections/about"), {
 const BlogSection = dynamic(() => import("@/components/sections/blog"), {
   ssr: true,
 });
+const MediaMentions = dynamic(() => import("@/components/sections/media-mentions"), {
+  ssr: true,
+});
 const Testimonials = dynamic(() => import("@/components/sections/testimonials"), {
   ssr: true,
 });
@@ -45,6 +48,7 @@ export default function Home() {
       <main className="flex-grow">
         <Hero />
         <AboutSection />
+        <MediaMentions />
         <BlogSection />
         <Testimonials />
       </main>

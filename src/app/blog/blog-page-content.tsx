@@ -3,13 +3,76 @@
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import AnimatedDiv from '@/components/animated-div';
-import { ArrowRight, Calendar, User } from 'lucide-react';
+import { ArrowRight, Calendar, User, Play, Youtube } from 'lucide-react';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Image from 'next/image';
 import { useState } from 'react';
 import type { BlogPost } from './_actions';
+
+const youtubeInterviews = [
+  {
+    id: "UiALcGee76A",
+    title: "¿Cuáles son las mejores herramientas de Inteligencia Artificial? Aldo Trejo",
+    channel: "Café Globo",
+  },
+  {
+    id: "HkH3jPY8BLs",
+    title: "Los Dioses Responden: ¿cómo es estudiar marketing en Argentina? Con Aldo Trejo, MAW Soluciones",
+    channel: "Los Dioses Responden",
+  },
+  {
+    id: "wt_4tLvl0Nc",
+    title: "Los Dioses Responden: emprender a los 17 años. Con Aldo Trejo, de MAW Soluciones",
+    channel: "Los Dioses Responden",
+  },
+  {
+    id: "12m1NqG_3Is",
+    title: "Nizme Lleras en Marketing y negocios | Podcast | MAW Soluciones",
+    channel: "MAW Podcast",
+  },
+  {
+    id: "8E7BLrAY3JQ",
+    title: "Lucero Trejo en Marketing y negocios | Podcast | MAW Soluciones",
+    channel: "MAW Podcast",
+  },
+];
+
+const VideoCard = ({ video }: { video: typeof youtubeInterviews[0] }) => (
+  <AnimatedDiv>
+    <a
+      href={`https://www.youtube.com/watch?v=${video.id}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group block rounded-lg overflow-hidden bg-card shadow-lg hover:-translate-y-2 transition-transform duration-300 h-full"
+    >
+      <div className="relative aspect-video">
+        <Image
+          src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
+          alt={video.title}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          unoptimized
+        />
+        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+          <div className="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+            <Play className="w-6 h-6 text-white fill-white ml-0.5" />
+          </div>
+        </div>
+      </div>
+      <div className="p-5">
+        <p className="text-xs font-medium text-primary mb-2 flex items-center gap-1.5">
+          <Youtube className="w-3.5 h-3.5" />
+          {video.channel}
+        </p>
+        <h3 className="font-headline text-base font-bold line-clamp-2 group-hover:text-primary transition-colors">
+          {video.title}
+        </h3>
+      </div>
+    </a>
+  </AnimatedDiv>
+);
 
 
 const PostCard = ({ post }: { post: BlogPost }) => (
@@ -88,9 +151,20 @@ export default function BlogPageContent({ posts }: { posts: BlogPost[] }) {
                 </div>
             </TabsContent>
             <TabsContent value="interviews">
+                {interviewPosts.length > 0 && (
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+                        {interviewPosts.map((post) => (
+                            <PostCard key={post.id} post={post} />
+                        ))}
+                    </div>
+                )}
+                <AnimatedDiv className="mb-8">
+                    <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-2">Videos</p>
+                    <h3 className="font-headline text-2xl font-bold">En los Medios</h3>
+                </AnimatedDiv>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {interviewPosts.map((post) => (
-                        <PostCard key={post.id} post={post} />
+                    {youtubeInterviews.map((video) => (
+                        <VideoCard key={video.id} video={video} />
                     ))}
                 </div>
             </TabsContent>
