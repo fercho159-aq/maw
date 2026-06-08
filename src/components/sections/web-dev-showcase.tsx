@@ -96,7 +96,7 @@ export default function WebDevShowcase() {
            <p className="max-w-[700px] text-lg text-zinc-200 font-light mb-6">Desde Landing Pages optimizadas para conversión hasta plataformas E-commerce robustas, diseñadas para impulsar tu negocio.</p>
            <div className="flex flex-col sm:flex-row gap-3">
              <Button size="lg" asChild className="font-semibold px-8 py-6 rounded-full shadow-lg">
-                 <a href="https://wa.me/5538359927?text=Hola%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web%20profesional%20para%20mi%20negocio.%20Cada%20d%C3%ADa%20sin%20una%20web%20estoy%20perdiendo%20clientes%20frente%20a%20mi%20competencia.%20%C2%BFTienen%20disponibilidad%20esta%20semana%3F">
+                 <a href="https://wa.me/5633774723?text=Hola%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web%20profesional%20para%20mi%20negocio.%20Cada%20d%C3%ADa%20sin%20una%20web%20estoy%20perdiendo%20clientes%20frente%20a%20mi%20competencia.%20%C2%BFTienen%20disponibilidad%20esta%20semana%3F">
                      Cotiza tu Sitio Web <ArrowRight className="w-5 h-5 ml-2" />
                  </a>
              </Button>
@@ -216,7 +216,7 @@ export default function WebDevShowcase() {
 
               {/* CTA */}
               <Button size="lg" asChild className="w-full md:w-fit h-12 font-bold px-8 shadow-xl">
-                <a href="https://wa.me/5538359927?text=Hola%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web%20profesional%20para%20mi%20negocio.%20Cada%20d%C3%ADa%20sin%20una%20web%20estoy%20perdiendo%20clientes%20frente%20a%20mi%20competencia.%20%C2%BFTienen%20disponibilidad%20esta%20semana%3F">
+                <a href="https://wa.me/5633774723?text=Hola%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web%20profesional%20para%20mi%20negocio.%20Cada%20d%C3%ADa%20sin%20una%20web%20estoy%20perdiendo%20clientes%20frente%20a%20mi%20competencia.%20%C2%BFTienen%20disponibilidad%20esta%20semana%3F">
                   Cotizar mi Sitio Web <ArrowRight className="w-5 h-5 ml-2" />
                 </a>
               </Button>

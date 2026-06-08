@@ -98,7 +98,7 @@ export default function CustomDevShowcase() {
            <p className="max-w-[700px] text-lg text-zinc-200 font-light mb-6">Creamos desde Aplicaciones Móviles Nativas hasta CRMs complejos diseñados exclusivamente para tu flujo operativo corporativo.</p>
            <div className="flex flex-col sm:flex-row gap-3">
              <Button size="lg" asChild className="font-semibold px-8 py-6 rounded-full shadow-lg">
-                 <a href="https://wa.me/5538359927?text=Hola%2C%20tengo%20una%20idea%20de%20app%20para%20mi%20negocio%20y%20cada%20mes%20que%20pasa%20es%20dinero%20que%20estoy%20dejando%20ir.%20%C2%BFPueden%20ayudarme%3F%20%C2%BFCu%C3%A1ndo%20podemos%20hablar%3F">
+                 <a href="https://wa.me/5633774723?text=Hola%2C%20tengo%20una%20idea%20de%20app%20para%20mi%20negocio%20y%20cada%20mes%20que%20pasa%20es%20dinero%20que%20estoy%20dejando%20ir.%20%C2%BFPueden%20ayudarme%3F%20%C2%BFCu%C3%A1ndo%20podemos%20hablar%3F">
                      Cotiza tu Solución <ArrowRight className="w-5 h-5 ml-2" />
                  </a>
              </Button>
@@ -257,7 +257,7 @@ export default function CustomDevShowcase() {
 
               {/* CTA */}
               <Button size="lg" asChild className="w-full md:w-fit h-12 font-bold px-8 shadow-xl">
-                <a href="https://wa.me/5538359927?text=Hola%2C%20tengo%20una%20idea%20de%20app%20para%20mi%20negocio%20y%20cada%20mes%20que%20pasa%20es%20dinero%20que%20estoy%20dejando%20ir.%20%C2%BFPueden%20ayudarme%3F%20%C2%BFCu%C3%A1ndo%20podemos%20hablar%3F">
+                <a href="https://wa.me/5633774723?text=Hola%2C%20tengo%20una%20idea%20de%20app%20para%20mi%20negocio%20y%20cada%20mes%20que%20pasa%20es%20dinero%20que%20estoy%20dejando%20ir.%20%C2%BFPueden%20ayudarme%3F%20%C2%BFCu%C3%A1ndo%20podemos%20hablar%3F">
                   Cotizar mi Proyecto <ArrowRight className="w-5 h-5 ml-2" />
                 </a>
               </Button>

@@ -102,7 +102,7 @@ export type ServiceLanding = {
   stickyCta?: LandingStickyCta;
 };
 
-const WA = "https://wa.me/5538359927";
+const WA = "https://wa.me/5633774723";
 
 export const landings: Record<string, ServiceLanding> = {
   "desarrollo-web": {

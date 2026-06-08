@@ -81,7 +81,7 @@ const AnimatedChatInvitation = () => {
         >
           <Button
             onClick={() => {
-              window.open("https://wa.me/5538359927?text=Hola%2C%20me%20interesa%20trabajar%20con%20ustedes.%20%C2%BFPor%20d%C3%B3nde%20empezamos%3F", "_blank");
+              window.open("https://wa.me/5633774723?text=Hola%2C%20me%20interesa%20trabajar%20con%20ustedes.%20%C2%BFPor%20d%C3%B3nde%20empezamos%3F", "_blank");
             }}
             className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white"
             size="lg"
