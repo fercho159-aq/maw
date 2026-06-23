@@ -1,4 +1,4 @@
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import WhatsappIcon from "@/components/icons/whatsapp-icon";
 import AnimatedDiv from "@/components/animated-div";
@@ -62,6 +62,19 @@ export default function LandingHero({ data }: { data: LandingHeroData }) {
                 <a href={data.secondaryCta.href}>{data.secondaryCta.label}</a>
               </Button>
             ))}
+          {data.brochures?.map((b) => (
+            <Button
+              key={b.href}
+              size="lg"
+              variant="outline"
+              asChild
+              className="font-semibold rounded-full px-6 bg-transparent border-white/30 text-white hover:bg-white/10 hover:text-white"
+            >
+              <a href={b.href} target="_blank" rel="noopener noreferrer">
+                <FileText className="w-4 h-4 mr-2" /> {b.label}
+              </a>
+            </Button>
+          ))}
         </div>
       </AnimatedDiv>
 

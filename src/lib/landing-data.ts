@@ -29,6 +29,8 @@ export type LandingHero = {
   subtitle: string;
   primaryCta: Cta;
   secondaryCta?: Cta;
+  /** Brochures descargables (PDF). Se renderizan como botones "Ver Brochure". */
+  brochures?: Cta[];
   media?: { type: "video" | "image"; src: string; poster?: string };
 };
 
@@ -364,7 +366,10 @@ export const landings: Record<string, ServiceLanding> = {
       secondaryCta: {
         label: "Hablar por WhatsApp",
         href: WA
-      }
+      },
+      brochures: [
+        { label: "Ver Brochure", href: "/brochures/sitio-web.pdf" }
+      ]
     },
     trustBar: {
       items: [
@@ -610,7 +615,10 @@ export const landings: Record<string, ServiceLanding> = {
       secondaryCta: {
         label: "Hablar por WhatsApp",
         href: WA
-      }
+      },
+      brochures: [
+        { label: "Ver Brochure", href: "/brochures/contenido-y-ads.pdf" }
+      ]
     },
     trustBar: {
       items: [
@@ -856,7 +864,10 @@ export const landings: Record<string, ServiceLanding> = {
       secondaryCta: {
         label: "Hablar por WhatsApp",
         href: WA
-      }
+      },
+      brochures: [
+        { label: "Ver Brochure", href: "/brochures/contenido-y-ads.pdf" }
+      ]
     },
     trustBar: {
       items: [
@@ -1841,7 +1852,10 @@ export const landings: Record<string, ServiceLanding> = {
       secondaryCta: {
         label: "Hablar por WhatsApp",
         href: WA
-      }
+      },
+      brochures: [
+        { label: "Ver Brochure", href: "/brochures/apps-y-desarrollo.pdf" }
+      ]
     },
     trustBar: {
       items: [
@@ -2333,7 +2347,11 @@ export const landings: Record<string, ServiceLanding> = {
       secondaryCta: {
         label: "Hablar por WhatsApp",
         href: WA
-      }
+      },
+      brochures: [
+        { label: "Brochure Podcast", href: "/brochures/podcast.pdf" },
+        { label: "Brochure Producción", href: "/brochures/podcast-produccion.pdf" }
+      ]
     },
     trustBar: {
       items: [
