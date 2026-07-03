@@ -20,7 +20,7 @@ export default function LandingHero({ data }: { data: LandingHeroData }) {
           className="maw-kenburns absolute inset-0 w-full h-full object-cover opacity-50"
         />
       )}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-zinc-950" />
       {/* Resplandor de marca para dar atmósfera */}
       <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-[420px] w-[680px] rounded-full bg-primary/20 blur-[120px] opacity-60" />
 
@@ -32,14 +32,14 @@ export default function LandingHero({ data }: { data: LandingHeroData }) {
           </span>
           {data.eyebrow}
         </div>
-        <h1 className="font-headline text-[2.6rem] leading-[1.05] md:text-7xl font-extrabold tracking-tighter mb-6 bg-gradient-to-br from-white via-zinc-100 to-zinc-400 bg-clip-text text-transparent">
+        <h1 className="font-headline text-[2.6rem] leading-[1.05] md:text-7xl font-extrabold tracking-tighter mb-6 bg-gradient-to-br from-white via-zinc-50 to-zinc-300 bg-clip-text text-transparent">
           {data.title}
         </h1>
         <p className="max-w-2xl text-base md:text-xl text-zinc-300/90 mb-10 font-light leading-relaxed">
           {data.subtitle}
         </p>
         <div className="flex flex-col sm:flex-row gap-3 w-full justify-center">
-          <Button size="lg" asChild className="group font-semibold rounded-full px-8 shadow-lg shadow-primary/25 transition-shadow hover:shadow-xl hover:shadow-primary/40">
+          <Button size="lg" asChild className="group font-semibold rounded-full h-14 px-10 text-base shadow-lg shadow-primary/25 transition-shadow hover:shadow-xl hover:shadow-primary/40">
             <a href={data.primaryCta.href}>
               {data.primaryCta.label}
               <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
@@ -47,7 +47,7 @@ export default function LandingHero({ data }: { data: LandingHeroData }) {
           </Button>
           {data.secondaryCta &&
             (isWhatsapp ? (
-              <Button size="lg" variant="whatsapp" asChild className="font-semibold rounded-full px-6">
+              <Button size="lg" variant="whatsapp" asChild className="font-semibold rounded-full h-14 px-8 text-base">
                 <a href={data.secondaryCta.href} target="_blank" rel="noopener noreferrer">
                   <WhatsappIcon className="w-5 h-5 mr-2" /> {data.secondaryCta.label}
                 </a>
@@ -76,6 +76,9 @@ export default function LandingHero({ data }: { data: LandingHeroData }) {
             </Button>
           ))}
         </div>
+        {data.ctaNote && (
+          <p className="mt-5 text-xs md:text-sm text-white/50 tracking-wide">{data.ctaNote}</p>
+        )}
       </AnimatedDiv>
 
       {/* Indicador de scroll: invita a seguir bajando */}

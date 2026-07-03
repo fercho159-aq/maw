@@ -31,6 +31,8 @@ export type LandingHero = {
   secondaryCta?: Cta;
   /** Brochures descargables (PDF). Se renderizan como botones "Ver Brochure". */
   brochures?: Cta[];
+  /** Línea corta de confianza bajo los CTAs, p. ej. "Diagnóstico gratuito · Sin compromiso". */
+  ctaNote?: string;
   media?: { type: "video" | "image"; src: string; poster?: string };
 };
 
@@ -2339,7 +2341,7 @@ export const landings: Record<string, ServiceLanding> = {
     hero: {
       eyebrow: "Sistemas ERP y de operación a la medida",
       title: "Tu operación vive en Excel y nada cuadra. Un sistema la ordena — o la opera solo.",
-      subtitle: "Implementamos sistemas a la medida de tu negocio: ventas, inventario, compras, facturación y finanzas en un solo lugar. Y si tu modelo lo pide, vamos más lejos: reservas, pagos en línea y control de accesos y máquinas por QR para que tu negocio opere sin personal fijo.",
+      subtitle: "Ventas, inventario, facturación y finanzas en un solo sistema. Y si tu negocio lo pide: reservas, pagos y control por QR para operar sin personal fijo.",
       primaryCta: {
         label: "Cotizar mi ERP",
         href: "#cotizar"
@@ -2347,7 +2349,8 @@ export const landings: Record<string, ServiceLanding> = {
       secondaryCta: {
         label: "Hablar por WhatsApp",
         href: WA
-      }
+      },
+      ctaNote: "Diagnóstico gratuito · Respuesta el mismo día"
     },
     trustBar: {
       items: [
@@ -2375,37 +2378,37 @@ export const landings: Record<string, ServiceLanding> = {
     },
     features: {
       heading: "Toda tu operación en un solo sistema",
-      subheading: "No solo instalamos software: configuramos el sistema a tus procesos reales, migramos tus datos, capacitamos a tu equipo y, si aplica, lo conectamos con tu operación física.",
+      subheading: "Configurado a tus procesos, con tus datos migrados y tu equipo capacitado.",
       cards: [
         {
           icon: "Boxes",
           title: "Inventario y almacén",
-          description: "Existencias en tiempo real, entradas, salidas y alertas de stock mínimo. Sabes qué tienes sin ir a contar."
+          description: "Existencias en tiempo real y alertas de stock mínimo."
         },
         {
           icon: "FileText",
           title: "Ventas y facturación",
-          description: "Cotizaciones, pedidos y facturación CFDI conectados. De la venta a la factura sin volver a capturar."
+          description: "De la cotización a la factura CFDI sin recapturar."
         },
         {
           icon: "Truck",
           title: "Compras y proveedores",
-          description: "Órdenes de compra, recepción de mercancía y cuentas por pagar bajo control. Compra lo que necesitas, cuando lo necesitas."
+          description: "Órdenes de compra y cuentas por pagar bajo control."
         },
         {
           icon: "Calculator",
-          title: "Finanzas y reportes claros",
-          description: "Cuentas por cobrar y pagar, flujo de efectivo, márgenes y rotación de inventario de un vistazo. Decisiones con datos, no con corazonadas."
+          title: "Finanzas y reportes",
+          description: "Flujo, márgenes y cobranza de un vistazo."
         },
         {
           icon: "Smartphone",
           title: "Tu negocio opera solo",
-          description: "Reservas en línea, pagos digitales y accesos con QR conectados a puertas, máquinas y dispensadores (IoT). Negocios de autoservicio que funcionan sin personal fijo."
+          description: "Reservas, pagos y accesos QR conectados a tus equipos (IoT)."
         },
         {
           icon: "Headphones",
           title: "Capacitación incluida",
-          description: "Entrenamos a tu equipo con tu operación real para que adopte el sistema. Un ERP sin uso no sirve."
+          description: "Entrenamos a tu equipo hasta que el sistema se use."
         }
       ]
     },
@@ -2413,18 +2416,16 @@ export const landings: Record<string, ServiceLanding> = {
       heading: "¿Necesitas un ERP?",
       subheading: "Un ERP rinde cuando tu operación ya rebasó al Excel. Revisa.",
       forYou: [
-        "Controlas inventario, ventas o finanzas en hojas de Excel y ya no cuadran.",
-        "Tu equipo captura la misma información en varios lugares.",
-        "No sabes cuánto inventario tienes ni cuánto ganas realmente por producto.",
-        "Facturas a mano o con sistemas desconectados de tu operación.",
-        "Tu empresa creció y los procesos se volvieron un cuello de botella.",
-        "Quieres montar un negocio de autoservicio que opere solo: reservas, pagos y accesos automáticos."
+        "Controlas la operación en Excel y ya no cuadra.",
+        "Capturas lo mismo en varios lugares.",
+        "No sabes cuánto ganas por producto.",
+        "Facturas fuera de tu sistema.",
+        "Quieres un autoservicio que opere solo."
       ],
       notForYou: [
-        "Tu operación es tan pequeña que una libreta te alcanza (por ahora).",
-        "Solo necesitas gestionar clientes y ventas: ahí te conviene un CRM.",
-        "No estás dispuesto a ordenar tus procesos ni a que tu equipo cambie de hábitos.",
-        "Buscas que el sistema arregle solo una operación sin nadie que la dirija."
+        "Una libreta aún te alcanza (por ahora).",
+        "Solo necesitas gestionar clientes: eso es un CRM.",
+        "No quieres cambiar hábitos ni procesos."
       ]
     },
     stats: {
@@ -2450,9 +2451,9 @@ export const landings: Record<string, ServiceLanding> = {
     },
     packages: {
       heading: "Soluciones de implementación de ERP",
-      subheading: "Cada negocio opera distinto, por eso cada solución se cotiza a la medida tras un diagnóstico gratuito de tu operación.",
+      subheading: "Cada operación es distinta: cotizamos a la medida tras un diagnóstico gratuito.",
       pricesArePlaceholder: false,
-      note: "La licencia del ERP (si aplica) corre por tu cuenta; te recomendamos la mejor opción, incluidas alternativas open source sin costo de licencia. Los sistemas a la medida incluyen mensualidad de hosting, soporte y actualizaciones; el hardware lo adquiere el cliente.",
+      note: "La licencia del ERP (si aplica) corre por tu cuenta; hay alternativas open source sin costo de licencia. Los sistemas a la medida incluyen mensualidad de hosting y soporte; el hardware lo adquiere el cliente.",
       tiers: [
         {
           id: "esencial",
@@ -2462,10 +2463,9 @@ export const landings: Record<string, ServiceLanding> = {
           priceNote: "según alcance",
           features: [
             "Diagnóstico de tu operación",
-            "Configuración de módulos base (ventas, inventario, compras)",
-            "Migración de tus datos actuales",
-            "Capacitación básica al equipo",
-            "Soporte 30 días"
+            "Módulos base: ventas, inventario, compras",
+            "Migración de tus datos",
+            "Capacitación + soporte 30 días"
           ],
           ctaLabel: "Quiero la puesta en marcha"
         },
@@ -2477,12 +2477,11 @@ export const landings: Record<string, ServiceLanding> = {
           priceNote: "según alcance",
           highlight: true,
           features: [
-            "Todos los módulos que tu operación necesite",
+            "Todos los módulos que necesites",
             "Facturación CFDI integrada",
-            "Integración con ecommerce, CRM y tus herramientas",
-            "Automatización de procesos clave",
-            "Tableros y reportes a la medida",
-            "Capacitación completa + soporte 90 días"
+            "Conexión con ecommerce, CRM y tus herramientas",
+            "Automatizaciones y reportes a la medida",
+            "Capacitación + soporte 90 días"
           ],
           ctaLabel: "Quiero el ERP integrado"
         },
@@ -2493,12 +2492,11 @@ export const landings: Record<string, ServiceLanding> = {
           price: "Cotización a medida",
           priceNote: "según alcance",
           features: [
-            "Sistema desarrollado desde cero para tu modelo de negocio",
-            "Reservas y pagos en línea (tarjeta, OXXO, transferencia)",
-            "Control de accesos y equipos por QR (puertas, máquinas, lockers)",
-            "Integración IoT con tu hardware",
-            "Panel de administración multi-sucursal",
-            "Propiedad total del código, sin licencias por usuario"
+            "Desarrollado desde cero para tu modelo",
+            "Reservas y pagos en línea",
+            "Accesos y equipos por QR (IoT)",
+            "Panel multi-sucursal",
+            "Código 100% tuyo, sin licencias por usuario"
           ],
           ctaLabel: "Solicitar cotización"
         }
@@ -2510,22 +2508,22 @@ export const landings: Record<string, ServiceLanding> = {
         {
           step: 1,
           title: "Diagnóstico",
-          description: "Mapeamos tu operación: cómo vendes, compras, facturas y controlas inventario hoy."
+          description: "Mapeamos cómo vendes, compras y facturas hoy."
         },
         {
           step: 2,
           title: "Configuración y migración",
-          description: "Configuramos los módulos a tu proceso y migramos tus datos de Excel o del sistema anterior."
+          description: "Módulos a tu proceso, con tus datos migrados."
         },
         {
           step: 3,
           title: "Capacitación",
-          description: "Entrenamos a tu equipo por área con casos reales de tu operación, no con manuales genéricos."
+          description: "Entrenamos a tu equipo con casos reales, por área."
         },
         {
           step: 4,
           title: "Acompañamiento",
-          description: "Damos soporte en las primeras semanas de uso y ajustamos lo que haga falta para que el sistema se adopte."
+          description: "Soporte las primeras semanas hasta que se adopte."
         }
       ]
     },
