@@ -2334,6 +2334,268 @@ export const landings: Record<string, ServiceLanding> = {
       ogDescription: "Centraliza tus clientes, ordena tu seguimiento y cierra más ventas. CRM implementado, integrado a WhatsApp y con capacitación."
     }
   },
+  "erp": {
+    slug: "erp",
+    hero: {
+      eyebrow: "Sistemas ERP y de operación a la medida",
+      title: "Tu operación vive en Excel y nada cuadra. Un sistema la ordena — o la opera solo.",
+      subtitle: "Implementamos sistemas a la medida de tu negocio: ventas, inventario, compras, facturación y finanzas en un solo lugar. Y si tu modelo lo pide, vamos más lejos: reservas, pagos en línea y control de accesos y máquinas por QR para que tu negocio opere sin personal fijo.",
+      primaryCta: {
+        label: "Cotizar mi ERP",
+        href: "#cotizar"
+      },
+      secondaryCta: {
+        label: "Hablar por WhatsApp",
+        href: WA
+      }
+    },
+    trustBar: {
+      items: [
+        {
+          icon: "Boxes",
+          label: "Inventario en tiempo real"
+        },
+        {
+          icon: "Calculator",
+          label: "Facturación y finanzas integradas"
+        },
+        {
+          icon: "Workflow",
+          label: "Procesos conectados, no islas"
+        },
+        {
+          icon: "Smartphone",
+          label: "Autoservicio: pagos, QR e IoT"
+        },
+        {
+          icon: "ShieldCheck",
+          label: "Implementación y capacitación"
+        }
+      ]
+    },
+    features: {
+      heading: "Toda tu operación en un solo sistema",
+      subheading: "No solo instalamos software: configuramos el sistema a tus procesos reales, migramos tus datos, capacitamos a tu equipo y, si aplica, lo conectamos con tu operación física.",
+      cards: [
+        {
+          icon: "Boxes",
+          title: "Inventario y almacén",
+          description: "Existencias en tiempo real, entradas, salidas y alertas de stock mínimo. Sabes qué tienes sin ir a contar."
+        },
+        {
+          icon: "FileText",
+          title: "Ventas y facturación",
+          description: "Cotizaciones, pedidos y facturación CFDI conectados. De la venta a la factura sin volver a capturar."
+        },
+        {
+          icon: "Truck",
+          title: "Compras y proveedores",
+          description: "Órdenes de compra, recepción de mercancía y cuentas por pagar bajo control. Compra lo que necesitas, cuando lo necesitas."
+        },
+        {
+          icon: "Calculator",
+          title: "Finanzas y reportes claros",
+          description: "Cuentas por cobrar y pagar, flujo de efectivo, márgenes y rotación de inventario de un vistazo. Decisiones con datos, no con corazonadas."
+        },
+        {
+          icon: "Smartphone",
+          title: "Tu negocio opera solo",
+          description: "Reservas en línea, pagos digitales y accesos con QR conectados a puertas, máquinas y dispensadores (IoT). Negocios de autoservicio que funcionan sin personal fijo."
+        },
+        {
+          icon: "Headphones",
+          title: "Capacitación incluida",
+          description: "Entrenamos a tu equipo con tu operación real para que adopte el sistema. Un ERP sin uso no sirve."
+        }
+      ]
+    },
+    qualification: {
+      heading: "¿Necesitas un ERP?",
+      subheading: "Un ERP rinde cuando tu operación ya rebasó al Excel. Revisa.",
+      forYou: [
+        "Controlas inventario, ventas o finanzas en hojas de Excel y ya no cuadran.",
+        "Tu equipo captura la misma información en varios lugares.",
+        "No sabes cuánto inventario tienes ni cuánto ganas realmente por producto.",
+        "Facturas a mano o con sistemas desconectados de tu operación.",
+        "Tu empresa creció y los procesos se volvieron un cuello de botella.",
+        "Quieres montar un negocio de autoservicio que opere solo: reservas, pagos y accesos automáticos."
+      ],
+      notForYou: [
+        "Tu operación es tan pequeña que una libreta te alcanza (por ahora).",
+        "Solo necesitas gestionar clientes y ventas: ahí te conviene un CRM.",
+        "No estás dispuesto a ordenar tus procesos ni a que tu equipo cambie de hábitos.",
+        "Buscas que el sistema arregle solo una operación sin nadie que la dirija."
+      ]
+    },
+    stats: {
+      heading: "Lo que mejora con un ERP bien implementado",
+      items: [
+        {
+          value: "1 sistema",
+          label: "Toda tu operación conectada"
+        },
+        {
+          value: "-70%",
+          label: "Menos captura duplicada"
+        },
+        {
+          value: "Tiempo real",
+          label: "Inventario y finanzas al día"
+        },
+        {
+          value: "24/7",
+          label: "Autoservicio que opera sin personal"
+        }
+      ]
+    },
+    packages: {
+      heading: "Soluciones de implementación de ERP",
+      subheading: "Cada negocio opera distinto, por eso cada solución se cotiza a la medida tras un diagnóstico gratuito de tu operación.",
+      pricesArePlaceholder: false,
+      note: "La licencia del ERP (si aplica) corre por tu cuenta; te recomendamos la mejor opción, incluidas alternativas open source sin costo de licencia. Los sistemas a la medida incluyen mensualidad de hosting, soporte y actualizaciones; el hardware lo adquiere el cliente.",
+      tiers: [
+        {
+          id: "esencial",
+          name: "Puesta en marcha",
+          tagline: "Tus módulos esenciales funcionando",
+          price: "Cotización a medida",
+          priceNote: "según alcance",
+          features: [
+            "Diagnóstico de tu operación",
+            "Configuración de módulos base (ventas, inventario, compras)",
+            "Migración de tus datos actuales",
+            "Capacitación básica al equipo",
+            "Soporte 30 días"
+          ],
+          ctaLabel: "Quiero la puesta en marcha"
+        },
+        {
+          id: "integrado",
+          name: "ERP integrado",
+          tagline: "Conectado a toda tu operación",
+          price: "Cotización a medida",
+          priceNote: "según alcance",
+          highlight: true,
+          features: [
+            "Todos los módulos que tu operación necesite",
+            "Facturación CFDI integrada",
+            "Integración con ecommerce, CRM y tus herramientas",
+            "Automatización de procesos clave",
+            "Tableros y reportes a la medida",
+            "Capacitación completa + soporte 90 días"
+          ],
+          ctaLabel: "Quiero el ERP integrado"
+        },
+        {
+          id: "medida",
+          name: "Sistema de operación a la medida",
+          tagline: "Tu negocio operando solo",
+          price: "Cotización a medida",
+          priceNote: "según alcance",
+          features: [
+            "Sistema desarrollado desde cero para tu modelo de negocio",
+            "Reservas y pagos en línea (tarjeta, OXXO, transferencia)",
+            "Control de accesos y equipos por QR (puertas, máquinas, lockers)",
+            "Integración IoT con tu hardware",
+            "Panel de administración multi-sucursal",
+            "Propiedad total del código, sin licencias por usuario"
+          ],
+          ctaLabel: "Solicitar cotización"
+        }
+      ]
+    },
+    process: {
+      heading: "Cómo implementamos tu ERP",
+      steps: [
+        {
+          step: 1,
+          title: "Diagnóstico",
+          description: "Mapeamos tu operación: cómo vendes, compras, facturas y controlas inventario hoy."
+        },
+        {
+          step: 2,
+          title: "Configuración y migración",
+          description: "Configuramos los módulos a tu proceso y migramos tus datos de Excel o del sistema anterior."
+        },
+        {
+          step: 3,
+          title: "Capacitación",
+          description: "Entrenamos a tu equipo por área con casos reales de tu operación, no con manuales genéricos."
+        },
+        {
+          step: 4,
+          title: "Acompañamiento",
+          description: "Damos soporte en las primeras semanas de uso y ajustamos lo que haga falta para que el sistema se adopte."
+        }
+      ]
+    },
+    faq: {
+      heading: "Preguntas frecuentes",
+      items: [
+        {
+          question: "¿Qué ERP usan?",
+          answer: "Trabajamos con ERPs líderes y open source (como Odoo y ERPNext) y también desarrollamos sistemas a la medida. Recomendamos la mejor opción según tu operación y presupuesto; muchas veces la alternativa open source elimina el costo de licencias."
+        },
+        {
+          question: "¿Puedo facturar (CFDI) desde el ERP?",
+          answer: "Sí. Integramos facturación electrónica CFDI 4.0 para que factures directo desde el sistema, ligado a tus ventas e inventario."
+        },
+        {
+          question: "¿Migran mis datos de Excel o de mi sistema actual?",
+          answer: "Sí. La migración de productos, clientes, proveedores e inventario inicial está incluida en la implementación. No empiezas de cero."
+        },
+        {
+          question: "¿Cuánto tarda la implementación?",
+          answer: "Una puesta en marcha de módulos esenciales toma de 4 a 8 semanas. Un ERP integrado o a la medida depende del alcance; te damos un plan de entregas con fechas claras desde el diagnóstico."
+        },
+        {
+          question: "¿El precio incluye las licencias del ERP?",
+          answer: "El plan cubre implementación, configuración, migración y capacitación. La licencia del ERP (si la herramienta la cobra) es aparte; con opciones open source ese costo puede ser cero."
+        },
+        {
+          question: "¿Se integra con mi tienda en línea o mi CRM?",
+          answer: "Sí. En el plan integrado conectamos tu ERP con ecommerce, CRM, pasarelas de pago y las herramientas que ya usas, para que la información fluya sin capturas dobles."
+        },
+        {
+          question: "¿Pueden controlar puertas, máquinas o dispositivos físicos?",
+          answer: "Sí. Desarrollamos sistemas con integración IoT: accesos con QR de un solo uso, chapas eléctricas, electroválvulas, dispensadores y sensores conectados al sistema. Así funcionan los negocios de autoservicio que operan sin personal fijo, con reservas y pagos en línea."
+        },
+        {
+          question: "¿Sirve para varias sucursales?",
+          answer: "Sí. El panel de administración soporta múltiples sucursales desde una sola cuenta: reportes consolidados, configuración por sucursal y permisos por perfil (usuario, administrador, dueño)."
+        }
+      ]
+    },
+    leadForm: {
+      heading: "Cotiza tu ERP",
+      subheading: "Cuéntanos cómo controlas hoy tu operación y te proponemos el ERP ideal para tu empresa.",
+      source: "landing-erp",
+      defaultInterest: "Sistema ERP"
+    },
+    stickyCta: {
+      label: "Cotizar mi ERP",
+      href: "#cotizar",
+      whatsappHref: WA
+    },
+    metadata: {
+      title: "Sistemas ERP y de Operación a la Medida | México",
+      description: "Implementamos tu ERP a la medida: inventario, ventas, facturación CFDI y finanzas en un solo sistema. También sistemas de autoservicio con reservas, pagos, QR e IoT. Cotiza hoy.",
+      keywords: [
+        "implementación de ERP México",
+        "ERP para pymes",
+        "sistema ERP a la medida",
+        "Odoo México",
+        "ERP con facturación CFDI",
+        "software de gestión empresarial",
+        "sistema de autoservicio con QR",
+        "software IoT para negocios",
+        "sistema de reservas y pagos en línea"
+      ],
+      canonicalPath: "/servicios/erp",
+      ogTitle: "Sistemas que Ordenan y Operan tu Negocio | MAW Soluciones",
+      ogDescription: "ERP con inventario, ventas y facturación en un solo sistema — o un negocio de autoservicio que opera solo con reservas, pagos, QR e IoT."
+    }
+  },
   "podcast": {
     slug: "podcast",
     hero: {

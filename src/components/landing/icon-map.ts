@@ -24,6 +24,10 @@ import {
   Headphones,
   Palette,
   Sparkles,
+  Boxes,
+  Calculator,
+  FileText,
+  Truck,
   type LucideIcon,
 } from "lucide-react";
 
@@ -54,6 +58,10 @@ export const iconMap: Record<string, LucideIcon> = {
   Headphones,
   Palette,
   Sparkles,
+  Boxes,
+  Calculator,
+  FileText,
+  Truck,
 };
 
 export function getIcon(name: string): LucideIcon {

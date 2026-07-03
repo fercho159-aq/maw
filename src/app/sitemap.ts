@@ -42,6 +42,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/servicios/podcast',
     '/servicios/sitio-web',
     '/servicios/crm',
+    '/servicios/erp',
     '/servicios/automatizacion/chatbot',
     '/servicios/automatizacion/cobranza-recurrente',
     '/servicios/automatizacion/analisis-tendencias',
