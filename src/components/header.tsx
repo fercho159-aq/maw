@@ -52,6 +52,12 @@ const servicesLinks = [
     description: "Desarrollo de aplicaciones móviles personalizadas.",
     icon: <Bot className="w-5 h-5" />
   },
+  {
+    href: "/servicios/erp",
+    label: "ERP y Sistemas de Operación",
+    description: "Inventario, facturación, IoT y hardware en un solo sistema.",
+    icon: <Database className="w-5 h-5" />
+  },
 ];
 
 const blogLinks = [
