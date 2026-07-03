@@ -6,13 +6,14 @@ import type { LandingHero as LandingHeroData } from "@/lib/landing-data";
 
 export default function LandingHero({ data }: { data: LandingHeroData }) {
   const isWhatsapp = data.secondaryCta?.href.includes("wa.me");
+  const hasVideo = data.media?.type === "video";
 
   return (
-    <section className="relative w-full min-h-[68vh] flex items-center justify-center overflow-hidden bg-zinc-950 text-white border-b border-border/50">
-      {data.media?.type === "video" && (
+    <section className="relative w-full min-h-[68vh] flex items-center justify-center overflow-hidden bg-background text-foreground border-b border-border/50">
+      {hasVideo && (
         <video
-          src={data.media.src}
-          poster={data.media.poster}
+          src={data.media!.src}
+          poster={data.media!.poster}
           autoPlay
           loop
           muted
@@ -20,26 +21,27 @@ export default function LandingHero({ data }: { data: LandingHeroData }) {
           className="maw-kenburns absolute inset-0 w-full h-full object-cover opacity-50"
         />
       )}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-zinc-950" />
+      {/* Con video, oscurecemos para legibilidad; sin video el hero toma el tema. */}
+      {hasVideo && <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-background" />}
       {/* Resplandor de marca para dar atmósfera */}
-      <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-[420px] w-[680px] rounded-full bg-primary/20 blur-[120px] opacity-60" />
+      <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-[420px] w-[680px] rounded-full bg-primary/15 blur-[120px] opacity-70" />
 
-      <AnimatedDiv className="z-10 container mx-auto px-4 md:px-6 py-28 flex flex-col items-center text-center max-w-4xl">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs md:text-sm font-medium text-white/80 mb-7 backdrop-blur-md">
+      <AnimatedDiv className="z-10 container mx-auto px-4 md:px-6 py-24 flex flex-col items-center text-center max-w-4xl">
+        <div className="inline-flex items-center gap-2 rounded-full border border-border bg-foreground/5 px-4 py-1.5 text-xs md:text-sm font-medium text-foreground/70 mb-7 backdrop-blur-md">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
           </span>
           {data.eyebrow}
         </div>
-        <h1 className="font-headline text-[2.6rem] leading-[1.05] md:text-7xl font-extrabold tracking-tighter mb-6 bg-gradient-to-br from-white via-zinc-50 to-zinc-300 bg-clip-text text-transparent">
+        <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.1] font-extrabold tracking-tighter mb-6 bg-gradient-to-br from-foreground via-foreground to-foreground/60 bg-clip-text text-transparent">
           {data.title}
         </h1>
-        <p className="max-w-2xl text-base md:text-xl text-zinc-300/90 mb-10 font-light leading-relaxed">
+        <p className="max-w-2xl text-base md:text-lg text-foreground/70 mb-9 font-light leading-relaxed">
           {data.subtitle}
         </p>
         <div className="flex flex-col sm:flex-row gap-3 w-full justify-center">
-          <Button size="lg" asChild className="group font-semibold rounded-full h-14 px-10 text-base shadow-lg shadow-primary/25 transition-shadow hover:shadow-xl hover:shadow-primary/40">
+          <Button size="lg" asChild className="group font-semibold rounded-full h-12 px-9 text-base shadow-lg shadow-primary/25 transition-shadow hover:shadow-xl hover:shadow-primary/40">
             <a href={data.primaryCta.href}>
               {data.primaryCta.label}
               <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
@@ -47,7 +49,7 @@ export default function LandingHero({ data }: { data: LandingHeroData }) {
           </Button>
           {data.secondaryCta &&
             (isWhatsapp ? (
-              <Button size="lg" variant="whatsapp" asChild className="font-semibold rounded-full h-14 px-8 text-base">
+              <Button size="lg" variant="whatsapp" asChild className="font-semibold rounded-full h-12 px-7 text-base">
                 <a href={data.secondaryCta.href} target="_blank" rel="noopener noreferrer">
                   <WhatsappIcon className="w-5 h-5 mr-2" /> {data.secondaryCta.label}
                 </a>
@@ -57,7 +59,7 @@ export default function LandingHero({ data }: { data: LandingHeroData }) {
                 size="lg"
                 variant="outline"
                 asChild
-                className="font-semibold rounded-full px-6 bg-transparent border-white/30 text-white hover:bg-white/10 hover:text-white"
+                className="font-semibold rounded-full px-6 bg-transparent border-foreground/25 text-foreground hover:bg-foreground/10 hover:text-foreground"
               >
                 <a href={data.secondaryCta.href}>{data.secondaryCta.label}</a>
               </Button>
@@ -68,7 +70,7 @@ export default function LandingHero({ data }: { data: LandingHeroData }) {
               size="lg"
               variant="outline"
               asChild
-              className="font-semibold rounded-full px-6 bg-transparent border-white/30 text-white hover:bg-white/10 hover:text-white"
+              className="font-semibold rounded-full px-6 bg-transparent border-foreground/25 text-foreground hover:bg-foreground/10 hover:text-foreground"
             >
               <a href={b.href} target="_blank" rel="noopener noreferrer">
                 <FileText className="w-4 h-4 mr-2" /> {b.label}
@@ -77,7 +79,7 @@ export default function LandingHero({ data }: { data: LandingHeroData }) {
           ))}
         </div>
         {data.ctaNote && (
-          <p className="mt-5 text-xs md:text-sm text-white/50 tracking-wide">{data.ctaNote}</p>
+          <p className="mt-5 text-xs md:text-sm text-foreground/50 tracking-wide">{data.ctaNote}</p>
         )}
       </AnimatedDiv>
 
@@ -85,7 +87,7 @@ export default function LandingHero({ data }: { data: LandingHeroData }) {
       <a
         href="#planes"
         aria-label="Desplázate hacia abajo"
-        className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 text-white/60 hover:text-white transition-colors"
+        className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 text-foreground/50 hover:text-foreground transition-colors"
       >
         <ChevronDown className="maw-scroll-cue w-7 h-7" />
       </a>

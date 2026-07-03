@@ -2480,6 +2480,7 @@ export const landings: Record<string, ServiceLanding> = {
             "Todos los módulos que necesites",
             "Facturación CFDI integrada",
             "Conexión con ecommerce, CRM y tus herramientas",
+            "Integración con hardware: lectores, básculas, impresoras",
             "Automatizaciones y reportes a la medida",
             "Capacitación + soporte 90 días"
           ],
@@ -2494,7 +2495,7 @@ export const landings: Record<string, ServiceLanding> = {
           features: [
             "Desarrollado desde cero para tu modelo",
             "Reservas y pagos en línea",
-            "Accesos y equipos por QR (IoT)",
+            "Control de hardware por QR: chapas, sensores, dispensadores (IoT)",
             "Panel multi-sucursal",
             "Código 100% tuyo, sin licencias por usuario"
           ],
@@ -2557,6 +2558,10 @@ export const landings: Record<string, ServiceLanding> = {
         {
           question: "¿Pueden controlar puertas, máquinas o dispositivos físicos?",
           answer: "Sí. Desarrollamos sistemas con integración IoT: accesos con QR de un solo uso, chapas eléctricas, electroválvulas, dispensadores y sensores conectados al sistema. Así funcionan los negocios de autoservicio que operan sin personal fijo, con reservas y pagos en línea."
+        },
+        {
+          question: "¿Integran básculas, lectores y equipo industrial?",
+          answer: "Sí. Conectamos terminales de pesaje, básculas, lectores de código de barras e impresoras de etiquetas al sistema: pesaje guiado por receta, trazabilidad por lote e inventario en tiempo real, apto para industrias reguladas."
         },
         {
           question: "¿Sirve para varias sucursales?",
