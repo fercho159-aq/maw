@@ -2340,7 +2340,7 @@ export const landings: Record<string, ServiceLanding> = {
     slug: "erp",
     hero: {
       eyebrow: "Sistemas ERP y de operación a la medida",
-      title: "Tu operación vive en Excel y nada cuadra. Un sistema la ordena — o la opera solo.",
+      title: "Tu operación vive en Excel y nada cuadra.\nUn sistema la ordena — o la opera solo.",
       subtitle: "Ventas, inventario, facturación y finanzas en un solo sistema. Y si tu negocio lo pide: reservas, pagos y control por QR para operar sin personal fijo.",
       primaryCta: {
         label: "Cotizar mi ERP",

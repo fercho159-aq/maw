@@ -35,7 +35,14 @@ export default function LandingHero({ data }: { data: LandingHeroData }) {
           {data.eyebrow}
         </div>
         <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.1] font-extrabold tracking-tighter mb-6 bg-gradient-to-br from-foreground via-foreground to-foreground/60 bg-clip-text text-transparent">
-          {data.title}
+          {/* "\n" en el título fuerza salto de línea (solo en pantallas anchas). */}
+          {data.title.split("\n").map((line, i) => (
+            <span key={i}>
+              {i > 0 && <br className="hidden md:block" />}
+              {i > 0 && " "}
+              {line}
+            </span>
+          ))}
         </h1>
         <p className="max-w-2xl text-base md:text-lg text-foreground/70 mb-9 font-light leading-relaxed">
           {data.subtitle}
