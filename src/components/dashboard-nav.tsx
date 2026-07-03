@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
-import { Users, BookOpen, ListTodo, KeyRound, DollarSign, Calendar, LineChart, Handshake, Settings, FileArchive, LayoutDashboard, History, Monitor, Wrench, MessageSquareText } from "lucide-react";
+import { Users, BookOpen, ListTodo, KeyRound, DollarSign, Calendar, LineChart, Handshake, Settings, FileArchive, LayoutDashboard, History, Monitor, Wrench, MessageSquareText, FileText } from "lucide-react";
 import { useAuth } from "@/lib/auth-provider";
 
 const baseNavItems = [
@@ -24,6 +24,7 @@ const baseNavItems = [
     { href: "/equipo/dashboard/mi-progreso", label: "Mi Progreso", icon: <LineChart className="w-4 h-4" />, section: 'miProgreso' },
     { href: "/equipo/dashboard/documentacion", label: "Documentación", icon: <FileArchive className="w-4 h-4" />, section: 'documentacion' },
     { href: "/equipo/dashboard/herramientas", label: "Herramientas", icon: <Wrench className="w-4 h-4" />, section: 'herramientas' },
+    { href: "/equipo/dashboard/reportes", label: "Reportes", icon: <FileText className="w-4 h-4" />, section: 'reportes' },
     { href: "/equipo/dashboard/feedback", label: "Feedback", icon: <MessageSquareText className="w-4 h-4" />, section: 'feedback' },
 ];
 
@@ -47,7 +48,7 @@ export default function DashboardNav() {
         }
 
         // "Nosotros", "Introduccion", and "Configuracion" are always visible for everyone.
-        if (['nosotros', 'introduccion', 'configuracion', 'herramientas'].includes(section)) {
+        if (['nosotros', 'introduccion', 'configuracion', 'herramientas', 'reportes'].includes(section)) {
             return true;
         }
 
