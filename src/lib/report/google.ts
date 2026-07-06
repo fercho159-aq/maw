@@ -46,8 +46,8 @@ function detectKind(text: string): Kind {
     if (header.includes('nivel de optimización')) return 'optimization';
     if (header.includes('cpc prom') && header.includes('nombre de la campaña')) return 'campaigns';
     if (header.startsWith('fecha,')) return 'series';
-    if (header.includes('género') && header.includes('edad')) return 'genderAge';
-    if (header.includes('género')) return 'gender';
+    if ((header.includes('género') || header.includes('sexo')) && header.includes('edad')) return 'genderAge';
+    if (header.includes('género') || header.startsWith('sexo,')) return 'gender';
     if (header.includes('edad')) return 'age';
     if (header.startsWith('dispositivo')) return 'devices';
     if (header.includes('día') && header.includes('hora')) return 'dayHour';
@@ -64,8 +64,13 @@ const DAY_SHORT: Record<string, string> = {
     lun: 'Lun', mar: 'Mar', 'mié': 'Mié', mie: 'Mié', jue: 'Jue', vie: 'Vie', 'sáb': 'Sáb', sab: 'Sáb', dom: 'Dom',
 };
 
-/** "1 a.m." → 1, "12 p.m." → 12, "3 p.m." → 15 */
+/** "1 a.m." → 1, "12 p.m." → 12, "3 p.m." → 15, "14" → 14 */
 function parseHour(raw: string): number {
+    const plain = raw.trim().match(/^(\d{1,2})$/);
+    if (plain) {
+        const h = parseInt(plain[1], 10);
+        return h <= 23 ? h : -1;
+    }
     const m = raw.toLowerCase().match(/(\d+)\s*(a|p)/);
     if (!m) return -1;
     let h = parseInt(m[1], 10);
@@ -80,6 +85,15 @@ function fmtHour(h: number): string {
     if (h < 12) return `${h}am`;
     if (h === 12) return '12pm';
     return `${h - 12}pm`;
+}
+
+/** Primer valor no vacío entre variantes de encabezado (ES latino vs ES España). */
+function col(r: Record<string, string>, ...names: string[]): string {
+    for (const n of names) {
+        const v = r[n];
+        if (v !== undefined && v !== '') return v;
+    }
+    return '';
 }
 
 /** Extrae fechas del nombre de archivo tipo "...(2026.06.29-2026.07.03).csv" */
@@ -101,6 +115,7 @@ export function parseGoogleFiles(files: { name: string; text: string }[]): Googl
     let totalDeviceClicks = 0;
     let totalConvs = 0;
     let mobileConvs = 0;
+    let seriesConvs = 0;
 
     for (const f of files) {
         const kind = detectKind(f.text);
@@ -118,20 +133,23 @@ export function parseGoogleFiles(files: { name: string; text: string }[]): Googl
                 d.days = rows.map(r => {
                     const fecha = r['Fecha'] || '';
                     const dayKey = fecha.slice(0, 3).toLowerCase();
+                    const clicks = parseNum(r['Clics']);
+                    const cost = parseNum(col(r, 'Costo', 'Coste'));
                     return {
                         label: DAY_SHORT[dayKey] || fecha.slice(0, 3),
                         date: fecha,
-                        clicks: parseNum(r['Clics']),
+                        clicks,
                         impressions: parseNum(r['Impresiones']),
-                        cost: parseNum(r['Costo']),
-                        cpc: parseNum(r['CPC prom.']),
+                        cost,
+                        cpc: parseNum(r['CPC prom.']) || (clicks > 0 ? cost / clicks : 0),
                     };
                 });
+                seriesConvs = rows.reduce((s, r) => s + parseNum(r['Conversiones']), 0);
                 break;
             }
             case 'gender': {
                 for (const r of rows) {
-                    const g = (r['Género'] || '').toLowerCase();
+                    const g = col(r, 'Género', 'Sexo').toLowerCase();
                     const pct = parseNum(r['Porcentaje del total conocido']);
                     if (g.startsWith('hombre')) d.malePct = pct;
                     if (g.startsWith('mujer')) d.femalePct = pct;
@@ -140,7 +158,7 @@ export function parseGoogleFiles(files: { name: string; text: string }[]): Googl
             }
             case 'age': {
                 for (const r of rows) {
-                    const range = r['Rango de edades'] || '';
+                    const range = col(r, 'Rango de edades', 'Intervalo de edad');
                     if (/25|35|45/.test(range) && !/18|55|65/.test(range)) {
                         d.corePct += parseNum(r['Porcentaje del total conocido']);
                     }
@@ -179,7 +197,7 @@ export function parseGoogleFiles(files: { name: string; text: string }[]): Googl
             case 'changes': {
                 const r = rows[0];
                 if (r) {
-                    const prev = parseNum(r['Costo (Comparación)']);
+                    const prev = parseNum(col(r, 'Costo (Comparación)', 'Coste (Comparación)'));
                     if (prev > 0) d.prevCost = prev;
                 }
                 break;
@@ -189,14 +207,14 @@ export function parseGoogleFiles(files: { name: string; text: string }[]): Googl
                     term: r['Buscar'] || '',
                     impressions: parseNum(r['Impresiones']),
                     clicks: parseNum(r['Clics']),
-                    cost: parseNum(r['Costo']),
+                    cost: parseNum(col(r, 'Costo', 'Coste')),
                 })).sort((a, b) => b.impressions - a.impressions);
                 break;
             }
             case 'keywords': {
                 d.keywords = rows.map(r => ({
-                    keyword: r['Palabra clave de la Búsqueda'] || '',
-                    cost: parseNum(r['Costo']),
+                    keyword: col(r, 'Palabra clave de la Búsqueda', 'Palabra clave de búsqueda'),
+                    cost: parseNum(col(r, 'Costo', 'Coste')),
                     clicks: parseNum(r['Clics']),
                     ctr: parseNum(r['CTR']),
                 })).sort((a, b) => b.cost - a.cost);
@@ -213,6 +231,7 @@ export function parseGoogleFiles(files: { name: string; text: string }[]): Googl
     if (!d.totalClicks) d.totalClicks = totalDeviceClicks;
     d.avgCpc = d.totalClicks > 0 ? d.totalCost / d.totalClicks : 0;
     d.ctr = d.totalImpressions > 0 ? (d.totalClicks / d.totalImpressions) * 100 : 0;
+    if (!totalConvs) totalConvs = seriesConvs;
     d.conversions = totalConvs;
     d.mobileClicksPct = totalDeviceClicks > 0 ? (d.mobileClicks / totalDeviceClicks) * 100 : 0;
     d.mobileConvPct = totalConvs > 0 ? (mobileConvs / totalConvs) * 100 : 0;

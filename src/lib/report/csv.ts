@@ -56,11 +56,24 @@ export function csvToObjects(text: string): Record<string, string>[] {
     });
 }
 
-/** Parsea números en formatos "1,202", "MXN22.64", "7.69%", "0.52". */
+/**
+ * Parsea números en formato EN ("1,202", "MXN22.64", "7.69%") y ES europeo
+ * ("1.037,35 MXN", "12,38 %", "0,00"): si hay coma y punto, el último es el
+ * decimal; coma sola solo es millar si agrupa de a 3 ("1,202").
+ */
 export function parseNum(raw: string | undefined | null): number {
     if (!raw) return 0;
-    const cleaned = String(raw).replace(/MXN|\$|%|\s/g, '').replace(/,/g, '');
-    const n = parseFloat(cleaned);
+    let s = String(raw).replace(/MXN|\$|%/g, '').replace(/[\s ]/g, '');
+    const lastComma = s.lastIndexOf(',');
+    const lastDot = s.lastIndexOf('.');
+    if (lastComma > -1 && lastDot > -1) {
+        if (lastComma > lastDot) s = s.replace(/\./g, '').replace(/,/g, '.');
+        else s = s.replace(/,/g, '');
+    } else if (lastComma > -1) {
+        if (/^-?\d{1,3}(,\d{3})+$/.test(s)) s = s.replace(/,/g, '');
+        else s = s.replace(/,/g, '.');
+    }
+    const n = parseFloat(s);
     return Number.isFinite(n) ? n : 0;
 }
 
