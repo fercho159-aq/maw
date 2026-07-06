@@ -257,28 +257,43 @@ export interface GoogleTexts {
     priorities: { title: string; detail: string }[];
 }
 
+/** Limpia modificadores de concordancia: "+banda +ojillada" → "banda ojillada". */
+function cleanKeyword(k: string): string {
+    return k.replace(/[+"[\]]/g, '').replace(/\s+/g, ' ').trim();
+}
+
+function cap(s: string): string {
+    return s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+}
+
 export function defaultGoogleTexts(d: GoogleReportData, clientName: string): GoogleTexts {
     const topSearch = d.searches[0];
     const topKw = d.keywords[0];
     const secondKw = d.keywords[1];
     const domain = clientName ? slugify(clientName) + '.com' : 'tusitio.com';
+    const kwNames = [...new Set(d.keywords.map(k => cleanKeyword(k.keyword)).filter(Boolean))];
+    const product = cap(cleanKeyword(topSearch?.term || '') || kwNames[0] || 'Tu producto');
     return {
         reportTitle: 'Desempeño de campaña y audiencia',
         chartNote: d.bestDay
             ? `${d.bestDay.label === 'Jue' ? 'Jueves' : d.bestDay.date} fue el día más fuerte. El último día suele ser parcial (corte del reporte).`
             : 'Actividad de clics por día del periodo.',
-        audienceNote: `tiene entre 25 y 54 años — técnicos, instaladores y jefes de hogar.`,
+        audienceNote: `tiene entre 25 y 54 años — el rango con mayor intención de compra.`,
         investmentNote: d.prevCost && d.costChangePct !== null
             ? `Inversión más eficiente: ${d.costChangePct < 0 ? 'bajó' : 'subió'} de ${fmtMoney(d.prevCost)} a ${fmtMoney(d.totalCost)} conservando el CPC en ${fmtMoney(d.avgCpc, 2)}.`
             : `CPC promedio de ${fmtMoney(d.avgCpc, 2)} en el periodo.`,
         topAdNote: topSearch
             ? `El de marca encabezó: ${fmtInt(topSearch.impressions)} impresiones en "${topSearch.term}" — el término #1, con ${fmtInt(topSearch.clicks)} clics.`
             : 'El anuncio de marca fue el más mostrado del periodo.',
-        adQuery: topSearch ? `${topSearch.term} cerca de mí` : 'material eléctrico cerca de mí',
+        adQuery: topSearch ? `${topSearch.term} cerca de mí` : 'tu producto cerca de mí',
         adBusinessUrl: `https://${domain}`,
-        adHeadline: `${clientName || 'Tu Negocio'} — Material Eléctrico e Iluminación LED`,
-        adDescription: 'Cables, apagadores, focos y luminarias LED. Atención a instaladores y público. Precios de mayoreo. Iztapalapa, CDMX.',
-        adSitelinks: 'Iluminación LED, Material eléctrico, Cómo llegar',
+        adHeadline: `${clientName || 'Tu Negocio'} — ${product}`,
+        adDescription: kwNames.length
+            ? `${cap(kwNames[0])}${kwNames[1] ? `, ${kwNames[1]}` : ''} y más. Precios de mayoreo y menudeo. Envíos a todo México. Cotiza hoy.`
+            : 'Describe aquí la oferta principal, cobertura y diferenciadores del negocio.',
+        adSitelinks: kwNames.length
+            ? [...kwNames.slice(0, 2).map(cap), 'Cómo llegar'].join(', ')
+            : 'Catálogo, Promociones, Cómo llegar',
         priorities: [
             {
                 title: 'Campaña de marca',
