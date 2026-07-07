@@ -2241,17 +2241,21 @@ export const landings: Record<string, ServiceLanding> = {
     slug: "erp",
     hero: {
       eyebrow: "Sistemas ERP y de operación a la medida",
-      title: "Tu operación vive en Excel y nada cuadra.\nUn sistema la ordena — o la opera solo.",
-      subtitle: "Ventas, inventario, facturación y finanzas en un solo sistema. Y si tu negocio lo pide: reservas, pagos y control por QR para operar sin personal fijo.",
+      title: "Su operación ya rebasó al Excel.\nUn sistema la ordena — o la opera solo.",
+      subtitle: "Ventas, inventario, facturación CFDI y finanzas en un solo sistema, configurado a sus procesos y con sus datos migrados. Y cuando el modelo de negocio lo pide: reservas, pagos y control por QR para operar sin personal fijo.",
       primaryCta: {
-        label: "Cotizar mi ERP",
+        label: "Solicitar diagnóstico",
         href: "#cotizar"
       },
       secondaryCta: {
         label: "Hablar por WhatsApp",
         href: WA
       },
-      ctaNote: "Diagnóstico gratuito · Respuesta el mismo día"
+      ctaNote: "Diagnóstico sin costo · Respuesta el mismo día",
+      media: {
+        type: "image",
+        src: "/images/studio/erp-suite.png"
+      }
     },
     trustBar: {
       items: [
@@ -2273,49 +2277,49 @@ export const landings: Record<string, ServiceLanding> = {
       ]
     },
     features: {
-      heading: "Toda tu operación en un solo sistema",
-      subheading: "Configurado a tus procesos, con tus datos migrados y tu equipo capacitado.",
+      heading: "Toda la operación en un solo sistema",
+      subheading: "Configurado a sus procesos, con sus datos migrados y su equipo capacitado.",
       cards: [
         {
           title: "Inventario y almacén",
-          description: "Existencias en tiempo real y alertas de stock mínimo."
+          description: "Existencias en tiempo real, alertas de stock mínimo y trazabilidad por lote."
         },
         {
           title: "Ventas y facturación",
-          description: "De la cotización a la factura CFDI sin recapturar."
+          description: "De la cotización a la factura CFDI 4.0 sin recapturar información."
         },
         {
           title: "Compras y proveedores",
-          description: "Órdenes de compra y cuentas por pagar bajo control."
+          description: "Órdenes de compra y cuentas por pagar bajo control, con historial por proveedor."
         },
         {
           title: "Finanzas y reportes",
-          description: "Flujo, márgenes y cobranza de un vistazo."
+          description: "Flujo, márgenes y cobranza a la vista de dirección, no en veinte archivos."
         },
         {
-          title: "Tu negocio opera solo",
-          description: "Reservas, pagos y accesos QR conectados a tus equipos (IoT)."
+          title: "Operación autónoma",
+          description: "Reservas, pagos y accesos por QR conectados a su equipo físico (IoT)."
         },
         {
-          title: "Capacitación incluida",
-          description: "Entrenamos a tu equipo hasta que el sistema se use."
+          title: "Adopción garantizada",
+          description: "Capacitamos por área con casos reales, hasta que el sistema se usa."
         }
       ]
     },
     qualification: {
-      heading: "¿Necesitas un ERP?",
-      subheading: "Un ERP rinde cuando tu operación ya rebasó al Excel. Revisa.",
+      heading: "¿Su empresa necesita un ERP?",
+      subheading: "Un ERP rinde cuando la operación ya rebasó a las hojas de cálculo. Revise.",
       forYou: [
-        "Controlas la operación en Excel y ya no cuadra.",
-        "Capturas lo mismo en varios lugares.",
-        "No sabes cuánto ganas por producto.",
-        "Facturas fuera de tu sistema.",
-        "Quieres un autoservicio que opere solo."
+        "La operación se controla en Excel y los números ya no cuadran entre áreas.",
+        "Su equipo captura la misma información en varios lugares.",
+        "Dirección no sabe cuánto gana por producto o por sucursal.",
+        "Se factura fuera del sistema y conciliar toma días.",
+        "Quiere un modelo de autoservicio que opere sin personal fijo."
       ],
       notForYou: [
-        "Una libreta aún te alcanza (por ahora).",
-        "Solo necesitas gestionar clientes: eso es un CRM.",
-        "No quieres cambiar hábitos ni procesos."
+        "El volumen de operación aún se controla bien a mano (por ahora).",
+        "Solo necesita gestionar clientes y seguimiento comercial: eso es un CRM.",
+        "Nadie en la organización está dispuesto a cambiar procesos."
       ]
     },
     stats: {
@@ -2323,7 +2327,7 @@ export const landings: Record<string, ServiceLanding> = {
       items: [
         {
           value: "1 sistema",
-          label: "Toda tu operación conectada"
+          label: "Toda la operación conectada"
         },
         {
           value: "-70%",
@@ -2340,81 +2344,81 @@ export const landings: Record<string, ServiceLanding> = {
       ]
     },
     packages: {
-      heading: "Soluciones de implementación de ERP",
-      subheading: "Cada operación es distinta: cotizamos a la medida tras un diagnóstico gratuito.",
+      heading: "Alcances de implementación",
+      subheading: "Cada operación es distinta: el alcance y la inversión se definen tras un diagnóstico sin costo.",
       pricesArePlaceholder: false,
-      note: "La licencia del ERP (si aplica) corre por tu cuenta; hay alternativas open source sin costo de licencia. Los sistemas a la medida incluyen mensualidad de hosting y soporte; el hardware lo adquiere el cliente.",
+      note: "La licencia del ERP (si aplica) corre por cuenta del cliente; existen alternativas open source sin costo de licencia. Los sistemas a la medida incluyen mensualidad de hosting y soporte; el hardware lo adquiere el cliente.",
       tiers: [
         {
           id: "esencial",
           name: "Puesta en marcha",
-          tagline: "Tus módulos esenciales funcionando",
+          tagline: "Los módulos esenciales funcionando",
           price: "Cotización a medida",
           priceNote: "según alcance",
           features: [
-            "Diagnóstico de tu operación",
+            "Diagnóstico de la operación",
             "Módulos base: ventas, inventario, compras",
-            "Migración de tus datos",
+            "Migración de sus datos",
             "Capacitación + soporte 30 días"
           ],
-          ctaLabel: "Quiero la puesta en marcha"
+          ctaLabel: "Solicitar puesta en marcha"
         },
         {
           id: "integrado",
           name: "ERP integrado",
-          tagline: "Conectado a toda tu operación",
+          tagline: "Conectado a toda la operación",
           price: "Cotización a medida",
           priceNote: "según alcance",
           highlight: true,
           features: [
-            "Todos los módulos que necesites",
-            "Facturación CFDI integrada",
-            "Conexión con ecommerce, CRM y tus herramientas",
+            "Todos los módulos que la operación requiera",
+            "Facturación CFDI 4.0 integrada",
+            "Conexión con ecommerce, CRM y sus herramientas actuales",
             "Integración con hardware: lectores, básculas, impresoras",
             "Automatizaciones y reportes a la medida",
             "Capacitación + soporte 90 días"
           ],
-          ctaLabel: "Quiero el ERP integrado"
+          ctaLabel: "Solicitar ERP integrado"
         },
         {
           id: "medida",
           name: "Sistema de operación a la medida",
-          tagline: "Tu negocio operando solo",
+          tagline: "El negocio operando solo",
           price: "Cotización a medida",
           priceNote: "según alcance",
           features: [
-            "Desarrollado desde cero para tu modelo",
+            "Desarrollado desde cero para su modelo de negocio",
             "Reservas y pagos en línea",
             "Control de hardware por QR: chapas, sensores, dispensadores (IoT)",
-            "Panel multi-sucursal",
-            "Código 100% tuyo, sin licencias por usuario"
+            "Panel multi-sucursal con permisos por perfil",
+            "El código es 100% suyo, sin licencias por usuario"
           ],
           ctaLabel: "Solicitar cotización"
         }
       ]
     },
     process: {
-      heading: "Cómo implementamos tu ERP",
+      heading: "Cómo implementamos su ERP",
       steps: [
         {
           step: 1,
           title: "Diagnóstico",
-          description: "Mapeamos cómo vendes, compras y facturas hoy."
+          description: "Mapeamos cómo vende, compra y factura su empresa hoy, área por área."
         },
         {
           step: 2,
           title: "Configuración y migración",
-          description: "Módulos a tu proceso, con tus datos migrados."
+          description: "Módulos ajustados a su proceso, con productos, clientes e inventario migrados."
         },
         {
           step: 3,
           title: "Capacitación",
-          description: "Entrenamos a tu equipo con casos reales, por área."
+          description: "Entrenamos a su equipo con casos reales de su operación, por área."
         },
         {
           step: 4,
           title: "Acompañamiento",
-          description: "Soporte las primeras semanas hasta que se adopte."
+          description: "Soporte durante las primeras semanas, hasta que el sistema se adopta."
         }
       ]
     },
@@ -2423,27 +2427,27 @@ export const landings: Record<string, ServiceLanding> = {
       items: [
         {
           question: "¿Qué ERP usan?",
-          answer: "Trabajamos con ERPs líderes y open source (como Odoo y ERPNext) y también desarrollamos sistemas a la medida. Recomendamos la mejor opción según tu operación y presupuesto; muchas veces la alternativa open source elimina el costo de licencias."
+          answer: "Trabajamos con ERPs líderes y open source (como Odoo y ERPNext) y también desarrollamos sistemas a la medida. Recomendamos la mejor opción según su operación y presupuesto; muchas veces la alternativa open source elimina el costo de licencias."
         },
         {
-          question: "¿Puedo facturar (CFDI) desde el ERP?",
-          answer: "Sí. Integramos facturación electrónica CFDI 4.0 para que factures directo desde el sistema, ligado a tus ventas e inventario."
+          question: "¿Se puede facturar (CFDI) desde el ERP?",
+          answer: "Sí. Integramos facturación electrónica CFDI 4.0 para facturar directo desde el sistema, ligado a ventas e inventario."
         },
         {
-          question: "¿Migran mis datos de Excel o de mi sistema actual?",
-          answer: "Sí. La migración de productos, clientes, proveedores e inventario inicial está incluida en la implementación. No empiezas de cero."
+          question: "¿Migran los datos de Excel o del sistema actual?",
+          answer: "Sí. La migración de productos, clientes, proveedores e inventario inicial está incluida en la implementación. Su empresa no empieza de cero."
         },
         {
           question: "¿Cuánto tarda la implementación?",
-          answer: "Una puesta en marcha de módulos esenciales toma de 4 a 8 semanas. Un ERP integrado o a la medida depende del alcance; te damos un plan de entregas con fechas claras desde el diagnóstico."
+          answer: "Una puesta en marcha de módulos esenciales toma de 4 a 8 semanas. Un ERP integrado o a la medida depende del alcance; entregamos un plan con fechas claras desde el diagnóstico."
         },
         {
           question: "¿El precio incluye las licencias del ERP?",
           answer: "El plan cubre implementación, configuración, migración y capacitación. La licencia del ERP (si la herramienta la cobra) es aparte; con opciones open source ese costo puede ser cero."
         },
         {
-          question: "¿Se integra con mi tienda en línea o mi CRM?",
-          answer: "Sí. En el plan integrado conectamos tu ERP con ecommerce, CRM, pasarelas de pago y las herramientas que ya usas, para que la información fluya sin capturas dobles."
+          question: "¿Se integra con la tienda en línea o el CRM que ya usamos?",
+          answer: "Sí. En el alcance integrado conectamos el ERP con ecommerce, CRM, pasarelas de pago y las herramientas que su equipo ya usa, para que la información fluya sin capturas dobles."
         },
         {
           question: "¿Pueden controlar puertas, máquinas o dispositivos físicos?",
@@ -2460,13 +2464,13 @@ export const landings: Record<string, ServiceLanding> = {
       ]
     },
     leadForm: {
-      heading: "Cotiza tu ERP",
-      subheading: "Cuéntanos cómo controlas hoy tu operación y te proponemos el ERP ideal para tu empresa.",
+      heading: "Solicite el diagnóstico de su operación",
+      subheading: "Cuéntenos cómo controla hoy su operación y le proponemos el sistema adecuado, con alcance y fechas por escrito.",
       source: "landing-erp",
       defaultInterest: "Sistema ERP"
     },
     stickyCta: {
-      label: "Cotizar mi ERP",
+      label: "Solicitar diagnóstico",
       href: "#cotizar",
       whatsappHref: WA
     },
