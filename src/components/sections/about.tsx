@@ -1,61 +1,100 @@
-"use client";
+import { EditorialImage, FadeIn, Rule, SectionHeading } from '@/components/editorial';
 
-import React, { useState } from "react";
-import AnimatedDiv from "../animated-div";
-import { Button } from "../ui/button";
-import { FileText, Play } from "lucide-react";
+const method = [
+  {
+    number: '01',
+    title: 'Diagnóstico',
+    description:
+      'Antes de proponer, entendemos. Auditamos operación, canales y datos para identificar dónde está el margen real de crecimiento.',
+  },
+  {
+    number: '02',
+    title: 'Plan',
+    description:
+      'Definimos alcance, entregables y métricas de éxito por escrito. Cada proyecto arranca con un plan que se puede auditar.',
+  },
+  {
+    number: '03',
+    title: 'Ejecución y medición',
+    description:
+      'Equipos propios de estrategia, desarrollo y producción ejecutan el plan. Reportamos avances contra las métricas acordadas, no contra impresiones.',
+  },
+];
 
+/**
+ * Statement de método: asimetría 5/6 columnas, números de sección en mono,
+ * sin embeds ni efectos.
+ */
 export default function AboutSection() {
-  const [tiktokLoaded, setTiktokLoaded] = useState(false);
-
   return (
-    <section className="py-10 md:py-16 bg-background border-t border-border/20">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          {/* Text block */}
-          <div className="space-y-6">
-            <AnimatedDiv>
-              <h2 className="font-headline text-4xl sm:text-5xl font-bold tracking-tight mb-8 transition-colors duration-500 hover:text-[#ffe28a] hover:drop-shadow-[0_0_20px_rgba(255,215,0,0.6)] cursor-default">Nosotros</h2>
-              <p className="text-xl text-foreground/80 leading-relaxed">
-                MAW Soluciones nació de la visión de un equipo apasionado por la tecnología y el marketing, con el objetivo de ayudar a las empresas a navegar el complejo mundo digital.
+    <section id="nosotros" className="bg-background py-32 md:py-40">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
+        <FadeIn>
+          <Rule className="mb-16" />
+        </FadeIn>
+        <div className="grid grid-cols-12 gap-x-6 gap-y-16">
+          <div className="col-span-12 lg:col-span-5">
+            <FadeIn>
+              <SectionHeading
+                number="01"
+                eyebrow="Método"
+                title="El crecimiento no se improvisa. Se diseña."
+              />
+            </FadeIn>
+            <FadeIn delay={0.15} className="mt-16 hidden lg:block">
+              <EditorialImage
+                src="/images/annie-spratt-QckxruozjRg-unsplash.jpg"
+                alt="Equipo de trabajo colaborando con laptops en una mesa"
+                ratio="4:5"
+                sizes="(max-width: 1024px) 0vw, 35vw"
+                imgClassName="grayscale"
+              />
+              <p className="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                Equipo — Oficina Xoco
               </p>
-              <p className="mt-4 text-lg text-foreground/70 leading-relaxed">
-                Nuestra misión es simple: ser el socio estratégico que impulsa el crecimiento de nuestros clientes a través de soluciones innovadoras, creativas y basadas en datos. Creemos que cada negocio tiene una historia que contar.
-              </p>
-              <div className="mt-6">
-                <Button variant="outline" asChild className="font-semibold">
-                  <a href="/brochures/presentacion-corporativa.pdf" target="_blank" rel="noopener noreferrer">
-                    <FileText className="w-4 h-4 mr-2" /> Ver Presentación Corporativa
-                  </a>
-                </Button>
-              </div>
-            </AnimatedDiv>
+            </FadeIn>
           </div>
-
-          {/* TikTok embed — click-to-load to avoid third-party script penalty */}
-          <div className="flex justify-center w-full">
-            <AnimatedDiv className="relative aspect-[9/16] w-full max-w-[300px] rounded-2xl overflow-hidden shadow-2xl border border-border/50 bg-black">
-              {tiktokLoaded ? (
-                <iframe
-                  className="absolute inset-0 w-full h-full"
-                  src="https://www.tiktok.com/player/v1/7623929156471950600?autoplay=1&loop=1&music_info=0&description=0"
-                  title="MAW Soluciones Nosotros"
-                  allow="autoplay; encrypted-media; picture-in-picture"
-                  allowFullScreen
-                />
-              ) : (
-                <button
-                  onClick={() => setTiktokLoaded(true)}
-                  className="absolute inset-0 w-full h-full flex flex-col items-center justify-center gap-3 bg-gradient-to-b from-gray-900 to-black hover:from-gray-800 transition-colors group"
-                  aria-label="Cargar video de TikTok"
-                >
-                  <div className="w-14 h-14 rounded-full bg-white/10 border border-white/20 flex items-center justify-center group-hover:bg-white/20 transition-colors">
-                    <Play className="w-6 h-6 text-white fill-white ml-1" />
+          <div className="col-span-12 md:col-span-10 lg:col-start-7 lg:col-span-6">
+            <FadeIn delay={0.1}>
+              <p className="text-lg leading-relaxed text-muted-foreground">
+                MAW Soluciones es una consultora digital con equipo propio de
+                estrategia, ingeniería y producción audiovisual. Trabajamos con
+                empresas que necesitan un socio capaz de sostener la operación
+                completa: del sistema que administra el negocio al contenido
+                que lo representa.
+              </p>
+            </FadeIn>
+            <div className="mt-16 space-y-0">
+              {method.map((step, index) => (
+                <FadeIn key={step.number} delay={0.1 + index * 0.05}>
+                  <div className="border-t border-stone/40 py-8">
+                    <div className="grid grid-cols-12 gap-x-6">
+                      <span className="col-span-2 font-mono text-xs tracking-[0.2em] text-primary">
+                        {step.number}
+                      </span>
+                      <div className="col-span-10">
+                        <h3 className="font-display text-2xl text-foreground">
+                          {step.title}
+                        </h3>
+                        <p className="mt-3 max-w-prose text-base leading-relaxed text-muted-foreground">
+                          {step.description}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <span className="text-white/70 text-sm">Ver video</span>
-                </button>
-              )}
-            </AnimatedDiv>
+                </FadeIn>
+              ))}
+            </div>
+            <FadeIn delay={0.25}>
+              <a
+                href="/brochures/presentacion-corporativa.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline mt-8 inline-block font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground"
+              >
+                Presentación corporativa (PDF)
+              </a>
+            </FadeIn>
           </div>
         </div>
       </div>

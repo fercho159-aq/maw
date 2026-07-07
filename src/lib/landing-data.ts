@@ -36,7 +36,7 @@ export type LandingHero = {
   media?: { type: "video" | "image"; src: string; poster?: string };
 };
 
-export type FeatureCard = { icon: string; title: string; description: string };
+export type FeatureCard = { title: string; description: string };
 
 export type Stat = { value: string; label: string };
 
@@ -64,7 +64,7 @@ export type LeadFormConfig = {
 };
 
 /** Barra de confianza bajo el hero (message-match con el anuncio de Google Ads). */
-export type TrustItem = { icon?: string; label: string };
+export type TrustItem = { label: string };
 export type LandingTrustBar = { items: TrustItem[] };
 
 /**
@@ -127,23 +127,18 @@ export const landings: Record<string, ServiceLanding> = {
     trustBar: {
       items: [
         {
-          icon: "Gauge",
           label: "Carga en menos de 2 segundos"
         },
         {
-          icon: "Search",
           label: "Optimizado para SEO desde el día 1"
         },
         {
-          icon: "Smartphone",
           label: "100% responsivo (móvil primero)"
         },
         {
-          icon: "ShieldCheck",
           label: "Garantía de soporte 30 días"
         },
         {
-          icon: "Code2",
           label: "Next.js y React de nivel empresarial"
         }
       ]
@@ -153,32 +148,26 @@ export const landings: Record<string, ServiceLanding> = {
       subheading: "Cada decisión de diseño y código está pensada para que más visitantes te contacten y te compren.",
       cards: [
         {
-          icon: "Palette",
           title: "Diseño a la medida de tu marca",
           description: "Nada de plantillas recicladas. Diseñamos cada sección para reflejar tu negocio y guiar al visitante hacia la acción que te interesa."
         },
         {
-          icon: "Gauge",
           title: "Velocidad que retiene visitas",
           description: "Sitios ultrarrápidos con Next.js. Cada segundo de carga cuenta: la lentitud cuesta clientes y posiciones en Google."
         },
         {
-          icon: "Search",
           title: "SEO técnico incluido",
           description: "Estructura, metadatos, velocidad y datos estructurados listos para que Google te encuentre y te posicione."
         },
         {
-          icon: "Smartphone",
           title: "Perfecto en cualquier pantalla",
           description: "Más del 70% de tus visitas llegan desde el celular. Tu sitio se verá impecable en móvil, tablet y escritorio."
         },
         {
-          icon: "TrendingUp",
           title: "Enfoque en conversión",
           description: "Botones, formularios y llamados a la acción ubicados con criterio de ventas, no solo estética."
         },
         {
-          icon: "Headphones",
           title: "Capacitación y soporte",
           description: "Te entregamos tu sitio funcionando y te enseñamos a administrarlo. No te dejamos colgado tras el lanzamiento."
         }
@@ -376,23 +365,18 @@ export const landings: Record<string, ServiceLanding> = {
     trustBar: {
       items: [
         {
-          icon: "TrendingUp",
           label: "Diseñadas para convertir"
         },
         {
-          icon: "Gauge",
           label: "Listas en días, no meses"
         },
         {
-          icon: "Smartphone",
           label: "Optimizadas para móvil"
         },
         {
-          icon: "Megaphone",
           label: "Compatibles con Google y Meta Ads"
         },
         {
-          icon: "ShieldCheck",
           label: "Pago seguro y dominio propio"
         }
       ]
@@ -402,32 +386,26 @@ export const landings: Record<string, ServiceLanding> = {
       subheading: "Aplicamos principios de conversión probados para que cada visita tenga más probabilidad de convertirse en cliente.",
       cards: [
         {
-          icon: "TrendingUp",
           title: "Estructura orientada a conversión",
           description: "Gancho, beneficios, prueba social y un llamado a la acción claro. Cada bloque empuja al visitante a contactarte."
         },
         {
-          icon: "Gauge",
           title: "Entrega rápida",
           description: "Tu landing puede estar lista en pocos días para que no pierdas tiempo ni presupuesto de campaña."
         },
         {
-          icon: "Megaphone",
           title: "Lista para Ads",
           description: "Con píxeles y conversiones configuradas para Google y Meta Ads. Tus campañas miden y optimizan de verdad."
         },
         {
-          icon: "Smartphone",
           title: "Velocidad y móvil primero",
           description: "Carga inmediata en celular, donde llega la mayoría del tráfico pagado. Menos rebote, más leads."
         },
         {
-          icon: "PenTool",
           title: "Copy persuasivo incluido",
           description: "No solo diseñamos: escribimos los textos con lenguaje de ventas para tu público mexicano."
         },
         {
-          icon: "BarChart3",
           title: "Medición de resultados",
           description: "Conectamos analítica para que sepas cuántos leads genera tu página y de dónde vienen."
         }
@@ -625,23 +603,18 @@ export const landings: Record<string, ServiceLanding> = {
     trustBar: {
       items: [
         {
-          icon: "Video",
           label: "Reels que detienen el scroll"
         },
         {
-          icon: "Camera",
           label: "Foto y video profesional"
         },
         {
-          icon: "Calendar",
           label: "Contenido listo cada mes"
         },
         {
-          icon: "Sparkles",
           label: "Edición de nivel agencia"
         },
         {
-          icon: "TrendingUp",
           label: "Pensado para crecer tu marca"
         }
       ]
@@ -651,32 +624,26 @@ export const landings: Record<string, ServiceLanding> = {
       subheading: "Producimos, editamos y entregamos. Tú solo publicas (o lo publicamos por ti).",
       cards: [
         {
-          icon: "Video",
           title: "Reels y videos cortos",
           description: "Formato rey de Instagram y TikTok. Editamos con ganchos, ritmo y subtítulos para maximizar alcance."
         },
         {
-          icon: "Camera",
           title: "Fotografía de producto y marca",
           description: "Imágenes que hacen ver tu negocio profesional y aumentan la confianza de quien te descubre."
         },
         {
-          icon: "PenTool",
           title: "Diseño de publicaciones",
           description: "Carruseles y gráficos con identidad de marca consistente, no plantillas genéricas."
         },
         {
-          icon: "Calendar",
           title: "Calendario de contenido",
           description: "Planeamos qué publicar y cuándo, alineado a fechas clave y a los objetivos de tu negocio."
         },
         {
-          icon: "Sparkles",
           title: "Edición de nivel agencia",
           description: "Color, sonido, transiciones y subtítulos cuidados. Tu contenido compite con las marcas grandes."
         },
         {
-          icon: "Megaphone",
           title: "Contenido que también vende",
           description: "No solo bonito: incluimos llamados a la acción para que tu contenido genere mensajes y ventas."
         }
@@ -874,23 +841,18 @@ export const landings: Record<string, ServiceLanding> = {
     trustBar: {
       items: [
         {
-          icon: "Megaphone",
           label: "+500 marcas confían en nosotros"
         },
         {
-          icon: "TrendingUp",
           label: "Optimización semanal de campañas"
         },
         {
-          icon: "BarChart3",
           label: "Reportes claros de resultados"
         },
         {
-          icon: "ShieldCheck",
           label: "Partners de Meta y Google"
         },
         {
-          icon: "Repeat",
           label: "Estrategia, contenido y pauta"
         }
       ]
@@ -900,32 +862,26 @@ export const landings: Record<string, ServiceLanding> = {
       subheading: "Combinamos contenido que conecta con pauta que vende. Cada peso invertido lo medimos.",
       cards: [
         {
-          icon: "Megaphone",
           title: "Gestión de campañas Ads",
           description: "Creamos, segmentamos y optimizamos tus campañas en Meta, Google y TikTok para conseguir el menor costo por resultado."
         },
         {
-          icon: "Workflow",
           title: "Gestión de redes sociales",
           description: "Publicamos, respondemos y mantenemos tus perfiles activos y profesionales con una estrategia detrás."
         },
         {
-          icon: "TrendingUp",
           title: "Optimización constante",
           description: "Revisamos tus campañas semanalmente y movemos presupuesto a lo que funciona. Sin 'echar y olvidar'."
         },
         {
-          icon: "BarChart3",
           title: "Reportes que entiendes",
           description: "Nada de métricas vanidosas. Te mostramos leads, ventas y costo por resultado en lenguaje claro."
         },
         {
-          icon: "Video",
           title: "Contenido para anuncios",
           description: "Producimos creativos pensados para vender: el éxito de una campaña depende del anuncio, no solo de la segmentación."
         },
         {
-          icon: "Search",
           title: "Estrategia multicanal",
           description: "Definimos en qué plataforma está tu cliente y cómo combinarlas para captar y reimpactar."
         }
@@ -1121,23 +1077,18 @@ export const landings: Record<string, ServiceLanding> = {
     trustBar: {
       items: [
         {
-          icon: "Bot",
           label: "Respuestas automáticas 24/7"
         },
         {
-          icon: "Workflow",
           label: "Conectamos tus herramientas"
         },
         {
-          icon: "Repeat",
           label: "Adiós a tareas repetitivas"
         },
         {
-          icon: "TrendingUp",
           label: "Más leads atendidos, menos perdidos"
         },
         {
-          icon: "ShieldCheck",
           label: "Implementación a la medida"
         }
       ]
@@ -1147,32 +1098,26 @@ export const landings: Record<string, ServiceLanding> = {
       subheading: "Cada lead sin respuesta es una venta perdida. Construimos flujos que trabajan solos.",
       cards: [
         {
-          icon: "Bot",
           title: "Respuesta automática a leads",
           description: "Tus prospectos reciben respuesta inmediata por WhatsApp o correo, aunque sea de madrugada. La velocidad cierra ventas."
         },
         {
-          icon: "Workflow",
           title: "Integración de herramientas",
           description: "Conectamos tu formulario, CRM, WhatsApp, correo y hojas de cálculo para que la información fluya sola."
         },
         {
-          icon: "Repeat",
           title: "Seguimiento automatizado",
           description: "Secuencias de mensajes que nutren a tus prospectos y los recuerdan cerrar, sin que tú muevas un dedo."
         },
         {
-          icon: "Calendar",
           title: "Recordatorios y citas",
           description: "Confirmaciones y recordatorios automáticos que reducen las citas perdidas y los 'se me olvidó'."
         },
         {
-          icon: "Database",
           title: "Captura y organización de datos",
           description: "Cada lead queda registrado y clasificado automáticamente. Cero información perdida en chats."
         },
         {
-          icon: "TrendingUp",
           title: "Reportes automáticos",
           description: "Recibe tus números clave de forma periódica sin armar reportes a mano cada semana."
         }
@@ -1367,23 +1312,18 @@ export const landings: Record<string, ServiceLanding> = {
     trustBar: {
       items: [
         {
-          icon: "Code2",
           label: "Software a la medida"
         },
         {
-          icon: "Workflow",
           label: "Automatización integrada"
         },
         {
-          icon: "Database",
           label: "Conexión con tus sistemas"
         },
         {
-          icon: "LayoutDashboard",
           label: "Tableros de control en tiempo real"
         },
         {
-          icon: "ShieldCheck",
           label: "Solución hecha para tu operación"
         }
       ]
@@ -1393,32 +1333,26 @@ export const landings: Record<string, ServiceLanding> = {
       subheading: "No adaptamos tu negocio a un software genérico. Construimos el sistema que tu operación necesita.",
       cards: [
         {
-          icon: "Code2",
           title: "Desarrollo a la medida",
           description: "Programamos exactamente la herramienta que tu negocio necesita, sin pagar por funciones que no usas."
         },
         {
-          icon: "Workflow",
           title: "Automatización integrada",
           description: "El sistema no solo guarda datos: ejecuta tareas, envía mensajes y actúa solo según tus reglas."
         },
         {
-          icon: "Database",
           title: "Integración con lo que ya usas",
           description: "Conectamos tu nuevo sistema con tus herramientas actuales, WhatsApp, contabilidad o lo que necesites."
         },
         {
-          icon: "LayoutDashboard",
           title: "Tableros de control",
           description: "Visualiza el estado de tu operación en tiempo real, con la información que de verdad importa."
         },
         {
-          icon: "ShieldCheck",
           title: "Escalable y seguro",
           description: "Arquitectura pensada para crecer con tu negocio, con respaldo y seguridad de los datos."
         },
         {
-          icon: "Headphones",
           title: "Soporte y evolución",
           description: "Tu sistema crece contigo. Damos mantenimiento y agregamos funciones conforme avanzas."
         }
@@ -1613,23 +1547,18 @@ export const landings: Record<string, ServiceLanding> = {
     trustBar: {
       items: [
         {
-          icon: "Code2",
           label: "Código limpio y escalable"
         },
         {
-          icon: "Database",
           label: "Tus datos, seguros y tuyos"
         },
         {
-          icon: "LayoutDashboard",
           label: "Paneles y reportes a medida"
         },
         {
-          icon: "ShieldCheck",
           label: "Propiedad total del sistema"
         },
         {
-          icon: "Headphones",
           label: "Soporte y evolución continua"
         }
       ]
@@ -1639,32 +1568,26 @@ export const landings: Record<string, ServiceLanding> = {
       subheading: "Desde sistemas de gestión hasta plataformas completas. Tú defines el problema, nosotros el sistema.",
       cards: [
         {
-          icon: "Code2",
           title: "Desarrollo a la medida",
           description: "Construimos software con la lógica exacta de tu negocio, sin amarrarte a las limitaciones de una herramienta genérica."
         },
         {
-          icon: "LayoutDashboard",
           title: "Sistemas de gestión",
           description: "Plataformas internas para administrar clientes, inventario, proyectos, pagos o lo que tu operación requiera."
         },
         {
-          icon: "Database",
           title: "Bases de datos robustas",
           description: "Tu información organizada, segura y accesible. Adiós a los datos dispersos en mil archivos de Excel."
         },
         {
-          icon: "Globe",
           title: "Aplicaciones web",
           description: "Sistemas accesibles desde cualquier navegador, para que tu equipo trabaje desde donde sea."
         },
         {
-          icon: "ShieldCheck",
           title: "Seguro y escalable",
           description: "Arquitectura moderna que crece con tu negocio y protege tus datos y los de tus clientes."
         },
         {
-          icon: "Headphones",
           title: "Acompañamiento real",
           description: "No desaparecemos tras la entrega. Damos soporte y evolucionamos el sistema conforme creces."
         }
@@ -1862,23 +1785,18 @@ export const landings: Record<string, ServiceLanding> = {
     trustBar: {
       items: [
         {
-          icon: "Smartphone",
           label: "Android e iOS"
         },
         {
-          icon: "Rocket",
           label: "Publicación en las tiendas"
         },
         {
-          icon: "Palette",
           label: "Diseño UX/UI cuidado"
         },
         {
-          icon: "ShieldCheck",
           label: "Código mantenible y tuyo"
         },
         {
-          icon: "Headphones",
           label: "Soporte tras el lanzamiento"
         }
       ]
@@ -1888,32 +1806,26 @@ export const landings: Record<string, ServiceLanding> = {
       subheading: "Un solo código para Android e iOS: más rápido, más económico y más fácil de mantener.",
       cards: [
         {
-          icon: "Smartphone",
           title: "Android e iOS a la vez",
           description: "Desarrollamos con tecnología multiplataforma para llegar a ambos sistemas sin duplicar el costo."
         },
         {
-          icon: "Palette",
           title: "Diseño UX/UI profesional",
           description: "Interfaces intuitivas y atractivas que hacen que tus usuarios se queden y vuelvan."
         },
         {
-          icon: "Bot",
           title: "Funcionalidad a la medida",
           description: "Notificaciones, pagos, perfiles, geolocalización, chat... construimos lo que tu app necesita."
         },
         {
-          icon: "Database",
           title: "Backend incluido",
           description: "Tu app conectada a una base de datos sólida y un panel para que administres su contenido."
         },
         {
-          icon: "Rocket",
           title: "Publicación en las tiendas",
           description: "Nos encargamos del proceso de publicación en App Store y Google Play. Tú no peleas con la burocracia."
         },
         {
-          icon: "Headphones",
           title: "Soporte y actualizaciones",
           description: "Damos mantenimiento y actualizamos tu app conforme cambian los sistemas operativos."
         }
@@ -2108,23 +2020,18 @@ export const landings: Record<string, ServiceLanding> = {
     trustBar: {
       items: [
         {
-          icon: "Database",
           label: "Todos tus clientes en un lugar"
         },
         {
-          icon: "Workflow",
           label: "Seguimiento que no se escapa"
         },
         {
-          icon: "Smartphone",
           label: "Conectado a WhatsApp"
         },
         {
-          icon: "BarChart3",
           label: "Visibilidad de tu embudo"
         },
         {
-          icon: "ShieldCheck",
           label: "Implementación y capacitación"
         }
       ]
@@ -2134,32 +2041,26 @@ export const landings: Record<string, ServiceLanding> = {
       subheading: "No solo instalamos una herramienta: la configuramos para tu proceso de ventas y capacitamos a tu gente.",
       cards: [
         {
-          icon: "Database",
           title: "Centraliza tus clientes",
           description: "Todos tus contactos, conversaciones e historial en un solo lugar. Adiós a buscar en mil chats y notas."
         },
         {
-          icon: "Workflow",
           title: "Embudo de ventas visual",
           description: "Ve en qué etapa está cada prospecto y qué falta para cerrar. Nada se queda olvidado."
         },
         {
-          icon: "Smartphone",
           title: "Integración con WhatsApp",
           description: "Conecta tu CRM con WhatsApp para registrar y dar seguimiento a las conversaciones sin perder ninguna."
         },
         {
-          icon: "Repeat",
           title: "Recordatorios y tareas",
           description: "El CRM le recuerda a tu equipo a quién contactar y cuándo. El seguimiento deja de depender de la memoria."
         },
         {
-          icon: "BarChart3",
           title: "Reportes de ventas",
           description: "Mide cuántos leads entran, cuántos cierran y dónde se atoran. Toma decisiones con datos."
         },
         {
-          icon: "Headphones",
           title: "Capacitación incluida",
           description: "Entrenamos a tu equipo para que adopte el CRM y realmente lo use. Una herramienta sin uso no sirve."
         }
@@ -2355,23 +2256,18 @@ export const landings: Record<string, ServiceLanding> = {
     trustBar: {
       items: [
         {
-          icon: "Boxes",
           label: "Inventario en tiempo real"
         },
         {
-          icon: "Calculator",
           label: "Facturación y finanzas integradas"
         },
         {
-          icon: "Workflow",
           label: "Procesos conectados, no islas"
         },
         {
-          icon: "Smartphone",
           label: "Autoservicio: pagos, QR e IoT"
         },
         {
-          icon: "ShieldCheck",
           label: "Implementación y capacitación"
         }
       ]
@@ -2381,32 +2277,26 @@ export const landings: Record<string, ServiceLanding> = {
       subheading: "Configurado a tus procesos, con tus datos migrados y tu equipo capacitado.",
       cards: [
         {
-          icon: "Boxes",
           title: "Inventario y almacén",
           description: "Existencias en tiempo real y alertas de stock mínimo."
         },
         {
-          icon: "FileText",
           title: "Ventas y facturación",
           description: "De la cotización a la factura CFDI sin recapturar."
         },
         {
-          icon: "Truck",
           title: "Compras y proveedores",
           description: "Órdenes de compra y cuentas por pagar bajo control."
         },
         {
-          icon: "Calculator",
           title: "Finanzas y reportes",
           description: "Flujo, márgenes y cobranza de un vistazo."
         },
         {
-          icon: "Smartphone",
           title: "Tu negocio opera solo",
           description: "Reservas, pagos y accesos QR conectados a tus equipos (IoT)."
         },
         {
-          icon: "Headphones",
           title: "Capacitación incluida",
           description: "Entrenamos a tu equipo hasta que el sistema se use."
         }
@@ -2621,23 +2511,18 @@ export const landings: Record<string, ServiceLanding> = {
     trustBar: {
       items: [
         {
-          icon: "Mic",
           label: "Audio con calidad de estudio"
         },
         {
-          icon: "Video",
           label: "Video podcast multicámara"
         },
         {
-          icon: "Sparkles",
           label: "Clips para redes incluidos"
         },
         {
-          icon: "Rocket",
           label: "Distribución en plataformas"
         },
         {
-          icon: "Headphones",
           label: "Tú solo llegas a grabar"
         }
       ]
@@ -2647,32 +2532,26 @@ export const landings: Record<string, ServiceLanding> = {
       subheading: "Del concepto a la publicación, con clips listos para que tu podcast crezca en redes.",
       cards: [
         {
-          icon: "Mic",
           title: "Grabación profesional",
           description: "Audio limpio con micrófonos y tratamiento de estudio. La calidad de sonido es lo que hace que te escuchen."
         },
         {
-          icon: "Video",
           title: "Video podcast multicámara",
           description: "Grabamos con varias cámaras e iluminación para un video dinámico que destaca en YouTube y redes."
         },
         {
-          icon: "Sparkles",
           title: "Edición y postproducción",
           description: "Cortamos silencios, mejoramos audio, agregamos intro, marca y dejamos cada episodio impecable."
         },
         {
-          icon: "Video",
           title: "Clips para redes",
           description: "Convertimos cada episodio en varios clips verticales listos para Reels, TikTok y Shorts."
         },
         {
-          icon: "Rocket",
           title: "Distribución",
           description: "Publicamos tu podcast en Spotify, Apple Podcasts, YouTube y donde tu audiencia esté."
         },
         {
-          icon: "PenTool",
           title: "Estrategia y formato",
           description: "Te ayudamos a definir el concepto, la estructura y los temas para que tu podcast tenga rumbo."
         }
@@ -2867,23 +2746,18 @@ export const landings: Record<string, ServiceLanding> = {
     trustBar: {
       items: [
         {
-          icon: "Camera",
           label: "Foto y video de nivel profesional"
         },
         {
-          icon: "Video",
           label: "Spots y video institucional"
         },
         {
-          icon: "Palette",
           label: "Dirección de arte cuidada"
         },
         {
-          icon: "Sparkles",
           label: "Postproducción y color"
         },
         {
-          icon: "Rocket",
           label: "Entrega lista para usar"
         }
       ]
@@ -2893,32 +2767,26 @@ export const landings: Record<string, ServiceLanding> = {
       subheading: "Producción integral: idea, grabación y postproducción para material que de verdad vende.",
       cards: [
         {
-          icon: "Camera",
           title: "Fotografía de producto",
           description: "Imágenes que hacen que tu producto se vea irresistible para catálogo, redes y e-commerce."
         },
         {
-          icon: "Video",
           title: "Video publicitario y spots",
           description: "Comerciales y videos para campañas que captan atención y comunican tu propuesta con impacto."
         },
         {
-          icon: "Megaphone",
           title: "Video institucional",
           description: "Cuenta la historia de tu empresa con un video que genera confianza ante clientes y aliados."
         },
         {
-          icon: "Palette",
           title: "Dirección de arte",
           description: "Cuidamos set, iluminación, estilo y composición para que cada toma comunique tu marca."
         },
         {
-          icon: "Sparkles",
           title: "Postproducción premium",
           description: "Color, sonido, motion gráficos y retoque que llevan el material a nivel de marca grande."
         },
         {
-          icon: "Rocket",
           title: "Entrega lista para usar",
           description: "Recibes el material en los formatos que necesitas para redes, web, anuncios o impresos."
         }

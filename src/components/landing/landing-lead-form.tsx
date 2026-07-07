@@ -22,7 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import AnimatedDiv from "@/components/animated-div";
+import { FadeIn, SectionHeading } from "@/components/editorial";
 import { useToast } from "@/hooks/use-toast";
 import { addLead } from "@/app/leads/_actions";
 import type { LeadFormConfig } from "@/lib/landing-data";
@@ -97,8 +97,8 @@ export default function LandingLeadForm({
     });
 
     toast({
-      title: "¡Solicitud enviada!",
-      description: "Gracias por contactarnos. Te responderemos muy pronto.",
+      title: "Solicitud enviada",
+      description: "Gracias por escribirnos. Te respondemos en menos de un día hábil.",
     });
     form.reset({
       name: "",
@@ -112,142 +112,166 @@ export default function LandingLeadForm({
   }
 
   return (
-    <section id={anchorId} className="w-full py-20 md:py-28 bg-card border-t border-border scroll-mt-20">
-      <div className="container mx-auto px-4 md:px-6 max-w-2xl">
-        <AnimatedDiv className="text-center mb-10">
-          <p className="text-xs text-primary font-semibold uppercase tracking-widest mb-3">Cotiza sin compromiso</p>
-          <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tighter text-foreground mb-3">
-            {config.heading}
-          </h2>
-          {config.subheading && <p className="text-foreground/70 md:text-lg">{config.subheading}</p>}
-        </AnimatedDiv>
+    <section
+      id={anchorId}
+      className="w-full scroll-mt-20 border-t border-border bg-secondary py-24 md:py-32"
+    >
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
+        <div className="grid gap-16 lg:grid-cols-12">
+          <FadeIn className="lg:col-span-4">
+            <SectionHeading
+              eyebrow="Conversación"
+              title={config.heading}
+              description={config.subheading}
+              titleClassName="md:text-display-xs lg:text-display-xs"
+            />
+          </FadeIn>
 
-        <AnimatedDiv className="rounded-3xl border border-border/60 bg-background p-6 md:p-8">
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-              <div className="grid sm:grid-cols-2 gap-5">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Nombre</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Tu nombre" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="company"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Empresa</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Nombre de tu empresa" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-5">
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email</FormLabel>
-                      <FormControl>
-                        <Input type="email" placeholder="tu@email.com" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="phone"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Teléfono / WhatsApp</FormLabel>
-                      <FormControl>
-                        <Input type="tel" placeholder="Tu número" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-5">
-                <FormField
-                  control={form.control}
-                  name="interest"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Servicio de interés</FormLabel>
-                      <FormControl>
-                        <Input placeholder="¿Qué te interesa?" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="budget"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Presupuesto estimado</FormLabel>
-                      <Select onValueChange={field.onChange} value={field.value}>
+          <FadeIn className="lg:col-span-7 lg:col-start-6">
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                <div className="grid gap-8 sm:grid-cols-2">
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                          Nombre
+                        </FormLabel>
                         <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Selecciona un rango" />
-                          </SelectTrigger>
+                          <Input placeholder="Tu nombre" {...field} />
                         </FormControl>
-                        <SelectContent>
-                          {Object.entries(BUDGETS).map(([value, label]) => (
-                            <SelectItem key={value} value={value}>
-                              {label}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="company"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                          Empresa
+                        </FormLabel>
+                        <FormControl>
+                          <Input placeholder="Nombre de tu empresa" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
+                <div className="grid gap-8 sm:grid-cols-2">
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                          Email
+                        </FormLabel>
+                        <FormControl>
+                          <Input type="email" placeholder="tu@email.com" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                          Teléfono / WhatsApp
+                        </FormLabel>
+                        <FormControl>
+                          <Input type="tel" placeholder="Tu número" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
+                <div className="grid gap-8 sm:grid-cols-2">
+                  <FormField
+                    control={form.control}
+                    name="interest"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                          Servicio de interés
+                        </FormLabel>
+                        <FormControl>
+                          <Input placeholder="Qué necesitas" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="budget"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                          Presupuesto estimado
+                        </FormLabel>
+                        <Select onValueChange={field.onChange} value={field.value}>
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Selecciona un rango" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            {Object.entries(BUDGETS).map(([value, label]) => (
+                              <SelectItem key={value} value={value}>
+                                {label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                        Cuéntanos sobre tu proyecto
+                      </FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Contexto, objetivos y plazos"
+                          className="min-h-28 resize-none"
+                          {...field}
+                        />
+                      </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-              </div>
 
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Cuéntanos sobre tu proyecto</FormLabel>
-                    <FormControl>
-                      <Textarea placeholder="¿Cómo podemos ayudarte?" className="resize-none min-h-24" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <Button
-                type="submit"
-                size="lg"
-                className="w-full font-semibold rounded-full"
-                disabled={form.formState.isSubmitting}
-              >
-                {form.formState.isSubmitting ? "Enviando..." : "Solicitar propuesta"}
-              </Button>
-            </form>
-          </Form>
-        </AnimatedDiv>
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="h-12 rounded-none bg-foreground px-10 text-sm font-medium tracking-wide text-background hover:bg-foreground/85"
+                  disabled={form.formState.isSubmitting}
+                >
+                  {form.formState.isSubmitting ? "Enviando…" : "Solicitar propuesta"}
+                </Button>
+              </form>
+            </Form>
+          </FadeIn>
+        </div>
       </div>
     </section>
   );

@@ -10,11 +10,35 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-sans)', 'sans-serif'],
-        headline: ['var(--font-sans)', 'sans-serif'],
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'Georgia', 'serif'],
+        headline: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        mono: [
+          'var(--font-mono)',
+          'ui-monospace',
+          'SFMono-Regular',
+          'Menlo',
+          'monospace',
+        ],
         code: ['monospace'],
       },
+      fontSize: {
+        // Escala display editorial (modular ~1.25) para titulares serif
+        'display-2xl': ['9rem', {lineHeight: '0.95', letterSpacing: '-0.02em'}],
+        'display-xl': ['7.5rem', {lineHeight: '0.95', letterSpacing: '-0.02em'}],
+        'display-lg': ['6rem', {lineHeight: '1', letterSpacing: '-0.02em'}],
+        'display-md': ['4.75rem', {lineHeight: '1.05', letterSpacing: '-0.015em'}],
+        'display-sm': ['3.75rem', {lineHeight: '1.08', letterSpacing: '-0.01em'}],
+        'display-xs': ['3rem', {lineHeight: '1.12', letterSpacing: '-0.01em'}],
+      },
       colors: {
+        // Paleta editorial cruda (tokens en globals.css)
+        ivory: 'hsl(var(--ivory))',
+        paper: 'hsl(var(--paper))',
+        ink: 'hsl(var(--ink))',
+        charcoal: 'hsl(var(--charcoal))',
+        stone: 'hsl(var(--stone))',
+        bronze: 'hsl(var(--bronze))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {

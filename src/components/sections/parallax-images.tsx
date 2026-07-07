@@ -1,74 +1,41 @@
-
-"use client";
-
-import { useRef } from 'react';
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { FadeIn } from '@/components/editorial';
 
 interface ParallaxImagesProps {
   laptopImage: string;
   phoneImage: string;
 }
 
+/**
+ * Antes: parallax agresivo con sticky + transforms ligados al scroll.
+ * Ahora: composición estática de dos dispositivos con la única entrada
+ * permitida (fade + rise). Mantiene la misma interfaz de props.
+ */
 const ParallaxImages = ({ laptopImage, phoneImage }: ParallaxImagesProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start'],
-  });
-
-  // Laptop Animation
-  const laptopScale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
-  const laptopOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
-  const laptopY = useTransform(scrollYProgress, [0, 0.5], ['10vh', '0vh']);
-  
-  // Phone Animation
-  const phoneScale = useTransform(scrollYProgress, [0.1, 0.6], [0.5, 1]);
-  const phoneOpacity = useTransform(scrollYProgress, [0.1, 0.35], [0, 1]);
-  const phoneY = useTransform(scrollYProgress, [0.1, 0.6], ['0vh', '5vh']);
-  const phoneX = useTransform(scrollYProgress, [0.1, 0.6], ['-50vw', '-15vw']);
-
-
   return (
-    <div ref={containerRef} className="relative h-full w-full">
-      <div className="sticky top-1/4 h-full w-full flex items-center justify-center overflow-hidden">
-        <motion.div 
-            className="absolute w-[100vw] h-[100vh] max-w-[1300px] max-h-[800px]"
-            style={{
-                scale: laptopScale,
-                opacity: laptopOpacity,
-                y: laptopY,
-                zIndex: 10
-            }}
-        >
+    <div className="relative mx-auto w-full max-w-[1100px]">
+      <FadeIn>
+        <div className="relative aspect-[3/2] w-full">
           <Image
             src={laptopImage}
-            alt="Laptop"
+            alt="Sitio web en laptop"
             fill
-            className="object-contain"
-            data-ai-hint="website design"
+            className="object-contain saturate-[0.85]"
+            sizes="(max-width: 768px) 100vw, 1100px"
           />
-        </motion.div>
-        
-        <motion.div 
-            className="absolute w-[100vw] h-[100vh] max-w-[600px] max-h-[1100px]"
-             style={{
-                scale: phoneScale,
-                opacity: phoneOpacity,
-                y: phoneY,
-                x: phoneX,
-                zIndex: 20
-            }}
-        >
+        </div>
+      </FadeIn>
+      <FadeIn delay={0.15} className="absolute bottom-0 left-0 w-[26%]">
+        <div className="relative aspect-[9/19] w-full">
           <Image
-             src={phoneImage}
-            alt="Phone"
+            src={phoneImage}
+            alt="Sitio web en móvil"
             fill
-            className="object-contain"
-            data-ai-hint="ecommerce website"
+            className="object-contain saturate-[0.85]"
+            sizes="(max-width: 768px) 30vw, 290px"
           />
-        </motion.div>
-      </div>
+        </div>
+      </FadeIn>
     </div>
   );
 };

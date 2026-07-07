@@ -13,13 +13,13 @@ import LandingStickyCta from "./landing-sticky-cta";
 import type { ServiceLanding as ServiceLandingData } from "@/lib/landing-data";
 
 /**
- * Orquesta una landing de servicio (enfocada en conversión para Google Ads) a
- * partir de los datos. `slot` permite inyectar componentes a la medida
+ * Orquesta una landing de servicio a partir de los datos, en registro
+ * editorial sobrio. `slot` permite inyectar componentes a la medida
  * existentes (calculadora de ads, showcases, etc.) entre las features y la
  * calificación.
  *
  * Orden: hero → trust bar → features → slot → calificación → stats →
- * paquetes → proceso → testimonios → faq → formulario (+ CTA fija).
+ * alcances → proceso → testimonios → faq → formulario.
  */
 export default function ServiceLanding({
   data,
@@ -29,7 +29,7 @@ export default function ServiceLanding({
   slot?: ReactNode;
 }) {
   return (
-    <div className="bg-background pb-16 md:pb-0">
+    <div className="bg-background">
       {data.hero && <LandingHero data={data.hero} />}
       {data.trustBar && <LandingTrustBar data={data.trustBar} />}
       {data.features && <LandingFeatures data={data.features} />}

@@ -1,6 +1,6 @@
 
 import type { Metadata } from 'next';
-import { Montserrat } from 'next/font/google';
+import { Fraunces, Inter } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from "@/components/ui/toaster"
@@ -10,11 +10,18 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { AuthProvider } from '@/lib/auth-provider';
 import Script from 'next/script';
 
-const montserrat = Montserrat({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '700'],
   variable: '--font-sans',
   display: 'swap',
+});
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-display',
+  display: 'swap',
+  style: ['normal', 'italic'],
+  axes: ['opsz'],
 });
 
 const siteUrl = 'https://mawsoluciones.com';
@@ -147,7 +154,7 @@ export default function RootLayout({
         </Script>
 
       </head>
-      <body className={cn("font-sans antialiased", montserrat.variable)}>
+      <body className={cn("font-sans antialiased", inter.variable, fraunces.variable)}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -205,7 +212,7 @@ export default function RootLayout({
 
         <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
+            defaultTheme="light"
             enableSystem={false}
             disableTransitionOnChange
         >

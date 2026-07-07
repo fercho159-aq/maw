@@ -1,306 +1,341 @@
-
-
 "use client";
 
-import Image from "next/image";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import Link from "next/link";
+import React, { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Badge } from "@/components/ui/badge";
-import Link from "next/link";
-import { portfolioItems, portfolioCategories, portfolioSectors, contentPortfolioItems } from "@/lib/portfolio-data";
-import { ArrowRight, Link as LinkIcon, Send, ShoppingCart, Briefcase, Building, Film, HeartHandshake, Utensils, Construction, Car, Flower, Hospital, Newspaper, Bot, Camera } from "lucide-react";
-import AnimatedDiv from "@/components/animated-div";
-import React, { useState, Suspense } from "react";
-import TypewriterTitle from "@/components/typewriter-title";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useSearchParams } from 'next/navigation';
+} from "@/components/ui/select";
+import {
+  portfolioItems,
+  portfolioCategories,
+  portfolioSectors,
+  contentPortfolioItems,
+} from "@/lib/portfolio-data";
+import { EditorialImage, Eyebrow, FadeIn, Rule } from "@/components/editorial";
+import { cn } from "@/lib/utils";
 
+const PAGE_SIZE = 8;
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.05,
-    },
-  },
+type CaseCardProps = {
+  href: string;
+  external?: boolean;
+  imageUrl?: string;
+  imageAlt: string;
+  client: string;
+  discipline: string;
+  title: string;
+  index: number;
 };
 
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: "easeInOut",
-    },
-  },
-};
+function CaseCard({
+  href,
+  external,
+  imageUrl,
+  imageAlt,
+  client,
+  discipline,
+  title,
+  index,
+}: CaseCardProps) {
+  const inner = (
+    <>
+      {imageUrl ? (
+        <EditorialImage
+          src={imageUrl}
+          alt={imageAlt}
+          ratio="4:5"
+          sizes="(max-width: 768px) 100vw, 45vw"
+          imgClassName="transition-[filter] duration-500 group-hover:saturate-100"
+        />
+      ) : (
+        <div className="aspect-[4/5] bg-muted" />
+      )}
+      <div className="mt-6 space-y-3">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+          {client}
+          <span aria-hidden="true" className="mx-2 text-stone">
+            —
+          </span>
+          {discipline}
+        </p>
+        <h3 className="font-display text-2xl leading-snug text-foreground md:text-3xl">
+          {title}
+        </h3>
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
+          <span className="border-b border-transparent pb-0.5 transition-colors duration-300 group-hover:border-primary">
+            Ver caso
+          </span>
+        </p>
+      </div>
+    </>
+  );
 
-const categoryIcons: { [key: string]: React.ReactNode } = {
-  "E-commerce": <ShoppingCart className="w-4 h-4" />,
-  "Connective": <LinkIcon className="w-4 h-4" />,
-  "Landing": <Send className="w-4 h-4" />,
-  "Catálogo": <Briefcase className="w-4 h-4" />,
-  "Servicios": <HeartHandshake className="w-4 h-4" />,
-};
+  const className = cn("group block", index % 2 === 1 && "md:mt-24");
 
-const sectorIcons: { [key: string]: React.ReactNode } = {
-    "Servicios Profesionales": <Briefcase className="w-4 h-4" />,
-    "Inmobiliaria": <Building className="w-4 h-4" />,
-    "Eventos": <Film className="w-4 h-4" />,
-    "Actividades Recreativas": <HeartHandshake className="w-4 h-4" />,
-    "Restaurantes": <Utensils className="w-4 h-4" />,
-    "Industrial": <Construction className="w-4 h-4" />,
-    "Ropa y Moda": <ShoppingCart className="w-4 h-4" />,
-    "Florería": <Flower className="w-4 h-4" />,
-    "Salud": <Hospital className="w-4 h-4" />,
-    "Noticias": <Newspaper className="w-4 h-4" />,
-    "Catálogo": <LinkIcon className="w-4 h-4" />,
-    "Otros": <Briefcase className="w-4 h-4" />,
-    "Automotriz": <Car className="w-4 h-4" />,
-    "Software": <Bot className="w-4 h-4" />,
-    "Influencers": <Camera className="w-4 h-4" />,
-};
+  if (external) {
+    return (
+      <FadeIn className={className}>
+        <a href={href} target="_blank" rel="noopener noreferrer">
+          {inner}
+        </a>
+      </FadeIn>
+    );
+  }
 
-function PortfolioPageContent() {
+  return (
+    <FadeIn className={className}>
+      <Link href={href}>{inner}</Link>
+    </FadeIn>
+  );
+}
+
+function FilterField({
+  label,
+  value,
+  onChange,
+  options,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  options: string[];
+}) {
+  return (
+    <div className="w-full sm:max-w-xs">
+      <p className="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+        {label}
+      </p>
+      <Select value={value} onValueChange={onChange}>
+        <SelectTrigger className="w-full rounded-none border-0 border-b border-border bg-transparent px-0 focus:ring-0 focus:ring-offset-0">
+          <SelectValue placeholder={label} />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="Todos">Todos</SelectItem>
+          {options.map((option) => (
+            <SelectItem key={option} value={option}>
+              {option}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  );
+}
+
+function ViewSwitch({
+  view,
+  onChange,
+}: {
+  view: "websites" | "content";
+  onChange: (view: "websites" | "content") => void;
+}) {
+  const options: { value: "websites" | "content"; label: string }[] = [
+    { value: "websites", label: "Sitios web" },
+    { value: "content", label: "Contenido" },
+  ];
+
+  return (
+    <div className="flex gap-10">
+      {options.map((option) => (
+        <button
+          key={option.value}
+          type="button"
+          onClick={() => onChange(option.value)}
+          className={cn(
+            "border-b pb-2 font-mono text-xs uppercase tracking-[0.25em] transition-colors duration-300",
+            view === option.value
+              ? "border-primary text-foreground"
+              : "border-transparent text-muted-foreground hover:text-foreground"
+          )}
+        >
+          {option.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function EmptyState() {
+  return (
+    <div className="py-24 text-center">
+      <p className="text-base text-muted-foreground">
+        No hay casos que correspondan a los filtros seleccionados.
+      </p>
+    </div>
+  );
+}
+
+function LoadMore({ onClick }: { onClick: () => void }) {
+  return (
+    <div className="mt-20 text-center">
+      <button
+        type="button"
+        onClick={onClick}
+        className="border border-border px-10 py-4 font-mono text-xs uppercase tracking-[0.25em] text-foreground transition-colors duration-300 hover:border-foreground"
+      >
+        Ver más casos
+      </button>
+    </div>
+  );
+}
+
+function CasesPageContent() {
   const searchParams = useSearchParams();
-  const defaultTab = searchParams.get('tab') || 'websites';
-  const initialCategory = searchParams.get('category') || 'Todos';
+  const defaultTab = searchParams.get("tab") === "content" ? "content" : "websites";
+  const initialCategory = searchParams.get("category") || "Todos";
 
+  const [view, setView] = useState<"websites" | "content">(defaultTab);
   const [categoryFilter, setCategoryFilter] = useState<string>(initialCategory);
   const [sectorFilter, setSectorFilter] = useState<string>("Todos");
-  const [activeTab, setActiveTab] = useState(defaultTab === 'websites' ? 'Sitios Web' : 'Contenido');
   const [contentSectorFilter, setContentSectorFilter] = useState<string>("Todos");
+  const [websitesVisible, setWebsitesVisible] = useState<number>(PAGE_SIZE);
+  const [contentVisible, setContentVisible] = useState<number>(PAGE_SIZE);
 
-  const filteredItems = portfolioItems.filter(item => {
-    const categoryMatch = categoryFilter === "Todos" || item.category === categoryFilter;
+  const filteredItems = portfolioItems.filter((item) => {
+    const categoryMatch =
+      categoryFilter === "Todos" || item.category === categoryFilter;
     const sectorMatch = sectorFilter === "Todos" || item.sector === sectorFilter;
     return categoryMatch && sectorMatch;
   });
 
-  const allContentSectors = Array.from(new Set(contentPortfolioItems.map(item => item.sector)));
+  const allContentSectors = Array.from(
+    new Set(contentPortfolioItems.map((item) => item.sector))
+  );
 
-  const filteredContentItems = contentPortfolioItems.filter(item => {
-    const sectorMatch = contentSectorFilter === "Todos" || item.sector === contentSectorFilter;
-    return sectorMatch;
+  const filteredContentItems = contentPortfolioItems.filter((item) => {
+    return (
+      contentSectorFilter === "Todos" || item.sector === contentSectorFilter
+    );
   });
+
+  const visibleItems = filteredItems.slice(0, websitesVisible);
+  const visibleContentItems = filteredContentItems.slice(0, contentVisible);
 
   return (
     <>
-      <div className="mb-16 text-center">
-        <TypewriterTitle key={activeTab} text={activeTab} />
-      </div>
-
-      <Tabs defaultValue={defaultTab} className="w-full" onValueChange={(value) => setActiveTab(value === 'websites' ? 'Sitios Web' : 'Contenido')}>
-        <AnimatedDiv>
-          <div className="flex justify-center mb-8">
-            <TabsList>
-              <TabsTrigger value="websites">Sitios Web</TabsTrigger>
-              <TabsTrigger value="content">Contenido</TabsTrigger>
-            </TabsList>
+      <FadeIn>
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
+          <div className="md:col-span-8 lg:col-span-7">
+            <Eyebrow number="01">Trabajo</Eyebrow>
+            <h1 className="mt-6 font-display text-5xl leading-[1.05] tracking-[-0.015em] text-foreground md:text-display-md">
+              Casos
+            </h1>
+            <p className="mt-8 max-w-prose text-base leading-relaxed text-muted-foreground md:text-lg">
+              Una selección del trabajo que hemos realizado para empresas de
+              distintos sectores: plataformas digitales, comercio electrónico y
+              contenido que sostiene la presencia de cada marca.
+            </p>
           </div>
-        </AnimatedDiv>
-        
-        <TabsContent value="websites" id="websites">
-          <AnimatedDiv className="mb-12">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto text-center">
-              <div onClick={() => setCategoryFilter('E-commerce')} className="bg-card/50 p-6 rounded-lg cursor-pointer hover:bg-accent transition-colors">
-                <ShoppingCart className="w-8 h-8 mx-auto mb-3 text-primary" />
-                <h3 className="font-headline text-lg font-semibold mb-2">E-commerce</h3>
-                <p className="text-sm text-foreground/70">Plataformas robustas para vender tus productos en línea.</p>
-              </div>
-              <div onClick={() => setCategoryFilter('Landing')} className="bg-card/50 p-6 rounded-lg cursor-pointer hover:bg-accent transition-colors">
-                <Send className="w-8 h-8 mx-auto mb-3 text-primary" />
-                <h3 className="font-headline text-lg font-semibold mb-2">Landing Page</h3>
-                <p className="text-sm text-foreground/70">Páginas enfocadas en una sola acción para maximizar conversiones.</p>
-              </div>
-              <div onClick={() => setCategoryFilter('Connective')} className="bg-card/50 p-6 rounded-lg cursor-pointer hover:bg-accent transition-colors">
-                <LinkIcon className="w-8 h-8 mx-auto mb-3 text-primary" />
-                <h3 className="font-headline text-lg font-semibold mb-2">Sitio Conectivo</h3>
-                <p className="text-sm text-foreground/70">Sitios web para presentar tu marca, servicios o información.</p>
-              </div>
-            </div>
-          </AnimatedDiv>
+        </div>
+      </FadeIn>
 
-          <AnimatedDiv>
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <div className="flex-1">
-                <label className="block text-sm font-medium text-foreground/80 mb-2">Filtrar por Categoría</label>
-                <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Seleccionar Categoría" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Todos">Todos</SelectItem>
-                    {portfolioCategories.map(category => (
-                      <SelectItem key={category} value={category}>{category}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="flex-1">
-                <label className="block text-sm font-medium text-foreground/80 mb-2">Filtrar por Sector</label>
-                <Select value={sectorFilter} onValueChange={setSectorFilter}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Seleccionar Sector" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Todos">Todos</SelectItem>
-                    {portfolioSectors.map(sector => (
-                      <SelectItem key={sector} value={sector}>
-                        <div className="flex items-center gap-2">
-                            {sectorIcons[sector as keyof typeof sectorIcons] || <Briefcase className="w-4 h-4" />}
-                            <span>{sector}</span>
-                        </div>
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-          </AnimatedDiv>
+      <Rule className="my-16" />
 
-          <AnimatedDiv
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {filteredItems.map(item => (
-              <AnimatedDiv key={item.id} variants={itemVariants}>
-                <Card className="overflow-hidden group flex flex-col h-full bg-card/50 hover:bg-card border-border/50 hover:border-border transition-all duration-300 ease-in-out transform hover:-translate-y-2 shadow-sm hover:shadow-2xl">
-                  <Link href={`/portafolio/${item.id}`} className="flex flex-col flex-grow">
-                    <CardContent className="p-0">
-                      <div className="relative aspect-video bg-muted">
-                        {item.image && (
-                          <Image
-                            src={item.image.imageUrl}
-                            alt={item.title}
-                            fill
-                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                            className="object-cover transition-transform duration-300 group-hover:scale-105"
-                          />
-                        )}
-                      </div>
-                    </CardContent>
-                    <CardFooter className="p-4 flex flex-col items-start flex-grow">
-                      <Badge variant="secondary" className="mb-2">
-                        <div className="flex items-center gap-1.5">
-                            {categoryIcons[item.category as keyof typeof categoryIcons] || null}
-                            <span>{item.category}</span>
-                        </div>
-                      </Badge>
-                      <h3 className="font-headline font-semibold text-md flex-grow flex items-center gap-2">
-                         {sectorIcons[item.sector as keyof typeof sectorIcons] || <Briefcase className="w-4 h-4" />}
-                        <span>{item.title}</span>
-                      </h3>
-                      <div className="flex items-center text-sm text-primary mt-4 self-start">
-                        Ver Proyecto <ArrowRight className="w-4 h-4 ml-2" />
-                      </div>
-                    </CardFooter>
-                  </Link>
-                </Card>
-              </AnimatedDiv>
-            ))}
-          </AnimatedDiv>
-          
-          {filteredItems.length === 0 && (
-            <AnimatedDiv className="text-center py-16">
-                <p className="text-lg text-foreground/80">No se encontraron proyectos con los filtros seleccionados.</p>
-            </AnimatedDiv>
+      <FadeIn>
+        <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
+          <ViewSwitch view={view} onChange={setView} />
+          {view === "websites" ? (
+            <div className="flex flex-col gap-6 sm:flex-row sm:gap-10">
+              <FilterField
+                label="Disciplina"
+                value={categoryFilter}
+                onChange={setCategoryFilter}
+                options={portfolioCategories}
+              />
+              <FilterField
+                label="Sector"
+                value={sectorFilter}
+                onChange={setSectorFilter}
+                options={portfolioSectors}
+              />
+            </div>
+          ) : (
+            <FilterField
+              label="Sector"
+              value={contentSectorFilter}
+              onChange={setContentSectorFilter}
+              options={allContentSectors}
+            />
           )}
-        </TabsContent>
-        
-        <TabsContent value="content" id="content">
-             <AnimatedDiv>
-                <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <div className="flex-1">
-                    <label className="block text-sm font-medium text-foreground/80 mb-2">Filtrar por Sector</label>
-                    <Select value={contentSectorFilter} onValueChange={setContentSectorFilter}>
-                    <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Seleccionar Sector" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="Todos">Todos</SelectItem>
-                        {allContentSectors.map(sector => (
-                        <SelectItem key={sector} value={sector}>
-                           <div className="flex items-center gap-2">
-                            {sectorIcons[sector as keyof typeof sectorIcons] || <Briefcase className="w-4 h-4" />}
-                            <span>{sector}</span>
-                           </div>
-                        </SelectItem>
-                        ))}
-                    </SelectContent>
-                    </Select>
-                </div>
-                </div>
-            </AnimatedDiv>
-          <AnimatedDiv
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              {filteredContentItems.map(item => (
-                <AnimatedDiv key={item.id} variants={itemVariants}>
-                  <Card className="overflow-hidden group flex flex-col h-full bg-card/50 hover:bg-card border-border/50 hover:border-border transition-all duration-300 ease-in-out transform hover:-translate-y-2 shadow-sm hover:shadow-2xl">
-                    <a href={item.url} target="_blank" rel="noopener noreferrer" className="flex flex-col flex-grow">
-                      <CardContent className="p-0">
-                        <div className="relative aspect-video bg-muted">
-                          {item.image && (
-                            <Image
-                              src={item.image.imageUrl}
-                              alt={item.title}
-                              fill
-                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                              className="object-cover transition-transform duration-300 group-hover:scale-105"
-                              data-ai-hint={item.image.imageHint}
-                            />
-                          )}
-                        </div>
-                      </CardContent>
-                      <CardFooter className="p-4 flex flex-col items-start flex-grow">
-                        <Badge variant="secondary" className="mb-2">
-                          {item.sector}
-                        </Badge>
-                        <h3 className="font-headline font-semibold text-md flex-grow">
-                          {item.title}
-                        </h3>
-                        <div className="flex items-center text-sm text-primary mt-4 self-start">
-                          Ver Contenido <ArrowRight className="w-4 h-4 ml-2" />
-                        </div>
-                      </CardFooter>
-                    </a>
-                  </Card>
-                </AnimatedDiv>
-              ))}
-            </AnimatedDiv>
-            {filteredContentItems.length === 0 && (
-               <AnimatedDiv className="text-center py-16">
-                <p className="text-lg text-foreground/80">No se encontraron proyectos con los filtros seleccionados.</p>
-              </AnimatedDiv>
+        </div>
+      </FadeIn>
+
+      <div className="mt-20">
+        {view === "websites" ? (
+          <>
+            {visibleItems.length > 0 ? (
+              <div className="grid grid-cols-1 gap-x-12 gap-y-20 md:grid-cols-2 lg:gap-x-20">
+                {visibleItems.map((item, index) => (
+                  <CaseCard
+                    key={item.id}
+                    href={`/portafolio/${item.id}`}
+                    imageUrl={item.image?.imageUrl}
+                    imageAlt={item.title}
+                    client={item.client}
+                    discipline={item.category}
+                    title={item.title}
+                    index={index}
+                  />
+                ))}
+              </div>
+            ) : (
+              <EmptyState />
             )}
-        </TabsContent>
-      </Tabs>
+            {websitesVisible < filteredItems.length && (
+              <LoadMore
+                onClick={() => setWebsitesVisible((v) => v + PAGE_SIZE)}
+              />
+            )}
+          </>
+        ) : (
+          <>
+            {visibleContentItems.length > 0 ? (
+              <div className="grid grid-cols-1 gap-x-12 gap-y-20 md:grid-cols-2 lg:gap-x-20">
+                {visibleContentItems.map((item, index) => (
+                  <CaseCard
+                    key={item.id}
+                    href={item.url}
+                    external
+                    imageUrl={item.image?.imageUrl}
+                    imageAlt={item.title}
+                    client={item.client}
+                    discipline={item.type}
+                    title={item.title}
+                    index={index}
+                  />
+                ))}
+              </div>
+            ) : (
+              <EmptyState />
+            )}
+            {contentVisible < filteredContentItems.length && (
+              <LoadMore
+                onClick={() => setContentVisible((v) => v + PAGE_SIZE)}
+              />
+            )}
+          </>
+        )}
+      </div>
     </>
   );
 }
 
-
 const PortfolioPage = () => {
   return (
     <div className="bg-background">
-       <section className="py-20 md:py-28">
-        <div className="container mx-auto px-4 md:px-6">
-          <Suspense fallback={<div>Cargando...</div>}>
-            <PortfolioPageContent />
+      <section className="py-24 md:py-36">
+        <div className="mx-auto w-full max-w-[1400px] px-6 md:px-12 lg:px-16">
+          <Suspense
+            fallback={
+              <p className="text-muted-foreground">Cargando casos…</p>
+            }
+          >
+            <CasesPageContent />
           </Suspense>
         </div>
       </section>

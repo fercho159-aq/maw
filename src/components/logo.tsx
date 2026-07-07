@@ -1,14 +1,28 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
+/**
+ * Logotipo tipográfico editorial: "MAW" en serif display,
+ * "Soluciones" como metadato en mono. Sin taglines.
+ */
 const Logo = ({ className }: { className?: string }) => {
   return (
-    <Link href="/" className={cn("inline-flex flex-col items-center justify-center leading-none text-foreground", className)}>
-      <span className="text-3xl md:text-4xl font-extrabold tracking-tighter" style={{ fontFamily: "serif" }}>MAW</span>
-      <span className="text-[0.45rem] md:text-[0.55rem] tracking-[0.2em] font-medium mt-1 px-1 border-b border-t border-foreground py-[2px] mb-1 uppercase">
-        Marketing Ads Web
+    <Link
+      href="/"
+      aria-label="MAW Soluciones — inicio"
+      className={cn(
+        "group inline-flex items-baseline gap-3 text-foreground",
+        className
+      )}
+    >
+      <span className="font-display text-2xl font-medium leading-none tracking-tight md:text-[1.7rem]">
+        MAW
       </span>
-      <span className="text-[0.6rem] md:text-[0.7rem] tracking-[0.3em] font-light uppercase">
+      <span
+        aria-hidden="true"
+        className="h-px w-5 self-center bg-stone/50 transition-colors group-hover:bg-bronze"
+      />
+      <span className="font-mono text-[0.6rem] uppercase tracking-[0.3em] text-muted-foreground">
         Soluciones
       </span>
     </Link>
