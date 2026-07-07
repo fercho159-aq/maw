@@ -140,7 +140,7 @@ export default function LandingLeadForm({
                           Nombre
                         </FormLabel>
                         <FormControl>
-                          <Input placeholder="Tu nombre" {...field} />
+                          <Input placeholder="Nombre completo" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -155,7 +155,7 @@ export default function LandingLeadForm({
                           Empresa
                         </FormLabel>
                         <FormControl>
-                          <Input placeholder="Nombre de tu empresa" {...field} />
+                          <Input placeholder="Nombre de la empresa" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -173,7 +173,7 @@ export default function LandingLeadForm({
                           Email
                         </FormLabel>
                         <FormControl>
-                          <Input type="email" placeholder="tu@email.com" {...field} />
+                          <Input type="email" placeholder="nombre@empresa.com" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -188,7 +188,7 @@ export default function LandingLeadForm({
                           Teléfono / WhatsApp
                         </FormLabel>
                         <FormControl>
-                          <Input type="tel" placeholder="Tu número" {...field} />
+                          <Input type="tel" placeholder="Número con WhatsApp" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -246,7 +246,7 @@ export default function LandingLeadForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-                        Cuéntanos sobre tu proyecto
+                        Sobre el proyecto
                       </FormLabel>
                       <FormControl>
                         <Textarea
