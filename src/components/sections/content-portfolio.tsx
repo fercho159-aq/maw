@@ -15,7 +15,6 @@ import {
   Rule,
   SectionHeading,
 } from "@/components/editorial";
-import { cn } from "@/lib/utils";
 
 const PAGE_SIZE = 6;
 
@@ -80,12 +79,9 @@ export default function ContentPortfolioSection() {
         </FadeIn>
 
         {displayedContentItems.length > 0 ? (
-          <div className="mt-20 grid grid-cols-1 gap-x-12 gap-y-20 md:grid-cols-2 lg:gap-x-20">
-            {displayedContentItems.map((item, index) => (
-              <FadeIn
-                key={item.id}
-                className={cn("group", index % 2 === 1 && "md:mt-24")}
-              >
+          <div className="mt-20 grid grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-10">
+            {displayedContentItems.map((item) => (
+              <FadeIn key={item.id} className="group">
                 <a
                   href={item.url}
                   target="_blank"
@@ -96,7 +92,7 @@ export default function ContentPortfolioSection() {
                     src={item.image?.imageUrl ?? "/images/placeholder.png"}
                     alt={item.title}
                     ratio="4:5"
-                    sizes="(max-width: 768px) 100vw, 45vw"
+                    sizes="(max-width: 768px) 100vw, 30vw"
                     imgClassName="transition-[filter] duration-500 group-hover:saturate-100"
                   />
                   <div className="mt-6 space-y-3">

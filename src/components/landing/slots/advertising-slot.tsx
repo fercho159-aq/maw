@@ -17,7 +17,6 @@ import {
   Rule,
   SectionHeading,
 } from "@/components/editorial";
-import { cn } from "@/lib/utils";
 
 /**
  * Slot bespoke para la landing de publicidad/redes-sociales. Combina:
@@ -54,7 +53,7 @@ export default function AdvertisingSlot() {
 
       {/* ESTUDIO DE GRABACIÓN */}
       <section className="w-full border-t border-border bg-background">
-        <div className="mx-auto w-full max-w-[1400px] px-6 pt-24 md:px-12 md:pt-32 lg:px-16">
+        <div className="mx-auto w-full max-w-[1400px] px-6 pb-16 pt-24 md:px-12 md:pb-20 md:pt-32 lg:px-16">
           <FadeIn>
             <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
               <div className="md:col-span-7">
@@ -176,12 +175,9 @@ function ContentCasesGrid() {
         </FadeIn>
 
         {displayed.length > 0 ? (
-          <div className="mt-20 grid grid-cols-1 gap-x-12 gap-y-20 md:grid-cols-2 lg:gap-x-20">
-            {displayed.map((item, index) => (
-              <FadeIn
-                key={item.id}
-                className={cn("group", index % 2 === 1 && "md:mt-24")}
-              >
+          <div className="mt-20 grid grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-10">
+            {displayed.map((item) => (
+              <FadeIn key={item.id} className="group">
                 <a
                   href={item.url}
                   target="_blank"

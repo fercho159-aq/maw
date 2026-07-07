@@ -21,7 +21,6 @@ import {
   Rule,
   SectionHeading,
 } from "@/components/editorial";
-import { cn } from "@/lib/utils";
 
 const PAGE_SIZE = 6;
 
@@ -119,18 +118,16 @@ function WebsitePortfolioContent() {
         </FadeIn>
 
         {displayedItems.length > 0 ? (
-          <div className="mt-20 grid grid-cols-1 gap-x-12 gap-y-20 md:grid-cols-2 lg:gap-x-20">
-            {displayedItems.map((item, index) => (
-              <FadeIn
-                key={item.id}
-                className={cn("group", index % 2 === 1 && "md:mt-24")}
-              >
+          <div className="mt-20 grid grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-10">
+            {displayedItems.map((item) => (
+              <FadeIn key={item.id} className="group">
                 <Link href={`/portafolio/${item.id}`} className="block">
                   <EditorialImage
                     src={item.image?.imageUrl ?? "/images/placeholder.png"}
                     alt={item.title}
-                    ratio="4:5"
-                    sizes="(max-width: 768px) 100vw, 45vw"
+                    ratio="3:2"
+                    sizes="(max-width: 768px) 100vw, 30vw"
+                    className="border border-border"
                     imgClassName="transition-[filter] duration-500 group-hover:saturate-100"
                   />
                   <div className="mt-6 space-y-3">

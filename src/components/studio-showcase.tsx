@@ -1,165 +1,148 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+
+const SETS = [
+  {
+    id: "set-1",
+    title: "Set principal a dos cámaras",
+    mainVideo: "/videos/horiznal.mov",
+    subTitle1: "Cámara 1 — vertical",
+    subSrc1: "/videos/vertical.mov",
+    subTitle2: "Cámara 2 — vertical",
+    subSrc2: "/videos/vertical2.mov",
+    subObjectPosition: "object-[50%_25%]",
+  },
+  {
+    id: "set-2",
+    title: "Set 2 — iluminación cálida",
+    mainVideo: "/videos/set3_main.mov",
+    subTitle1: "Toma amplia cálida",
+    subSrc1: "/videos/set3_sub1.mov",
+    subTitle2: "Plano mesa",
+    subSrc2: "/videos/set3_sub2.mov",
+    subObjectPosition: "object-center",
+  },
+];
+
+function SetVideo({
+  src,
+  caption,
+  className,
+  objectPosition = "object-cover",
+}: {
+  src: string;
+  caption: string;
+  className?: string;
+  objectPosition?: string;
+}) {
+  return (
+    <figure className={className}>
+      <div className="relative aspect-video w-full overflow-hidden border border-ivory/15">
+        <video
+          key={src}
+          src={src}
+          className={`absolute inset-0 h-full w-full object-cover ${objectPosition}`}
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+      </div>
+      <figcaption className="mt-3 font-mono text-xs uppercase tracking-[0.2em] text-ivory/50">
+        {caption}
+      </figcaption>
+    </figure>
+  );
+}
 
 export default function StudioShowcase() {
   const [currentSet, setCurrentSet] = useState(0);
+  const active = SETS[currentSet];
 
-  const sets = [
-    {
-      id: "set-1",
-      title: "Set Principal a 2 Cámaras",
-      mainVideo: "/videos/horiznal.mov",
-      subTitle1: "Cámara 1 (Vertical)",
-      subSrc1: "/videos/vertical.mov",
-      subTitle2: "Cámara 2 (Vertical)",
-      subSrc2: "/videos/vertical2.mov",
-      subAspect: "aspect-video",
-      subObjectPosition: "object-[50%_25%]"
-    },
-    {
-      id: "set-2",
-      title: "Set 2 Iluminación Cálida",
-      mainVideo: "/videos/set3_main.mov",
-      subTitle1: "Toma Amplia Cálida",
-      subSrc1: "/videos/set3_sub1.mov",
-      subTitle2: "Plano Mesa",
-      subSrc2: "/videos/set3_sub2.mov",
-      subAspect: "aspect-video",
-      subObjectPosition: "object-center"
-    }
-  ];
-
-  const handlePrev = () => {
-    setCurrentSet((prev) => (prev === 0 ? sets.length - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentSet((prev) => (prev === sets.length - 1 ? 0 : prev + 1));
-  };
-
-  const active = sets[currentSet];
+  const handlePrev = () =>
+    setCurrentSet((prev) => (prev === 0 ? SETS.length - 1 : prev - 1));
+  const handleNext = () =>
+    setCurrentSet((prev) => (prev === SETS.length - 1 ? 0 : prev + 1));
 
   return (
-    <section className="w-full py-20 md:py-32 bg-zinc-950 text-white border-t border-zinc-900 border-b overflow-hidden">
-      <div className="container px-4 md:px-6 mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-4 text-white">Graba tu Podcast con <span className="text-primary">Calidad Profesional</span></h2>
-          <p className="text-zinc-400 md:text-lg max-w-2xl mx-auto">
-            Renta nuestro estudio equipado por hora o delega toda la producción a nuestro equipo de expertos en video y audio.
-          </p>
-        </div>
+    <section className="w-full bg-ink py-24 text-ivory md:py-32">
+      <div className="mx-auto w-full max-w-[1400px] px-6 md:px-12 lg:px-16">
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-12">
+          {/* Columna de texto */}
+          <div className="flex flex-col justify-between lg:col-span-4">
+            <div>
+              <p className="font-mono text-xs uppercase tracking-[0.25em] text-ivory/50">
+                Sets de grabación
+              </p>
+              <h2 className="mt-6 font-display text-4xl leading-[1.05] md:text-5xl">
+                Dos ambientaciones, un mismo estándar de producción.
+              </h2>
+              <p className="mt-8 max-w-md text-base leading-relaxed text-ivory/70">
+                Rente el estudio equipado por hora o delegue la producción
+                completa a nuestro equipo de video y audio. Cada set está
+                calibrado en iluminación, cámaras y microfonía.
+              </p>
+            </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-7xl mx-auto">
-          
-          {/* Left Column: Carousel */}
-          <div className="relative w-full">
-            <div className="overflow-hidden w-full rounded-2xl bg-zinc-900/40 border border-zinc-800/50 p-2 md:p-4 shadow-2xl relative">
-              <div className="flex flex-col gap-4">
-                {/* Top Row: Horizontal Video (Wide) */}
-                <div key={active.mainVideo} className="w-full rounded-xl overflow-hidden group border border-zinc-800 relative aspect-video animate-in fade-in zoom-in-95 duration-500">
-                  <video
-                    src={active.mainVideo}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-4">
-                     <h3 className="text-base md:text-lg font-bold text-white mb-1">{active.title}</h3>
-                  </div>
-                </div>
-
-                {/* Bottom Row: 2 Sub Videos */}
-                <div className="grid grid-cols-2 gap-4 w-full">
-                  <div key={active.subSrc1} className={`relative ${active.subAspect} rounded-xl overflow-hidden group border border-zinc-800 animate-in fade-in zoom-in-95 duration-500 delay-100`}>
-                    <video
-                      src={active.subSrc1}
-                      className={`absolute inset-0 w-full h-full object-cover ${active.subObjectPosition}`}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent flex flex-col justify-end p-3">
-                      <h3 className="text-xs md:text-sm font-bold text-white mb-1">{active.subTitle1}</h3>
-                    </div>
-                  </div>
-
-                  <div key={active.subSrc2} className={`relative ${active.subAspect} rounded-xl overflow-hidden group border border-zinc-800 animate-in fade-in zoom-in-95 duration-500 delay-200`}>
-                    <video
-                      src={active.subSrc2}
-                      className={`absolute inset-0 w-full h-full object-cover ${active.subObjectPosition}`}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent flex flex-col justify-end p-3">
-                      <h3 className="text-xs md:text-sm font-bold text-white mb-1">{active.subTitle2}</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Navigation Arrows */}
-              <button 
-                onClick={handlePrev} 
-                className="absolute left-0 lg:-left-6 top-1/2 -translate-y-1/2 bg-zinc-800/80 hover:bg-primary text-white p-2 md:p-3 rounded-full hover:scale-110 transition-all z-10 shadow-xl border border-zinc-700" 
-                aria-label="Previous Set"
+            <div className="mt-12 lg:mt-0">
+              <a
+                href="https://wa.me/5633774723?text=Hola%2C%20me%20interesa%20agendar%20una%20sesi%C3%B3n%20en%20su%20estudio%20de%20grabaci%C3%B3n."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block border border-ivory/30 px-10 py-4 font-mono text-xs uppercase tracking-[0.25em] text-ivory transition-colors duration-300 hover:border-ivory"
               >
-                <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
-              </button>
-              
-              <button 
-                onClick={handleNext} 
-                className="absolute right-0 lg:-right-6 top-1/2 -translate-y-1/2 bg-zinc-800/80 hover:bg-primary text-white p-2 md:p-3 rounded-full hover:scale-110 transition-all z-10 shadow-xl border border-zinc-700"
-                aria-label="Next Set"
-              >
-                <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
-              </button>
-
-              {/* Carousel Indicators */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                {sets.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentSet(idx)}
-                    className={`h-2 rounded-full transition-all duration-300 shadow-md border border-zinc-700 ${
-                      currentSet === idx ? "w-8 bg-primary border-primary" : "w-3 bg-zinc-800/60 hover:bg-zinc-600/80"
-                    }`}
-                  />
-                ))}
-              </div>
+                Agendar sesión de estudio
+              </a>
             </div>
           </div>
 
-          {/* Right Column: CTA Texts */}
-          <div className="text-left flex flex-col space-y-6 lg:pl-8">
-            <div className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary w-fit">
-              Elige tu atmósfera ideal
+          {/* Columna de video */}
+          <div className="lg:col-span-8">
+            <div className="flex items-baseline justify-between border-b border-ivory/15 pb-4">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-ivory/70">
+                {active.title}
+              </p>
+              <div className="flex items-baseline gap-6 font-mono text-xs uppercase tracking-[0.2em]">
+                <span className="text-ivory/50">
+                  {String(currentSet + 1).padStart(2, "0")} —{" "}
+                  {String(SETS.length).padStart(2, "0")}
+                </span>
+                <button
+                  type="button"
+                  onClick={handlePrev}
+                  aria-label="Set anterior"
+                  className="text-ivory/70 transition-colors duration-300 hover:text-ivory"
+                >
+                  Anterior
+                </button>
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  aria-label="Set siguiente"
+                  className="text-ivory/70 transition-colors duration-300 hover:text-ivory"
+                >
+                  Siguiente
+                </button>
+              </div>
             </div>
-            
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white leading-tight">
-              Cotiza tu podcast y ve <br className="hidden xl:block"/><span className="text-primary">el mejor escenario</span>
-            </h2>
-            
-            <p className="text-zinc-400 md:text-lg">
-              Desplázate por nuestras opciones de set y descubre la configuración de cámaras que mejor se adapta al estilo visual de tu proyecto.
-            </p>
 
-            <div className="pt-4">
-              <Button size="lg" className="w-full sm:w-auto h-14 bg-primary text-primary-foreground hover:opacity-90 font-bold px-8 shadow-xl hover:scale-105 transition-transform" asChild>
-                <a href="https://wa.me/5633774723?text=Hola%2C%20quiero%20grabar%20mi%20podcast%20con%20calidad%20profesional.%20He%20estado%20posponiendo%20esto%20demasiado%20tiempo%20y%20s%C3%A9%20que%20necesito%20empezar%20ya.%20%C2%BFCu%C3%A1ndo%20tienen%20disponibilidad%20en%20el%20estudio%3F">
-                  Reservar este Set vía WhatsApp
-                </a>
-              </Button>
+            <div className="mt-8 flex flex-col gap-8">
+              <SetVideo src={active.mainVideo} caption="Cámara principal" />
+              <div className="grid grid-cols-2 gap-8">
+                <SetVideo
+                  src={active.subSrc1}
+                  caption={active.subTitle1}
+                  objectPosition={active.subObjectPosition}
+                />
+                <SetVideo
+                  src={active.subSrc2}
+                  caption={active.subTitle2}
+                  objectPosition={active.subObjectPosition}
+                />
+              </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
