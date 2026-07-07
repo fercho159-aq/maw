@@ -1,14 +1,12 @@
-
 "use client";
 
 import * as React from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, CodeXml, PenSquare, Megaphone, Bot, Newspaper, Mic2, LayoutGrid, FileText, GraduationCap, Target, Wallet, BarChart4, DollarSign, Database, Users, Archive, Combine, Zap, Wrench, QrCode, MapPin } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import Logo from "./logo";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -16,381 +14,198 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
+import Logo from "./logo";
 import { ThemeToggle } from "./theme-toggle";
 
-const servicesLinks = [
+const services = [
   {
+    number: "01",
     href: "/servicios/redes-sociales",
     label: "Contenido y Ads",
-    description: "Contenido orgánico + campañas pagadas en un solo plan.",
-    icon: <Megaphone className="w-5 h-5" />
+    description: "Contenido orgánico y campañas pagadas bajo un mismo plan.",
   },
   {
+    number: "02",
     href: "/servicios/sitio-web",
-    label: "Sitios Web",
-    description: "Diseño y desarrollo de sitios web modernos.",
-    icon: <CodeXml className="w-5 h-5" />
+    label: "Sitios web",
+    description: "Diseño y desarrollo de plataformas web a la medida.",
   },
   {
+    number: "03",
     href: "/servicios/podcast",
     label: "Podcast",
     description: "Producción, edición y distribución profesional.",
-    icon: <Mic2 className="w-5 h-5" />
   },
   {
+    number: "04",
     href: "/servicios/desarrollo-a-la-medida",
-    label: "App's (Android e iOS)",
-    description: "Desarrollo de aplicaciones móviles personalizadas.",
-    icon: <Bot className="w-5 h-5" />
+    label: "Aplicaciones móviles",
+    description: "Desarrollo nativo para Android e iOS.",
   },
   {
+    number: "05",
     href: "/servicios/erp",
-    label: "ERP y Sistemas de Operación",
+    label: "ERP y sistemas de operación",
     description: "Inventario, facturación, IoT y hardware en un solo sistema.",
-    icon: <Database className="w-5 h-5" />
-  },
-];
-
-const blogLinks = [
-  {
-    href: "/blog?tab=news",
-    label: "Noticias",
-    description: "Análisis y guías sobre las últimas tendencias del marketing digital en México y el mundo.",
-    icon: <Newspaper className="w-5 h-5" />
-  },
-  {
-    href: "/blog?tab=interviews",
-    label: "Entrevistas",
-    description: "Conversaciones con líderes de opinión, emprendedores y creativos que están redefiniendo sus industrias.",
-    icon: <Mic2 className="w-5 h-5" />
-  },
-];
-
-const portfolioLinks = [
-  {
-    href: "/servicios/sitio-web#casos",
-    label: "Sitios Web",
-    description: "Explora los increíbles sitios web que hemos diseñado y desarrollado.",
-    icon: <CodeXml className="w-5 h-5" />
-  },
-  {
-    href: "/servicios/redes-sociales#casos",
-    label: "Redes Sociales",
-    description: "Casos de éxito sobre gestión de contenido e impacto digital.",
-    icon: <Users className="w-5 h-5" />
-  },
-  {
-    href: "/servicios/podcast#casos",
-    label: "Podcast",
-    description: "Nuestras mejores producciones de audio y video podcast.",
-    icon: <Mic2 className="w-5 h-5" />
-  },
-];
-
-
-
-
-
-const toolsLinks = [
-  {
-    href: "/herramientas/generador-qr",
-    label: "Generador de Códigos QR",
-    description: "Crea códigos QR para URLs, texto, WiFi, contactos y más.",
-    icon: <QrCode className="w-5 h-5" />,
-  },
-  {
-    href: "/herramientas/extractor-maps",
-    label: "Extractor de Google Maps",
-    description: "Extrae información de negocios desde búsquedas de Maps.",
-    icon: <MapPin className="w-5 h-5" />,
   },
 ];
 
 const navLinks = [
+  { href: "/portafolio", label: "Casos" },
+  { href: "/blog", label: "Blog" },
   { href: "/contacto", label: "Contacto" },
 ];
 
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a"> & { icon?: React.ReactNode }
->(({ className, title, children, icon, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="flex items-center gap-2">
-            {icon}
-            <div className="text-sm font-medium leading-none">{title}</div>
-          </div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  );
-});
-ListItem.displayName = "ListItem";
+const underlineLink =
+  "relative text-sm text-foreground/70 transition-colors hover:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-bronze after:transition-[width] after:duration-300 after:ease-out hover:after:w-full motion-reduce:after:transition-none";
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
-  React.useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 w-full transition-colors duration-300 ease-in-out",
-        isScrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-border/20 shadow-sm"
-          : "bg-transparent"
-      )}
-    >
-      <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
+    <header className="sticky top-0 z-50 w-full border-b border-stone/30 bg-background/90 backdrop-blur-md">
+      <div className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-6 md:px-10">
         <Logo />
 
-        {/* Desktop Navigation */}
-        <NavigationMenu className="hidden md:block">
-          <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Servicios</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                  {servicesLinks.map((service) => (
-                    <ListItem
-                      key={service.label}
-                      title={service.label}
-                      href={service.href}
-                      icon={service.icon}
-                    >
-                      {service.description}
-                    </ListItem>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-
-
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Casos de Éxito</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px]">
-                  {portfolioLinks.map((link) => (
-                    <ListItem
-                      key={link.label}
-                      title={link.label}
-                      href={link.href}
-                      icon={link.icon}
-                    >
-                      {link.description}
-                    </ListItem>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-
-
-
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Blog</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px]">
-                  {blogLinks.map((link) => (
-                    <ListItem
-                      key={link.label}
-                      title={link.label}
-                      href={link.href}
-                      icon={link.icon}
-                    >
-                      {link.description}
-                    </ListItem>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-
-
-
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Herramientas</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px]">
-                  {toolsLinks.map((link) => (
-                    <ListItem
-                      key={link.label}
-                      title={link.label}
-                      href={link.href}
-                      icon={link.icon}
-                    >
-                      {link.description}
-                    </ListItem>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-
-            {navLinks.map((link) => (
-              <NavigationMenuItem key={link.href}>
-                <NavigationMenuLink asChild>
-                  <Link href={link.href} className={navigationMenuTriggerStyle()}>
-                    {link.label}
-                  </Link>
-                </NavigationMenuLink>
+        {/* Navegación de escritorio */}
+        <div className="hidden items-center gap-10 md:flex">
+          <NavigationMenu>
+            <NavigationMenuList className="gap-10">
+              <NavigationMenuItem>
+                <NavigationMenuTrigger
+                  className={cn(
+                    "h-auto rounded-none bg-transparent p-0 text-sm font-normal text-foreground/70 hover:bg-transparent hover:text-foreground focus:bg-transparent focus:text-foreground data-[active]:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-foreground"
+                  )}
+                >
+                  Servicios
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="w-[480px] p-8">
+                    <p className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
+                      Servicios
+                    </p>
+                    <div className="mt-4 h-px w-full bg-stone/30" />
+                    <ul className="divide-y divide-stone/20">
+                      {services.map((service) => (
+                        <li key={service.href}>
+                          <NavigationMenuLink asChild>
+                            <Link
+                              href={service.href}
+                              className="group flex items-baseline gap-4 py-4 outline-none"
+                            >
+                              <span className="font-mono text-xs text-bronze">
+                                {service.number}
+                              </span>
+                              <span className="flex-1">
+                                <span className="block font-display text-lg leading-snug text-foreground transition-colors group-hover:text-bronze group-focus-visible:text-bronze">
+                                  {service.label}
+                                </span>
+                                <span className="mt-1 block text-sm leading-relaxed text-muted-foreground">
+                                  {service.description}
+                                </span>
+                              </span>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </NavigationMenuContent>
               </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
 
-        <div className="hidden md:flex items-center gap-2">
-          <ThemeToggle />
+              {navLinks.map((link) => (
+                <NavigationMenuItem key={link.href}>
+                  <NavigationMenuLink asChild>
+                    <Link href={link.href} className={underlineLink}>
+                      {link.label}
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
+
+          <div className="flex items-center gap-4">
+            <Link
+              href="/contacto"
+              className="inline-flex items-center border border-foreground/70 px-5 py-2.5 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-foreground transition-colors hover:bg-foreground hover:text-background"
+            >
+              Agendar conversación
+            </Link>
+            <ThemeToggle />
+          </div>
         </div>
 
-        {/* Mobile Navigation */}
-        <div className="md:hidden flex items-center gap-2">
+        {/* Navegación móvil */}
+        <div className="flex items-center gap-2 md:hidden">
           <ThemeToggle />
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6" />
+                <Menu className="h-5 w-5" />
                 <span className="sr-only">Abrir menú</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] bg-background">
+            <SheetContent
+              side="right"
+              className="w-[320px] border-l border-stone/30 bg-background"
+            >
               <div className="flex h-full flex-col">
-                <div className="flex items-center justify-between border-b pb-4">
+                <div className="flex items-center justify-between border-b border-stone/30 pb-6">
                   <Logo />
                   <SheetTrigger asChild>
                     <Button variant="ghost" size="icon">
-                      <X className="h-6 w-6" />
+                      <X className="h-5 w-5" />
                       <span className="sr-only">Cerrar menú</span>
                     </Button>
                   </SheetTrigger>
                 </div>
-                <nav className="mt-8 flex-1 flex-col gap-2 overflow-y-auto">
-                  <Accordion type="single" collapsible className="w-full">
-                    <AccordionItem value="item-1" className="border-b-0">
-                      <AccordionTrigger className="text-lg font-medium py-2 hover:no-underline">
-                        Servicios
-                      </AccordionTrigger>
-                      <AccordionContent className="pl-4">
-                        <div className="flex flex-col gap-4 pt-2">
-                          {servicesLinks.map((link) => (
-                            <Link
-                              key={link.href}
-                              href={link.href}
-                              className="text-base font-medium text-foreground/80"
-                              onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                              {link.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </AccordionContent>
-                    </AccordionItem>
 
-                    <AccordionItem value="item-2" className="border-b-0">
-                      <AccordionTrigger className="text-lg font-medium py-2 hover:no-underline">
-                        Casos de Éxito
-                      </AccordionTrigger>
-                      <AccordionContent className="pl-4">
-                        <div className="flex flex-col gap-4 pt-2">
-                          {portfolioLinks.map((link) => (
-                            <Link
-                              key={link.href}
-                              href={link.href}
-                              className="text-base font-medium text-foreground/80"
-                              onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                              {link.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </AccordionContent>
-                    </AccordionItem>
+                <nav className="mt-10 flex-1 overflow-y-auto">
+                  <div className="flex flex-col gap-5">
+                    {navLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="font-display text-2xl leading-none text-foreground"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
 
-                    <AccordionItem value="item-3" className="border-b-0">
-                      <AccordionTrigger className="text-lg font-medium py-2 hover:no-underline">
-                        Blog
-                      </AccordionTrigger>
-                      <AccordionContent className="pl-4">
-                        <div className="flex flex-col gap-4 pt-2">
-                          {blogLinks.map((link) => (
-                            <Link
-                              key={link.href}
-                              href={link.href}
-                              className="text-base font-medium text-foreground/80"
-                              onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                              {link.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </AccordionContent>
-                    </AccordionItem>
+                  <div className="mt-10 border-t border-stone/30 pt-8">
+                    <p className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
+                      Servicios
+                    </p>
+                    <div className="mt-5 flex flex-col gap-4">
+                      {services.map((service) => (
+                        <Link
+                          key={service.href}
+                          href={service.href}
+                          className="flex items-baseline gap-3 text-sm text-foreground/80"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          <span className="font-mono text-[0.65rem] text-bronze">
+                            {service.number}
+                          </span>
+                          {service.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </nav>
 
-                    <AccordionItem value="item-7" className="border-b-0">
-                      <AccordionTrigger className="text-lg font-medium py-2 hover:no-underline">
-                        Herramientas
-                      </AccordionTrigger>
-                      <AccordionContent className="pl-4">
-                        <div className="flex flex-col gap-4 pt-2">
-                          {toolsLinks.map((link) => (
-                            <Link
-                              key={link.href}
-                              href={link.href}
-                              className="text-base font-medium text-foreground/80"
-                              onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                              {link.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </AccordionContent>
-                    </AccordionItem>
-                  </Accordion>
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className="block text-lg font-medium px-4 py-2"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
+                <div className="mt-auto border-t border-stone/30 pt-6">
                   <Link
-                    href="/equipo"
-                    className="block text-lg font-medium px-4 py-2"
+                    href="/contacto"
+                    className="inline-flex w-full items-center justify-center border border-foreground/70 px-5 py-3 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-foreground transition-colors hover:bg-foreground hover:text-background"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    Equipo
+                    Agendar conversación
                   </Link>
-                </nav>
-                <div className="mt-auto pt-4">
                 </div>
               </div>
             </SheetContent>
@@ -402,4 +217,3 @@ const Header = () => {
 };
 
 export default Header;
-

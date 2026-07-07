@@ -1,32 +1,41 @@
-import AnimatedDiv from "@/components/animated-div";
-import AnimatedCounter from "@/components/animated-counter";
+import { FadeIn, Rule } from "@/components/editorial";
 import type { ServiceLanding } from "@/lib/landing-data";
 
 type StatsData = NonNullable<ServiceLanding["stats"]>;
 
+/**
+ * Cifras del servicio en registro editorial: valor en serif display y
+ * etiqueta en mono, separadas por reglas. Sin contadores animados ni brillos.
+ */
 export default function LandingStats({ data }: { data: StatsData }) {
   return (
-    <section className="relative w-full py-16 md:py-24 bg-card border-y border-border/50 overflow-hidden">
-      <div className="pointer-events-none absolute -bottom-32 left-1/2 -translate-x-1/2 h-72 w-[700px] rounded-full bg-primary/10 blur-[130px]" />
-      <div className="relative container mx-auto px-4 md:px-6">
+    <section className="w-full border-t border-border bg-background py-24 md:py-32">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
         {data.heading && (
-          <AnimatedDiv className="text-center mb-12">
-            <h2 className="font-headline text-2xl md:text-4xl font-bold tracking-tighter text-foreground">
+          <FadeIn className="mb-14 max-w-3xl">
+            <h2 className="font-display text-3xl leading-[1.1] tracking-[-0.01em] text-foreground md:text-display-xs">
               {data.heading}
             </h2>
-          </AnimatedDiv>
+          </FadeIn>
         )}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 max-w-5xl mx-auto lg:divide-x lg:divide-border/60">
-          {data.items.map((stat, i) => (
-            <AnimatedDiv key={stat.label} delay={i * 80} variant="scale" className="text-center px-3 lg:px-6">
-              <AnimatedCounter
-                value={stat.value}
-                className="block font-headline text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-tight text-primary"
-              />
-              <p className="text-sm md:text-base text-foreground/60 mt-2">{stat.label}</p>
-            </AnimatedDiv>
-          ))}
-        </div>
+        <FadeIn>
+          <Rule />
+          <div className="grid grid-cols-2 lg:grid-cols-4">
+            {data.items.map((stat) => (
+              <div
+                key={stat.label}
+                className="border-b border-border px-1 py-10 md:px-2"
+              >
+                <span className="block font-display text-4xl leading-none tracking-[-0.01em] text-foreground md:text-5xl">
+                  {stat.value}
+                </span>
+                <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </FadeIn>
       </div>
     </section>
   );

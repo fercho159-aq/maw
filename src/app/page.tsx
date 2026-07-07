@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import dynamic from "next/dynamic";
 
 export const metadata: Metadata = {
-  title: 'MAW Soluciones | Agencia de Marketing Digital, Desarrollo Web y Apps en México',
-  description: 'MAW Soluciones: la mejor agencia de marketing digital, desarrollo web y apps en México. Estrategias creativas, tecnología de vanguardia y resultados comprobados para pymes y empresas.',
+  title: 'MAW Soluciones — Consultora digital en Ciudad de México',
+  description: 'Estrategia, desarrollo de software y producción de contenido para empresas que exigen método y resultados medibles.',
   keywords: [
     'agencia de marketing digital México',
-    'mejor agencia digital México',
+    'consultora digital México',
     'desarrollo web profesional México',
     'desarrollo de aplicaciones México',
     'diseño web México',
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://mawsoluciones.com' },
   openGraph: {
     url: 'https://mawsoluciones.com',
-    title: 'MAW Soluciones | Mejor Agencia de Marketing Digital y Desarrollo Web en México',
-    description: 'Impulsamos tu marca con marketing digital, desarrollo web de vanguardia y apps a medida. Agencia líder en México con resultados comprobados.',
+    title: 'MAW Soluciones — Consultora digital en Ciudad de México',
+    description: 'Estrategia, desarrollo de software y producción de contenido para empresas que exigen método y resultados medibles.',
   },
 };
 import Header from "@/components/header";
@@ -31,13 +31,19 @@ import Footer from "@/components/footer";
 const AboutSection = dynamic(() => import("@/components/sections/about"), {
   ssr: true,
 });
-const BlogSection = dynamic(() => import("@/components/sections/blog"), {
+const Services = dynamic(() => import("@/components/sections/services"), {
+  ssr: true,
+});
+const Testimonials = dynamic(() => import("@/components/sections/testimonials"), {
   ssr: true,
 });
 const MediaMentions = dynamic(() => import("@/components/sections/media-mentions"), {
   ssr: true,
 });
-const Testimonials = dynamic(() => import("@/components/sections/testimonials"), {
+const BlogSection = dynamic(() => import("@/components/sections/blog"), {
+  ssr: true,
+});
+const Contact = dynamic(() => import("@/components/sections/contact"), {
   ssr: true,
 });
 
@@ -48,9 +54,11 @@ export default function Home() {
       <main className="flex-grow">
         <Hero />
         <AboutSection />
+        <Services />
+        <Testimonials />
         <MediaMentions />
         <BlogSection />
-        <Testimonials />
+        <Contact />
       </main>
       <Footer />
     </div>

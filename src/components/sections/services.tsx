@@ -1,141 +1,87 @@
-"use client";
+import Link from 'next/link';
+import { FadeIn, SectionHeading } from '@/components/editorial';
 
-import React from 'react';
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
-import AnimatedDiv from "../animated-div";
-import { Button } from '../ui/button';
-
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-
-const newServicesData = [
+const services = [
   {
-    title: "Redes Sociales",
-    description: "Creamos estrategias de contenido dinámicas que enamoran a tu audiencia y construyen una comunidad fiel alrededor de tu marca.",
-    href: "/servicios/redes-sociales",
-    videos: [
-      { src: "https://www.instagram.com/p/DXKyGT3k8Ei/embed" }
-    ]
+    number: '01',
+    title: 'Estrategia y contenido',
+    description:
+      'Dirección de canales, calendario editorial y piezas producidas en estudio propio. Contenido con criterio, no volumen.',
+    href: '/servicios/redes-sociales',
   },
   {
-    title: "Sitios Web",
-    description: "Diseñamos y desarrollamos páginas rápidas, hermosas y optimizadas para convertir visitantes en clientes reales.",
-    href: "/servicios/sitio-web",
-    videos: [
-      { src: "https://www.youtube.com/embed/eoFJnh7jFkA?autoplay=0&muted=1&loop=1" }
-    ]
+    number: '02',
+    title: 'Desarrollo web y aplicaciones',
+    description:
+      'Sitios, plataformas y aplicaciones móviles a la medida. Arquitectura sólida, rendimiento medible y mantenimiento continuo.',
+    href: '/servicios/desarrollo-web',
   },
   {
-    title: "App's (Android e iOS)",
-    description: "Llevamos tu negocio directamente al bolsillo de tus clientes con aplicaciones móviles nativas o híbridas de primer nivel.",
-    href: "/servicios/desarrollo-a-la-medida",
-    videos: [
-      { src: "https://www.instagram.com/p/DWm0PTGAuMd/embed" }
-    ]
+    number: '03',
+    title: 'ERP y automatización',
+    description:
+      'Sistemas de operación que ordenan inventario, ventas y administración. Menos hojas de cálculo, más control del negocio.',
+    href: '/servicios/erp',
   },
   {
-    title: "Podcast",
-    description: "Eleva tu voz como autoridad en la industria con nuestro servicio de producción y distribución de podcasts de alta calidad.",
-    href: "/servicios/podcast",
-    videos: [
-      { src: "https://www.instagram.com/p/DXKjS14E0Nn/embed" }
-    ]
+    number: '04',
+    title: 'Producción audiovisual',
+    description:
+      'Podcast, video corporativo y fotografía en set profesional. Tres cámaras, audio de estudio y posproducción propia.',
+    href: '/servicios/produccion-foto-video',
   },
-  {
-    title: "Ads",
-    description: "Maximiza tu inversión con campañas publicitarias hipersegmentadas en redes sociales y buscadores, impulsadas por datos.",
-    href: "/servicios/ads",
-    videos: [
-      { src: "https://www.youtube.com/embed/-y87ZmqVozI?autoplay=0&muted=1&loop=1" }
-    ]
-  }
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      ease: "easeOut"
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0, scale: 0.95 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    scale: 1,
-    transition: {
-        duration: 0.5,
-        ease: [0.25, 1, 0.5, 1]
-    }
-  },
-};
-
+/**
+ * Servicios como lista editorial numerada con reglas horizontales.
+ * Sin cards, sin carruseles, sin embeds.
+ */
 const Services = () => {
   return (
-    <>
-      <section id="services" className="py-10 md:py-16 bg-card overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6">
-          <AnimatedDiv className="max-w-3xl mx-auto text-center mb-16 relative group cursor-default">
-            <h2 className="font-headline text-4xl sm:text-5xl font-bold tracking-tight mb-4 transition-colors duration-500 hover:text-[#ffe28a] hover:drop-shadow-[0_0_20px_rgba(255,215,0,0.6)]">Servicios</h2>
-            <p className="mt-4 text-xl text-foreground/80">
-              Ofrecemos una gama completa de soluciones de marketing digital diseñadas para llevar tu negocio al siguiente nivel mediante contenido de impacto.
-            </p>
-          </AnimatedDiv>
-          
-          <div className="max-w-6xl mx-auto relative px-8 md:px-16">
-            <Carousel opts={{ align: "center", loop: true }} className="w-full">
-              <CarouselContent>
-                {newServicesData.map((service, index) => {
-                  const isEven = index % 2 === 0;
-                  return (
-                    <CarouselItem key={index} className="basis-full">
-                      <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 items-center p-6 md:p-12 mb-8 bg-background/50 rounded-3xl border border-border/50 shadow-sm h-full`}>
-                        
-                        {/* Text Content */}
-                        <div className="flex-1 space-y-6 flex flex-col justify-center">
-                          <AnimatedDiv variants={containerVariants}>
-                            <h3 className="font-headline text-3xl font-bold">{service.title}</h3>
-                            <p className="text-lg text-foreground/70 mt-4 leading-relaxed">{service.description}</p>
-                            <Button className="mt-6" asChild size="lg">
-                              <Link href={service.href}>Saber más <ArrowRight className="w-4 h-4 ml-2" /></Link>
-                            </Button>
-                          </AnimatedDiv>
-                        </div>
-
-                        {/* Video Embeds */}
-                        <div className="flex-1 flex justify-center w-full">
-                          {service.videos.map((vid, vIndex) => (
-                            <AnimatedDiv key={vIndex} className="relative aspect-[9/16] w-full max-w-[280px] rounded-2xl overflow-hidden shadow-2xl border border-border/50 bg-black/5" variants={itemVariants}>
-                              <iframe
-                                className={vid.src.includes('instagram') ? "absolute top-[-68px] left-[-2%] w-[104%] h-[calc(100%+136px)]" : "absolute top-0 left-0 w-full h-full"}
-                                src={vid.src.includes('instagram') ? `${vid.src}/?hidecaption=true` : vid.src}
-                                title={`${service.title} video`}
-                                frameBorder="0"
-                                loading="lazy"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                              ></iframe>
-                            </AnimatedDiv>
-                          ))}
-                        </div>
-
-                      </div>
-                    </CarouselItem>
-                  );
-                })}
-              </CarouselContent>
-              <CarouselPrevious className="left-0 xl:-left-12 bg-primary/10 hover:bg-primary text-primary hover:text-white border-primary/20 hover:scale-110 transition-all w-12 h-12" />
-              <CarouselNext className="right-0 xl:-right-12 bg-primary/10 hover:bg-primary text-primary hover:text-white border-primary/20 hover:scale-110 transition-all w-12 h-12" />
-            </Carousel>
+    <section id="servicios" className="bg-secondary py-32 md:py-40">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
+        <div className="grid grid-cols-12 gap-x-6">
+          <div className="col-span-12 lg:col-span-5">
+            <FadeIn>
+              <SectionHeading
+                number="02"
+                eyebrow="Servicios"
+                title="Cuatro disciplinas, un mismo estándar."
+                description="Cada servicio se contrata con alcance y entregables definidos. Sin paquetes genéricos."
+              />
+            </FadeIn>
           </div>
         </div>
-      </section>
-    </>
+        <div className="mt-20">
+          {services.map((service, index) => (
+            <FadeIn key={service.number} delay={index * 0.05}>
+              <Link
+                href={service.href}
+                className="group block border-t border-stone/40 py-10 transition-colors duration-300 hover:bg-background/60 last:border-b last:border-stone/40"
+              >
+                <div className="grid grid-cols-12 items-baseline gap-x-6 gap-y-4 px-2 md:px-4">
+                  <span className="col-span-12 font-mono text-xs tracking-[0.2em] text-primary md:col-span-1">
+                    {service.number}
+                  </span>
+                  <h3 className="col-span-12 font-display text-3xl leading-tight text-foreground md:col-span-5 md:text-4xl">
+                    {service.title}
+                  </h3>
+                  <p className="col-span-12 max-w-prose text-base leading-relaxed text-muted-foreground md:col-span-5">
+                    {service.description}
+                  </p>
+                  <span
+                    aria-hidden="true"
+                    className="col-span-12 hidden text-right font-mono text-sm text-stone transition-all duration-300 group-hover:translate-x-1 group-hover:text-primary md:col-span-1 md:block"
+                  >
+                    →
+                  </span>
+                </div>
+              </Link>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 

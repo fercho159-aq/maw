@@ -1,90 +1,86 @@
-
 "use client";
 
-import Image from "next/image";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { portfolioItems } from "@/lib/portfolio-data";
-import { ArrowRight } from "lucide-react";
-import AnimatedDiv from "../animated-div";
-import { Button } from "../ui/button";
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: "easeInOut",
-    },
-  },
-};
+import {
+  EditorialImage,
+  FadeIn,
+  Rule,
+  SectionHeading,
+} from "@/components/editorial";
+import { cn } from "@/lib/utils";
 
 const Portfolio = () => {
-    const featuredItems = portfolioItems.slice(0, 3);
-  return (
-    <section id="portfolio" className="py-20 md:py-28 bg-card">
-      <div className="container mx-auto px-4 md:px-6">
-        <AnimatedDiv className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="font-headline text-3xl sm:text-4xl font-bold">Nuestros Clientes</h2>
-          <p className="mt-4 text-lg text-foreground/80">
-            Explora algunos de nuestros proyectos más exitosos y ve el impacto de nuestro trabajo.
-          </p>
-        </AnimatedDiv>
+  const featuredItems = portfolioItems.slice(0, 3);
 
-        <AnimatedDiv 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-            variants={containerVariants}
-        >
-            {featuredItems.map(item => (
-                <AnimatedDiv key={item.id} variants={itemVariants}>
-                    <Card className="overflow-hidden group flex flex-col h-full bg-card/50 hover:bg-card border-border/50 hover:border-border transition-all duration-300 ease-in-out transform hover:-translate-y-2 shadow-sm hover:shadow-2xl">
-                    <Link href={`/portafolio/${item.id}`} className="flex flex-col flex-grow">
-                        <CardContent className="p-0">
-                        <div className="relative aspect-video">
-                            {item.image && (
-                            <Image
-                                src={item.image.imageUrl}
-                                alt={item.title}
-                                fill
-                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                data-ai-hint={item.image.imageHint}
-                            />
-                            )}
-                        </div>
-                        </CardContent>
-                        <CardFooter className="p-4 flex flex-col items-start flex-grow">
-                        <Badge variant="secondary" className="mb-2">{item.category}</Badge>
-                        <h3 className="font-headline font-semibold text-lg flex-grow">{item.title}</h3>
-                        <div className="flex items-center text-sm text-primary mt-4 self-start">
-                            Ver Proyecto <ArrowRight className="w-4 h-4 ml-2" />
-                        </div>
-                        </CardFooter>
-                    </Link>
-                    </Card>
-                </AnimatedDiv>
-                ))}
-        </AnimatedDiv>
-        <AnimatedDiv className="text-center mt-16">
-            <Button asChild size="lg">
-                <Link href="/portafolio">
-                    Ver todos los proyectos
-                    <ArrowRight className="w-4 h-4 ml-2"/>
-                </Link>
-            </Button>
-        </AnimatedDiv>
+  return (
+    <section id="portfolio" className="bg-muted py-24 md:py-32">
+      <div className="mx-auto w-full max-w-[1400px] px-6 md:px-12 lg:px-16">
+        <FadeIn>
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
+            <div className="md:col-span-7">
+              <SectionHeading
+                eyebrow="Casos"
+                title="Trabajo seleccionado"
+                description="Una muestra de los proyectos que hemos construido para empresas de distintos sectores. Cada caso documenta el contexto, la intervención y el resultado."
+              />
+            </div>
+          </div>
+        </FadeIn>
+
+        <Rule className="my-16" />
+
+        <div className="grid grid-cols-1 gap-x-12 gap-y-20 md:grid-cols-12">
+          {featuredItems.map((item, index) => (
+            <FadeIn
+              key={item.id}
+              delay={index * 0.1}
+              className={cn(
+                "md:col-span-5",
+                index === 1 && "md:col-start-8 md:mt-32",
+                index === 2 && "md:col-start-3"
+              )}
+            >
+              <Link href={`/portafolio/${item.id}`} className="group block">
+                <EditorialImage
+                  src={item.image?.imageUrl ?? "/images/placeholder.png"}
+                  alt={item.title}
+                  ratio="4:5"
+                  sizes="(max-width: 768px) 100vw, 42vw"
+                  imgClassName="transition-[filter] duration-500 group-hover:saturate-100"
+                />
+                <div className="mt-6 space-y-3">
+                  <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                    {item.client}
+                    <span aria-hidden="true" className="mx-2 text-stone">
+                      —
+                    </span>
+                    {item.category}
+                  </p>
+                  <h3 className="font-display text-2xl leading-snug text-foreground md:text-3xl">
+                    {item.title}
+                  </h3>
+                  <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
+                    <span className="border-b border-transparent pb-0.5 transition-colors duration-300 group-hover:border-primary">
+                      Ver caso
+                    </span>
+                  </p>
+                </div>
+              </Link>
+            </FadeIn>
+          ))}
+        </div>
+
+        <FadeIn className="mt-24">
+          <Link
+            href="/portafolio"
+            className="font-mono text-xs uppercase tracking-[0.25em] text-foreground"
+          >
+            <span className="border-b border-border pb-1 transition-colors duration-300 hover:border-foreground">
+              Ver todos los casos
+            </span>
+          </Link>
+        </FadeIn>
       </div>
     </section>
   );

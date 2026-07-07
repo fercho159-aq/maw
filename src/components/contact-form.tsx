@@ -1,4 +1,3 @@
-
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -27,15 +26,18 @@ const formSchema = z.object({
     message: "El nombre de la empresa debe tener al menos 2 caracteres.",
   }),
   email: z.string().email({
-    message: "Por favor, introduce un email válido.",
-  }),
-  phone: z.string().min(10, {
-    message: "Por favor, introduce un número de teléfono válido.",
+    message: "Introduzca un correo válido.",
   }),
   message: z.string().min(10, {
     message: "El mensaje debe tener al menos 10 caracteres.",
   }),
 });
+
+const inputClassName =
+  "h-12 rounded-none border-0 border-b border-border bg-transparent px-0 text-base text-foreground placeholder:text-muted-foreground/60 focus-visible:border-foreground focus-visible:ring-0 focus-visible:ring-offset-0";
+
+const labelClassName =
+  "font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground";
 
 export function ContactForm() {
   const { toast } = useToast();
@@ -46,79 +48,77 @@ export function ContactForm() {
       name: "",
       company: "",
       email: "",
-      phone: "",
       message: "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    
     await addLead({
       name: values.name,
       company: values.company,
       email: values.email,
-      phone: values.phone,
       notas: values.message,
       source: 'Formulario de Contacto'
     });
 
     toast({
-      title: "¡Mensaje Enviado!",
-      description: "Gracias por contactarnos. Te responderemos pronto.",
+      title: "Mensaje enviado",
+      description: "Gracias por escribirnos. Le responderemos en breve.",
     });
     form.reset();
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Nombre</FormLabel>
-              <FormControl>
-                <Input placeholder="Tu nombre" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="company"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Empresa</FormLabel>
-              <FormControl>
-                <Input placeholder="Nombre de tu empresa" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className={labelClassName}>Nombre</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Su nombre"
+                    className={inputClassName}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="company"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className={labelClassName}>Empresa</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Nombre de la empresa"
+                    className={inputClassName}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
         <FormField
           control={form.control}
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel className={labelClassName}>Correo</FormLabel>
               <FormControl>
-                <Input placeholder="tu@email.com" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="phone"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Teléfono</FormLabel>
-              <FormControl>
-                <Input type="tel" placeholder="Tu número de teléfono" {...field} />
+                <Input
+                  placeholder="nombre@empresa.com"
+                  className={inputClassName}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -129,11 +129,11 @@ export function ContactForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Mensaje</FormLabel>
+              <FormLabel className={labelClassName}>Mensaje</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Cuéntanos cómo podemos ayudarte"
-                  className="resize-none"
+                  placeholder="Cuéntenos sobre su operación y qué necesita resolver"
+                  className="min-h-[140px] resize-none rounded-none border-0 border-b border-border bg-transparent px-0 text-base text-foreground placeholder:text-muted-foreground/60 focus-visible:border-foreground focus-visible:ring-0 focus-visible:ring-offset-0"
                   {...field}
                 />
               </FormControl>
@@ -141,7 +141,12 @@ export function ContactForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full">Enviar Mensaje</Button>
+        <Button
+          type="submit"
+          className="h-auto rounded-none px-10 py-4 font-mono text-xs uppercase tracking-[0.25em]"
+        >
+          Enviar mensaje
+        </Button>
       </form>
     </Form>
   );

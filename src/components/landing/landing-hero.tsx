@@ -1,103 +1,105 @@
-import { ArrowRight, ChevronDown, FileText } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import WhatsappIcon from "@/components/icons/whatsapp-icon";
-import AnimatedDiv from "@/components/animated-div";
+import { Eyebrow, FadeIn, EditorialImage } from "@/components/editorial";
 import type { LandingHero as LandingHeroData } from "@/lib/landing-data";
 
+/**
+ * Hero editorial de landing de servicio: eyebrow mono con el nombre del
+ * servicio, titular en serif display y CTAs sobrios. La media (si existe)
+ * se muestra como pieza editorial bajo el texto, desaturada.
+ */
 export default function LandingHero({ data }: { data: LandingHeroData }) {
-  const isWhatsapp = data.secondaryCta?.href.includes("wa.me");
-  const hasVideo = data.media?.type === "video";
+  const isExternal = (href: string) => href.startsWith("http");
 
   return (
-    <section className="relative w-full min-h-[68vh] flex items-center justify-center overflow-hidden bg-background text-foreground border-b border-border/50">
-      {hasVideo && (
-        <video
-          src={data.media!.src}
-          poster={data.media!.poster}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="maw-kenburns absolute inset-0 w-full h-full object-cover opacity-50"
-        />
-      )}
-      {/* Con video, oscurecemos para legibilidad; sin video el hero toma el tema. */}
-      {hasVideo && <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-background" />}
-      {/* Resplandor de marca para dar atmósfera */}
-      <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-[420px] w-[680px] rounded-full bg-primary/15 blur-[120px] opacity-70" />
+    <section className="w-full border-b border-border bg-background text-foreground">
+      <div className="mx-auto max-w-[1400px] px-6 pb-24 pt-36 md:px-12 md:pb-32 md:pt-44 lg:px-16">
+        <FadeIn>
+          <Eyebrow>{data.eyebrow}</Eyebrow>
+        </FadeIn>
 
-      <AnimatedDiv className="z-10 container mx-auto px-4 md:px-6 py-24 flex flex-col items-center text-center max-w-4xl">
-        <div className="inline-flex items-center gap-2 rounded-full border border-border bg-foreground/5 px-4 py-1.5 text-xs md:text-sm font-medium text-foreground/70 mb-7 backdrop-blur-md">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-          </span>
-          {data.eyebrow}
-        </div>
-        <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.1] font-extrabold tracking-tighter mb-6 bg-gradient-to-br from-foreground via-foreground to-foreground/60 bg-clip-text text-transparent">
-          {/* "\n" en el título fuerza salto de línea (solo en pantallas anchas). */}
-          {data.title.split("\n").map((line, i) => (
-            <span key={i}>
-              {i > 0 && <br className="hidden md:block" />}
-              {i > 0 && " "}
-              {line}
-            </span>
-          ))}
-        </h1>
-        <p className="max-w-2xl text-base md:text-lg text-foreground/70 mb-9 font-light leading-relaxed">
-          {data.subtitle}
-        </p>
-        <div className="flex flex-col sm:flex-row gap-3 w-full justify-center">
-          <Button size="lg" asChild className="group font-semibold rounded-full h-12 px-9 text-base shadow-lg shadow-primary/25 transition-shadow hover:shadow-xl hover:shadow-primary/40">
-            <a href={data.primaryCta.href}>
-              {data.primaryCta.label}
-              <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-            </a>
-          </Button>
-          {data.secondaryCta &&
-            (isWhatsapp ? (
-              <Button size="lg" variant="whatsapp" asChild className="font-semibold rounded-full h-12 px-7 text-base">
-                <a href={data.secondaryCta.href} target="_blank" rel="noopener noreferrer">
-                  <WhatsappIcon className="w-5 h-5 mr-2" /> {data.secondaryCta.label}
-                </a>
-              </Button>
-            ) : (
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                className="font-semibold rounded-full px-6 bg-transparent border-foreground/25 text-foreground hover:bg-foreground/10 hover:text-foreground"
-              >
-                <a href={data.secondaryCta.href}>{data.secondaryCta.label}</a>
-              </Button>
+        <FadeIn delay={0.1}>
+          <h1 className="mt-8 max-w-5xl font-display text-4xl leading-[1.08] tracking-[-0.015em] sm:text-5xl md:text-display-sm lg:text-display-md">
+            {/* "\n" en el título fuerza salto de línea (solo en pantallas anchas). */}
+            {data.title.split("\n").map((line, i) => (
+              <span key={i}>
+                {i > 0 && <br className="hidden md:block" />}
+                {i > 0 && " "}
+                {line}
+              </span>
             ))}
-          {data.brochures?.map((b) => (
-            <Button
-              key={b.href}
-              size="lg"
-              variant="outline"
-              asChild
-              className="font-semibold rounded-full px-6 bg-transparent border-foreground/25 text-foreground hover:bg-foreground/10 hover:text-foreground"
-            >
-              <a href={b.href} target="_blank" rel="noopener noreferrer">
-                <FileText className="w-4 h-4 mr-2" /> {b.label}
-              </a>
-            </Button>
-          ))}
-        </div>
-        {data.ctaNote && (
-          <p className="mt-5 text-xs md:text-sm text-foreground/50 tracking-wide">{data.ctaNote}</p>
-        )}
-      </AnimatedDiv>
+          </h1>
+        </FadeIn>
 
-      {/* Indicador de scroll: invita a seguir bajando */}
-      <a
-        href="#planes"
-        aria-label="Desplázate hacia abajo"
-        className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 text-foreground/50 hover:text-foreground transition-colors"
-      >
-        <ChevronDown className="maw-scroll-cue w-7 h-7" />
-      </a>
+        <div className="mt-14 grid gap-12 md:grid-cols-12">
+          <FadeIn delay={0.2} className="md:col-span-7 lg:col-span-6">
+            <p className="max-w-prose text-base leading-relaxed text-muted-foreground md:text-lg">
+              {data.subtitle}
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+              <a
+                href={data.primaryCta.href}
+                className="inline-flex items-center bg-foreground px-8 py-4 text-sm font-medium tracking-wide text-background transition-colors hover:bg-foreground/85"
+              >
+                {data.primaryCta.label}
+              </a>
+              {data.secondaryCta && (
+                <a
+                  href={data.secondaryCta.href}
+                  {...(isExternal(data.secondaryCta.href)
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  className="link-underline text-sm font-medium text-foreground"
+                >
+                  {data.secondaryCta.label}
+                </a>
+              )}
+              {data.brochures?.map((b) => (
+                <a
+                  key={b.href}
+                  href={b.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground"
+                >
+                  {b.label}
+                </a>
+              ))}
+            </div>
+
+            {data.ctaNote && (
+              <p className="mt-8 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                {data.ctaNote}
+              </p>
+            )}
+          </FadeIn>
+        </div>
+
+        {data.media && (
+          <FadeIn delay={0.3} className="mt-20 md:mt-24">
+            {data.media.type === "video" ? (
+              <div className="relative aspect-[3/2] w-full overflow-hidden bg-secondary md:aspect-[21/9]">
+                <video
+                  src={data.media.src}
+                  poster={data.media.poster}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-full w-full object-cover saturate-[0.6]"
+                />
+              </div>
+            ) : (
+              <EditorialImage
+                src={data.media.src}
+                alt={data.eyebrow}
+                ratio="3:2"
+                sizes="(max-width: 768px) 100vw, 1400px"
+                className="md:aspect-[21/9]"
+              />
+            )}
+          </FadeIn>
+        )}
+      </div>
     </section>
   );
 }

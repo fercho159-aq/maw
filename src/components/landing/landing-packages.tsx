@@ -1,82 +1,100 @@
-import { Check, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import AnimatedDiv from "@/components/animated-div";
-import { cn } from "@/lib/utils";
+import { FadeIn, Rule, SectionHeading } from "@/components/editorial";
 import type { ServiceLanding } from "@/lib/landing-data";
 
 type PackagesData = NonNullable<ServiceLanding["packages"]>;
 
+/**
+ * Alcances de trabajo: columnas tipográficas separadas por reglas, sin
+ * badges ni jerarquías de venta agresivas. El alcance recomendado se señala
+ * con una nota discreta en mono.
+ */
 export default function LandingPackages({ data }: { data: PackagesData }) {
   return (
-    <section id="planes" className="w-full py-20 md:py-28 bg-background border-t border-border">
-      <div className="container mx-auto px-4 md:px-6">
-        <AnimatedDiv className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-xs text-primary font-semibold uppercase tracking-widest mb-3">Planes</p>
-          <h2 className="font-headline text-3xl md:text-5xl font-bold tracking-tighter mb-4 text-foreground">
-            {data.heading}
-          </h2>
-          {data.subheading && <p className="text-foreground/70 md:text-lg">{data.subheading}</p>}
-        </AnimatedDiv>
+    <section
+      id="planes"
+      className="w-full border-t border-border bg-background py-24 md:py-32"
+    >
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
+        <FadeIn className="max-w-3xl">
+          <SectionHeading
+            eyebrow="Alcances de trabajo"
+            title={data.heading}
+            description={data.subheading}
+            titleClassName="md:text-display-xs lg:text-display-xs"
+          />
+        </FadeIn>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto items-stretch">
+        <div className="mt-16 grid gap-14 lg:grid-cols-3 lg:gap-0 lg:divide-x lg:divide-border">
           {data.tiers.map((tier, i) => (
-            <AnimatedDiv
+            <FadeIn
               key={tier.id}
-              delay={i * 100}
-              variant="scale"
-              className={cn(
-                "relative flex flex-col rounded-3xl border bg-card p-8 transition-all duration-300",
-                tier.highlight
-                  ? "border-primary/50 ring-1 ring-primary/30 shadow-2xl shadow-primary/20 lg:scale-[1.04] bg-gradient-to-b from-primary/[0.06] to-transparent"
-                  : "border-border/60 hover:border-primary/30 hover:shadow-lg hover:-translate-y-1"
-              )}
+              delay={Math.min(i * 0.08, 0.24)}
+              className="flex flex-col lg:px-10 lg:first:pl-0 lg:last:pr-0"
             >
-              {tier.highlight && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-[10px] uppercase tracking-[0.15em] font-bold px-3.5 py-1 rounded-full shadow-lg shadow-primary/30 whitespace-nowrap">
-                  Más Popular
-                </div>
-              )}
-              <h3 className="font-headline text-xl font-bold text-foreground">{tier.name}</h3>
-              <p className="text-sm text-foreground/60 mt-1">{tier.tagline}</p>
-
-              <div className="mt-6 mb-2 flex items-end gap-1.5">
-                <span className="font-headline text-4xl font-extrabold text-foreground">{tier.price}</span>
-                {tier.priceNote && <span className="text-sm text-foreground/50 mb-1">{tier.priceNote}</span>}
+              <div className="flex min-h-6 items-baseline justify-between gap-4">
+                <span className="font-mono text-xs tracking-[0.2em] text-muted-foreground">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                {tier.highlight && (
+                  <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary">
+                    Recomendado
+                  </span>
+                )}
               </div>
-              {data.pricesArePlaceholder && (
-                <p className="text-[11px] text-foreground/40 mb-4">Precio sujeto a cotización</p>
-              )}
 
-              <ul className="space-y-3 my-6 flex-grow">
+              <h3 className="mt-6 font-display text-2xl text-foreground md:text-3xl">
+                {tier.name}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {tier.tagline}
+              </p>
+
+              <div className="mt-8">
+                <span className="font-display text-3xl tracking-[-0.01em] text-foreground">
+                  {tier.price}
+                </span>
+                {tier.priceNote && (
+                  <span className="ml-2 text-sm text-muted-foreground">
+                    {tier.priceNote}
+                  </span>
+                )}
+                {data.pricesArePlaceholder && (
+                  <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                    Inversión sujeta a propuesta
+                  </p>
+                )}
+              </div>
+
+              <Rule className="mt-8" />
+              <ul className="flex-grow">
                 {tier.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm text-foreground/80">
-                    <span className="mt-0.5 flex-shrink-0 rounded-full bg-primary/10 p-0.5">
-                      <Check className="w-3.5 h-3.5 text-primary" />
-                    </span>
-                    <span>{f}</span>
+                  <li
+                    key={f}
+                    className="border-b border-border py-4 text-sm leading-relaxed text-foreground/80"
+                  >
+                    {f}
                   </li>
                 ))}
               </ul>
 
-              <Button
-                asChild
-                variant={tier.highlight ? "default" : "outline"}
-                className={cn(
-                  "group/cta w-full font-semibold rounded-full",
-                  tier.highlight && "shadow-lg shadow-primary/25"
-                )}
-              >
-                <a href={tier.ctaHref ?? "#cotizar"}>
+              <div className="mt-10">
+                <a
+                  href={tier.ctaHref ?? "#cotizar"}
+                  className="link-underline text-sm font-medium text-foreground"
+                >
                   {tier.ctaLabel}
-                  <ArrowRight className="w-4 h-4 ml-1.5 transition-transform group-hover/cta:translate-x-1" />
                 </a>
-              </Button>
-            </AnimatedDiv>
+              </div>
+            </FadeIn>
           ))}
         </div>
 
         {data.note && (
-          <p className="text-center text-sm text-foreground/60 mt-8 max-w-2xl mx-auto">{data.note}</p>
+          <FadeIn>
+            <p className="mt-16 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              {data.note}
+            </p>
+          </FadeIn>
         )}
       </div>
     </section>

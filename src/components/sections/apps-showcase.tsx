@@ -1,99 +1,157 @@
-"use client";
+import { FadeIn, Rule, SectionHeading } from "@/components/editorial";
+import { cn } from "@/lib/utils";
 
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Smartphone, Globe, MonitorSmartphone, Database, LayoutDashboard, Ticket } from "lucide-react";
-import AnimatedDiv from "@/components/animated-div";
+type CaseLink = { label: string; url: string };
 
+type AppCase = {
+  id: string;
+  client: string;
+  discipline: string;
+  title: string;
+  description: string;
+  videoUrl: string;
+  startTime: number;
+  links: CaseLink[];
+  internal?: boolean;
+};
+
+const cases: AppCase[] = [
+  {
+    id: "partybus",
+    client: "Party Cantaritos Bus",
+    discipline: "Plataforma web",
+    title: "Reservaciones y logística de transporte",
+    description:
+      "Plataforma web enfocada en reservaciones y logística de tickets de transporte.",
+    videoUrl: "/videos/partybus.mp4",
+    startTime: 4,
+    links: [
+      { label: "Visitar proyecto", url: "https://www.partycantaritosbus.com.mx/" },
+    ],
+  },
+  {
+    id: "yaakob",
+    client: "Yaakob",
+    discipline: "App nativa iOS y Android",
+    title: "Mensajería y vinculación al SAT",
+    description:
+      "Aplicación móvil nativa para comunicación interna corporativa y operaciones con validación de identidad.",
+    videoUrl: "/videos/mensajes.mp4",
+    startTime: 3,
+    links: [
+      { label: "App Store", url: "https://apps.apple.com/mx/app/yaakob/id6758861392" },
+      {
+        label: "Google Play",
+        url: "https://play.google.com/store/apps/details?id=com.fernandotrejo.consultora&hl=es_MX",
+      },
+    ],
+  },
+  {
+    id: "crm",
+    client: "MAW Soluciones",
+    discipline: "Sistema interno",
+    title: "CRM y control financiero",
+    description:
+      "Sistema administrativo con dashboards financieros, control de pagos, reportes de ingresos y gastos, y seguimiento a saldos pendientes.",
+    videoUrl: "/videos/crm maw.mp4",
+    startTime: 5,
+    links: [],
+    internal: true,
+  },
+  {
+    id: "mente-abundante",
+    client: "Mente Abundante",
+    discipline: "PWA de contenido",
+    title: "Catálogo de contenido interactivo",
+    description:
+      "Aplicación web progresiva para consumo de contenido y exploración de catálogo interactivo.",
+    videoUrl: "/videos/Mente abundante.mp4",
+    startTime: 4,
+    links: [
+      { label: "Visitar proyecto", url: "https://mente-abundante-delta.vercel.app/" },
+    ],
+  },
+];
+
+/**
+ * Casos de desarrollo de apps en registro editorial: fotograma estático del
+ * producto con el tratamiento desaturado de EditorialImage, metadatos
+ * cliente/disciplina en mono y título en serif, como en portfolio.tsx.
+ */
 export default function AppsShowcase() {
   return (
-    <section className="py-24 md:py-32 bg-background border-t border-border">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-20">
-          <h2 className="font-headline text-4xl sm:text-5xl font-bold mb-6">Nuestros Desarrollos</h2>
-          <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-            Conoce algunos de los ecosistemas que hemos diseñado e implementado con éxito para nuestros clientes.
-          </p>
-        </div>
+    <section className="border-t border-border bg-background py-24 md:py-32">
+      <div className="mx-auto w-full max-w-[1400px] px-6 md:px-12 lg:px-16">
+        <FadeIn>
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
+            <div className="md:col-span-7">
+              <SectionHeading
+                eyebrow="Casos"
+                title="Desarrollos seleccionados"
+                description="Ecosistemas digitales diseñados y desarrollados para nuestros clientes, documentados como casos de trabajo."
+              />
+            </div>
+          </div>
+        </FadeIn>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
-          {/* 1. App de Transporte */}
-          <AnimatedDiv className="bg-card border border-border/50 rounded-3xl overflow-hidden shadow-lg group hover:border-primary/50 transition-colors">
-            <div className="aspect-video bg-muted p-4 md:p-8 flex items-center justify-center relative overflow-hidden">
-              <Ticket className="w-24 h-24 text-primary/20 absolute -right-4 -bottom-4 rotate-12" />
-              <div className="text-center relative z-10 w-full h-full flex items-center justify-center">
-                <iframe src="https://www.partycantaritosbus.com.mx/" className="w-[150%] h-[150%] origin-top-left scale-[0.66] pointer-events-none rounded-xl border border-border opacity-90 group-hover:opacity-100 transition-opacity" title="Party Cantaritos Bus"></iframe>
-              </div>
-            </div>
-            <div className="p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <Globe className="w-6 h-6 text-primary" />
-                <h3 className="font-headline text-2xl font-bold">App de Transporte</h3>
-              </div>
-              <p className="text-foreground/70 mb-6 leading-relaxed">Plataforma web enfocada en reservaciones y logística de tickets de transporte (Party Cantaritos Bus).</p>
-              <Button variant="outline" asChild>
-                <a href="https://www.partycantaritosbus.com.mx/" target="_blank" rel="noopener noreferrer">Visitar Proyecto <ArrowRight className="w-4 h-4 ml-2" /></a>
-              </Button>
-            </div>
-          </AnimatedDiv>
+        <Rule className="my-16" />
 
-          {/* 2. Mensajeria Yaakob */}
-          <AnimatedDiv className="bg-card border border-border/50 rounded-3xl overflow-hidden shadow-lg group hover:border-primary/50 transition-colors">
-            <div className="aspect-video bg-[#1e293b] p-8 flex flex-col items-center justify-center relative overflow-hidden text-center">
-              <Smartphone className="w-48 h-48 text-white/5 absolute -left-8 -top-8 -rotate-12" />
-              <h4 className="text-5xl font-black text-white mb-3 relative z-10 tracking-widest uppercase">YAAKOB</h4>
-              <p className="text-white/60 relative z-10 font-mono tracking-widest text-sm">IOS / ANDROID</p>
-            </div>
-            <div className="p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <MonitorSmartphone className="w-6 h-6 text-primary" />
-                <h3 className="font-headline text-2xl font-bold">Mensajería y Vinculación SAT</h3>
+        <div className="grid grid-cols-1 gap-x-12 gap-y-20 md:grid-cols-2 lg:gap-x-20">
+          {cases.map((item, index) => (
+            <FadeIn
+              key={item.id}
+              delay={Math.min((index % 2) * 0.08, 0.24)}
+              className={cn("group", index % 2 === 1 && "md:mt-24")}
+            >
+              <div className="relative aspect-[4/5] overflow-hidden bg-paper">
+                <video
+                  src={`${item.videoUrl}#t=${item.startTime}`}
+                  muted
+                  playsInline
+                  preload="metadata"
+                  aria-hidden="true"
+                  tabIndex={-1}
+                  className="h-full w-full object-cover saturate-[0.75]"
+                />
               </div>
-              <p className="text-foreground/70 mb-6 leading-relaxed">Aplicación móvil nativa para Android e iOS enfocada en comunicación interna y operaciones corporativas con validaciones satelitales.</p>
-              <div className="flex flex-wrap gap-4">
-                <Button variant="outline" size="sm" asChild>
-                  <a href="https://apps.apple.com/mx/app/yaakob/id6758861392" target="_blank" rel="noopener noreferrer">App Store (iOS)</a>
-                </Button>
-                <Button variant="outline" size="sm" asChild>
-                  <a href="https://play.google.com/store/apps/details?id=com.fernandotrejo.consultora&hl=es_MX" target="_blank" rel="noopener noreferrer">Google Play (Android)</a>
-                </Button>
+              <div className="mt-6 space-y-3">
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  {item.client}
+                  <span aria-hidden="true" className="mx-2 text-stone">
+                    —
+                  </span>
+                  {item.discipline}
+                </p>
+                <h3 className="font-display text-2xl leading-snug text-foreground">
+                  {item.title}
+                </h3>
+                <p className="max-w-prose text-sm leading-relaxed text-muted-foreground">
+                  {item.description}
+                </p>
+                {item.links.length > 0 ? (
+                  <p className="flex flex-wrap gap-x-8 gap-y-2 pt-2">
+                    {item.links.map((link) => (
+                      <a
+                        key={link.url + link.label}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-mono text-xs uppercase tracking-[0.2em] text-primary"
+                      >
+                        <span className="border-b border-transparent pb-0.5 transition-colors duration-300 hover:border-primary">
+                          {link.label}
+                        </span>
+                      </a>
+                    ))}
+                  </p>
+                ) : item.internal ? (
+                  <p className="pt-2 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                    Sistema interno, sin acceso público
+                  </p>
+                ) : null}
               </div>
-            </div>
-          </AnimatedDiv>
-
-          {/* 3. CRM a la Medida */}
-          <AnimatedDiv className="bg-card border border-border/50 rounded-3xl overflow-hidden shadow-lg group hover:border-primary/50 transition-colors">
-            <div className="aspect-video bg-muted flex items-center justify-center overflow-hidden border-b border-border/50 relative">
-              <div className="w-full h-full bg-gradient-to-br from-zinc-800 to-zinc-950 flex flex-col items-center justify-center text-white/50 p-6 text-center">
-                <LayoutDashboard className="w-16 h-16 mb-4 opacity-50 text-primary" />
-                <p className="font-medium text-lg">Dashboard y Control Financiero</p>
-                <p className="text-sm opacity-50 mt-2 max-w-xs">Sistemas administrativos con control de pagos, reportes e impuestos.</p>
-              </div>
-            </div>
-            <div className="p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <Database className="w-6 h-6 text-primary" />
-                <h3 className="font-headline text-2xl font-bold">CRM a la Medida</h3>
-              </div>
-              <p className="text-foreground/70 leading-relaxed">Sistemas administrativos potentes con dashboards financieros, control de pagos, reportes de ingresos/gastos e impuestos, y seguimiento a saldos pendientes.</p>
-            </div>
-          </AnimatedDiv>
-
-          {/* 4. App Peliculas */}
-          <AnimatedDiv className="bg-card border border-border/50 rounded-3xl overflow-hidden shadow-lg group hover:border-primary/50 transition-colors">
-            <div className="aspect-video bg-black flex items-center justify-center relative overflow-hidden">
-              <iframe src="https://mente-abundante-delta.vercel.app/" className="w-[150%] h-[150%] origin-top-left scale-[0.66] pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity" title="Películas Online"></iframe>
-            </div>
-            <div className="p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <Globe className="w-6 h-6 text-primary" />
-                <h3 className="font-headline text-2xl font-bold">Catálogo de Contenido</h3>
-              </div>
-              <p className="text-foreground/70 mb-6 leading-relaxed">Plataforma PWA para consumo de contenido, exploración de catálogo interactivo y estructuración de información (Mente Abundante).</p>
-              <Button variant="outline" asChild>
-                <a href="https://mente-abundante-delta.vercel.app/" target="_blank" rel="noopener noreferrer">Visitar Proyecto <ArrowRight className="w-4 h-4 ml-2" /></a>
-              </Button>
-            </div>
-          </AnimatedDiv>
+            </FadeIn>
+          ))}
         </div>
       </div>
     </section>

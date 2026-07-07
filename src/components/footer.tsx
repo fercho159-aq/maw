@@ -1,67 +1,117 @@
-
 import Link from "next/link";
-import { Instagram, Youtube, Facebook } from "lucide-react";
 import Logo from "./logo";
-import { Button } from "./ui/button";
-import { TikTokIcon } from "./icons/tiktok-icon";
+
+const serviceLinks = [
+  { href: "/servicios/redes-sociales", label: "Contenido y Ads" },
+  { href: "/servicios/sitio-web", label: "Sitios web" },
+  { href: "/servicios/podcast", label: "Podcast" },
+  { href: "/servicios/desarrollo-a-la-medida", label: "Aplicaciones móviles" },
+  { href: "/servicios/erp", label: "ERP y sistemas de operación" },
+];
+
+const studioLinks = [
+  { href: "/portafolio", label: "Casos" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contacto", label: "Contacto" },
+];
+
+const socialLinks = [
+  { href: "https://www.youtube.com/@solucionesmaw", label: "YouTube" },
+  { href: "https://www.instagram.com/mawsoluciones/", label: "Instagram" },
+  {
+    href: "https://www.facebook.com/profile.php?id=61574705492838",
+    label: "Facebook",
+  },
+  { href: "https://www.tiktok.com/@solucionesmaw", label: "TikTok" },
+];
+
+const columnHeading =
+  "font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground";
+const columnLink =
+  "text-sm text-foreground/70 transition-colors hover:text-foreground";
 
 const Footer = () => {
   return (
-    <footer className="bg-card border-t">
-      <div className="container mx-auto px-4 md:px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="flex flex-col items-center md:items-start">
+    <footer className="border-t border-stone/30 bg-secondary">
+      <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-10 md:py-28">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-8">
+          <div className="md:col-span-5">
             <Logo />
-            <div className="mt-4">
-                <Button variant="link" asChild>
-                <Link href="/equipo">admin interna</Link>
-                </Button>
-            </div>
+            <p className="mt-8 max-w-xs text-sm leading-relaxed text-muted-foreground">
+              Estrategia, ingeniería y contenido digital para empresas que
+              operan en serio.
+            </p>
           </div>
-          <div>
-            <h4 className="font-headline font-semibold text-lg mb-4 text-center">Nuestros Servicios</h4>
-            <div className="grid grid-cols-2 gap-8">
-                <ul className="space-y-2">
-                    <li><Link href="/servicios/redes-sociales" className="hover:text-primary transition-colors">Contenido y Ads</Link></li>
-                    <li><Link href="/servicios/sitio-web" className="hover:text-primary transition-colors">Sitios Web</Link></li>
-                </ul>
-                 <ul className="space-y-2">
-                    <li><Link href="/servicios/podcast" className="hover:text-primary transition-colors">Podcast</Link></li>
-                    <li><Link href="/servicios/apps" className="hover:text-primary transition-colors">App's</Link></li>
-                </ul>
-            </div>
+
+          <div className="md:col-span-3">
+            <p className={columnHeading}>Servicios</p>
+            <ul className="mt-6 space-y-3">
+              {serviceLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className={columnLink}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
-          <div>
-            <h4 className="font-headline font-semibold text-lg mb-4">Síguenos</h4>
-            <div className="flex space-x-4">
-              <Button variant="ghost" size="icon" asChild>
-                <a href="https://www.youtube.com/@solucionesmaw" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                  <Youtube className="h-5 w-5" />
-                </a>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <a href="https://www.instagram.com/mawsoluciones/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                  <Instagram className="h-5 w-5" />
-                </a>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <a href="https://www.facebook.com/profile.php?id=61574705492838" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                  <Facebook className="h-5 w-5" />
-                </a>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <a href="https://www.tiktok.com/@solucionesmaw" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                  <TikTokIcon className="h-5 w-5 fill-current" />
-                </a>
-              </Button>
-            </div>
+
+          <div className="md:col-span-2">
+            <p className={columnHeading}>Estudio</p>
+            <ul className="mt-6 space-y-3">
+              {studioLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className={columnLink}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="md:col-span-2">
+            <p className={columnHeading}>Redes</p>
+            <ul className="mt-6 space-y-3">
+              {socialLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={columnLink}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-        <div className="mt-12 border-t pt-8 text-center text-sm text-foreground/60 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4">
-          <p>&copy; {new Date().getFullYear()} MAW Soluciones. Todos los derechos reservados.</p>
-          <div className="flex gap-4">
-            <Link href="/politicas" className="hover:text-primary transition-colors">Política de Privacidad</Link>
-            <Link href="/terminos" className="hover:text-primary transition-colors">Términos del Servicio</Link>
+
+        <div className="mt-20 flex flex-col gap-4 border-t border-stone/30 pt-8 font-mono text-[0.65rem] uppercase tracking-[0.15em] text-muted-foreground md:flex-row md:items-center md:justify-between">
+          <p>
+            © {new Date().getFullYear()} MAW Soluciones — Todos los derechos
+            reservados
+          </p>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            <Link
+              href="/politicas"
+              className="transition-colors hover:text-foreground"
+            >
+              Política de privacidad
+            </Link>
+            <Link
+              href="/terminos"
+              className="transition-colors hover:text-foreground"
+            >
+              Términos del servicio
+            </Link>
+            <Link
+              href="/equipo"
+              className="transition-colors hover:text-foreground"
+            >
+              Acceso interno
+            </Link>
           </div>
         </div>
       </div>

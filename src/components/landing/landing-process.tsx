@@ -1,37 +1,45 @@
-"use client";
-
-import AnimatedDiv from "@/components/animated-div";
+import { FadeIn, Rule, SectionHeading } from "@/components/editorial";
 import type { ServiceLanding } from "@/lib/landing-data";
 
 type ProcessData = NonNullable<ServiceLanding["process"]>;
 
+/**
+ * Método de trabajo como secuencia editorial numerada: 01, 02, 03 en mono,
+ * pasos separados por reglas de 1px. Sin cards ni sombras.
+ */
 export default function LandingProcess({ data }: { data: ProcessData }) {
   return (
-    <section className="w-full py-20 md:py-28 bg-card border-t border-border">
-      <div className="container mx-auto px-4 md:px-6">
-        <AnimatedDiv className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-xs text-primary font-semibold uppercase tracking-widest mb-3">Proceso</p>
-          <h2 className="font-headline text-3xl md:text-5xl font-bold tracking-tighter mb-4 text-foreground">
-            {data.heading}
-          </h2>
-          {data.subheading && <p className="text-foreground/70 md:text-lg">{data.subheading}</p>}
-        </AnimatedDiv>
+    <section className="w-full border-t border-border bg-secondary py-24 md:py-32">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
+        <div className="grid gap-16 lg:grid-cols-12">
+          <FadeIn className="lg:col-span-4">
+            <SectionHeading
+              eyebrow="Método"
+              title={data.heading}
+              description={data.subheading}
+              titleClassName="md:text-display-xs lg:text-display-xs"
+            />
+          </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {data.steps.map((step, i) => (
-            <AnimatedDiv key={step.step} delay={i * 100} className="relative">
-              <div className="group rounded-2xl border border-border/60 bg-background p-7 h-full transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5">
-                <div className="flex items-baseline gap-2 mb-3">
-                  <span className="font-headline text-5xl font-extrabold text-primary/20 transition-colors group-hover:text-primary/40">
+          <div className="lg:col-span-7 lg:col-start-6">
+            <Rule />
+            {data.steps.map((step, i) => (
+              <FadeIn key={step.step} delay={Math.min(i * 0.06, 0.3)}>
+                <div className="grid gap-3 py-10 md:grid-cols-12 md:gap-6">
+                  <span className="font-mono text-xs tracking-[0.2em] text-primary md:col-span-2 md:pt-1">
                     {String(step.step).padStart(2, "0")}
                   </span>
-                  <span className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
+                  <h3 className="font-display text-xl text-foreground md:col-span-4 md:text-2xl">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground md:col-span-6 md:text-base">
+                    {step.description}
+                  </p>
                 </div>
-                <h3 className="font-semibold text-lg mb-2 text-foreground">{step.title}</h3>
-                <p className="text-sm text-foreground/70 leading-relaxed">{step.description}</p>
-              </div>
-            </AnimatedDiv>
-          ))}
+                <Rule />
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </div>
     </section>

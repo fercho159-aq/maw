@@ -1,72 +1,80 @@
 "use client";
 
-import React, { useState, useEffect, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { ArrowRight, Link as LinkIcon, Send, ShoppingCart, Briefcase, Building, Film, HeartHandshake, Utensils, Construction, Car, Flower, Hospital, Newspaper, Camera } from "lucide-react";
+import React, { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import AnimatedDiv from "@/components/animated-div";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { portfolioItems, portfolioCategories, portfolioSectors } from "@/lib/portfolio-data";
-import { Badge } from "@/components/ui/badge";
-import Image from "next/image";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  portfolioItems,
+  portfolioCategories,
+  portfolioSectors,
+} from "@/lib/portfolio-data";
+import {
+  EditorialImage,
+  FadeIn,
+  Rule,
+  SectionHeading,
+} from "@/components/editorial";
+import { cn } from "@/lib/utils";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, ease: "easeOut" },
-  },
-};
+const PAGE_SIZE = 6;
 
-const itemVariants = {
-  hidden: { y: 20, opacity: 0, scale: 0.95 },
-  visible: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] } },
-};
-
-const categoryIcons: { [key: string]: React.ReactNode } = {
-  "E-commerce": <ShoppingCart className="w-4 h-4" />,
-  "Connective": <LinkIcon className="w-4 h-4" />,
-  "Landing": <Send className="w-4 h-4" />,
-  "Catálogo": <Briefcase className="w-4 h-4" />,
-  "Servicios": <HeartHandshake className="w-4 h-4" />,
-};
-
-const sectorIcons: { [key: string]: React.ReactNode } = {
-    "Servicios Profesionales": <Briefcase className="w-4 h-4" />,
-    "Inmobiliaria": <Building className="w-4 h-4" />,
-    "Eventos": <Film className="w-4 h-4" />,
-    "Actividades Recreativas": <HeartHandshake className="w-4 h-4" />,
-    "Restaurantes": <Utensils className="w-4 h-4" />,
-    "Industrial": <Construction className="w-4 h-4" />,
-    "Ropa y Moda": <ShoppingCart className="w-4 h-4" />,
-    "Florería": <Flower className="w-4 h-4" />,
-    "Salud": <Hospital className="w-4 h-4" />,
-    "Noticias": <Newspaper className="w-4 h-4" />,
-    "Otros": <Briefcase className="w-4 h-4" />,
-    "Automotriz": <Car className="w-4 h-4" />,
-    "Software": <Bot className="w-4 h-4" />,
-    "Influencers": <Camera className="w-4 h-4" />,
-};
-
-function Bot(props: any) { return <span {...props} /> } // placeholder fallback
+function FilterField({
+  label,
+  value,
+  onChange,
+  options,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  options: string[];
+}) {
+  return (
+    <div className="w-full sm:max-w-xs">
+      <p className="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+        {label}
+      </p>
+      <Select value={value} onValueChange={onChange}>
+        <SelectTrigger className="w-full rounded-none border-0 border-b border-border bg-transparent px-0 focus:ring-0 focus:ring-offset-0">
+          <SelectValue placeholder={label} />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="Todos">Todos</SelectItem>
+          {options.map((option) => (
+            <SelectItem key={option} value={option}>
+              {option}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  );
+}
 
 function WebsitePortfolioContent() {
   const searchParams = useSearchParams();
-  const initialCategory = searchParams.get('category') || "Todos";
+  const initialCategory = searchParams.get("category") || "Todos";
   const [categoryFilter, setCategoryFilter] = useState<string>(initialCategory);
   const [sectorFilter, setSectorFilter] = useState<string>("Todos");
-  const [visibleCount, setVisibleCount] = useState<number>(6);
+  const [visibleCount, setVisibleCount] = useState<number>(PAGE_SIZE);
 
   useEffect(() => {
-    const cat = searchParams.get('category');
+    const cat = searchParams.get("category");
     if (cat) {
       setCategoryFilter(cat);
     }
   }, [searchParams]);
 
-  const filteredItems = portfolioItems.filter(item => {
-    const categoryMatch = categoryFilter === "Todos" || item.category === categoryFilter;
+  const filteredItems = portfolioItems.filter((item) => {
+    const categoryMatch =
+      categoryFilter === "Todos" || item.category === categoryFilter;
     const sectorMatch = sectorFilter === "Todos" || item.sector === sectorFilter;
     return categoryMatch && sectorMatch;
   });
@@ -74,112 +82,96 @@ function WebsitePortfolioContent() {
   const displayedItems = filteredItems.slice(0, visibleCount);
 
   return (
-    <section className="py-20 md:py-28 bg-background border-t border-border scroll-m-28" id="casos">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-5xl mx-auto text-center mb-12">
-            <h2 className="font-headline text-3xl sm:text-5xl font-bold mb-4">Casos de Éxito en Sitios Web</h2>
-            <p className="text-lg text-foreground/80">
-              Explora una selección de nuestros proyectos de diseño y desarrollo web.
-            </p>
-        </div>
+    <section
+      className="scroll-m-28 border-t border-border bg-background py-24 md:py-32"
+      id="casos"
+    >
+      <div className="mx-auto w-full max-w-[1400px] px-6 md:px-12 lg:px-16">
+        <FadeIn>
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
+            <div className="md:col-span-7">
+              <SectionHeading
+                eyebrow="Casos"
+                title="Sitios web que hemos construido"
+                description="Una selección de proyectos de diseño y desarrollo web, documentados como casos de trabajo."
+              />
+            </div>
+          </div>
+        </FadeIn>
 
-        <AnimatedDiv>
-            <div className="flex flex-col sm:flex-row gap-4 mb-8 max-w-4xl mx-auto">
-            <div className="flex-1">
-                <label className="block text-sm font-medium text-foreground/80 mb-2">Filtrar por Categoría</label>
-                <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Seleccionar Categoría" />
-                </SelectTrigger>
-                <SelectContent>
-                    <SelectItem value="Todos">Todos</SelectItem>
-                    {portfolioCategories.map(category => (
-                    <SelectItem key={category} value={category}>{category}</SelectItem>
-                    ))}
-                </SelectContent>
-                </Select>
-            </div>
-            <div className="flex-1">
-                <label className="block text-sm font-medium text-foreground/80 mb-2">Filtrar por Sector</label>
-                <Select value={sectorFilter} onValueChange={setSectorFilter}>
-                <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Seleccionar Sector" />
-                </SelectTrigger>
-                <SelectContent>
-                    <SelectItem value="Todos">Todos</SelectItem>
-                    {portfolioSectors.map(sector => (
-                    <SelectItem key={sector} value={sector}>
-                        <div className="flex items-center gap-2">
-                            {sectorIcons[sector] || <Briefcase className="w-4 h-4" />}
-                            <span>{sector}</span>
-                        </div>
-                    </SelectItem>
-                    ))}
-                </SelectContent>
-                </Select>
-            </div>
-            </div>
-        </AnimatedDiv>
+        <Rule className="my-16" />
 
-        <AnimatedDiv
-            className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 max-w-6xl mx-auto"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-        >
-            {displayedItems.map(item => (
-            <AnimatedDiv key={item.id} variants={itemVariants}>
-                <Card className="overflow-hidden group flex flex-col h-full bg-card/50 hover:bg-card border-border/50 hover:border-border transition-all duration-300 ease-in-out transform hover:-translate-y-2 shadow-sm hover:shadow-2xl">
-                <Link href={`/portafolio/${item.id}`} className="flex flex-col flex-grow">
-                    <CardContent className="p-0">
-                    <div className="relative aspect-video bg-muted">
-                        {item.image && (
-                        <Image
-                            src={item.image.imageUrl}
-                            alt={item.title}
-                            fill
-                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                            className="object-cover transition-transform duration-300 group-hover:scale-105"
-                        />
-                        )}
-                    </div>
-                    </CardContent>
-                    <CardFooter className="p-4 flex flex-col items-start flex-grow">
-                    <Badge variant="secondary" className="mb-2">
-                        <div className="flex items-center gap-1.5">
-                            {categoryIcons[item.category] || null}
-                            <span>{item.category}</span>
-                        </div>
-                    </Badge>
-                    <h3 className="font-headline font-semibold text-md flex-grow flex items-center gap-2">
-                        {sectorIcons[item.sector] || <Briefcase className="w-4 h-4" />}
-                        <span>{item.title}</span>
+        <FadeIn>
+          <div className="flex flex-col gap-6 sm:flex-row sm:gap-10">
+            <FilterField
+              label="Disciplina"
+              value={categoryFilter}
+              onChange={setCategoryFilter}
+              options={portfolioCategories}
+            />
+            <FilterField
+              label="Sector"
+              value={sectorFilter}
+              onChange={setSectorFilter}
+              options={portfolioSectors}
+            />
+          </div>
+        </FadeIn>
+
+        {displayedItems.length > 0 ? (
+          <div className="mt-20 grid grid-cols-1 gap-x-12 gap-y-20 md:grid-cols-2 lg:gap-x-20">
+            {displayedItems.map((item, index) => (
+              <FadeIn
+                key={item.id}
+                className={cn("group", index % 2 === 1 && "md:mt-24")}
+              >
+                <Link href={`/portafolio/${item.id}`} className="block">
+                  <EditorialImage
+                    src={item.image?.imageUrl ?? "/images/placeholder.png"}
+                    alt={item.title}
+                    ratio="4:5"
+                    sizes="(max-width: 768px) 100vw, 45vw"
+                    imgClassName="transition-[filter] duration-500 group-hover:saturate-100"
+                  />
+                  <div className="mt-6 space-y-3">
+                    <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                      {item.client}
+                      <span aria-hidden="true" className="mx-2 text-stone">
+                        —
+                      </span>
+                      {item.category}
+                    </p>
+                    <h3 className="font-display text-2xl leading-snug text-foreground">
+                      {item.title}
                     </h3>
-                    <div className="flex items-center text-sm text-primary mt-4 self-start">
-                        Ver Proyecto <ArrowRight className="w-4 h-4 ml-2" />
-                    </div>
-                    </CardFooter>
+                    <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
+                      <span className="border-b border-transparent pb-0.5 transition-colors duration-300 group-hover:border-primary">
+                        Ver caso
+                      </span>
+                    </p>
+                  </div>
                 </Link>
-                </Card>
-            </AnimatedDiv>
+              </FadeIn>
             ))}
-        </AnimatedDiv>
-        
-        {visibleCount < filteredItems.length && (
-            <AnimatedDiv className="text-center mt-12">
-                <button 
-                  onClick={() => setVisibleCount(v => v + 6)}
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all duration-300 bg-background text-foreground hover:bg-muted border border-border h-11 rounded-md px-8"
-                >
-                  Ver más
-                </button>
-            </AnimatedDiv>
+          </div>
+        ) : (
+          <div className="py-24 text-center">
+            <p className="text-base text-muted-foreground">
+              No hay casos que correspondan a los filtros seleccionados.
+            </p>
+          </div>
         )}
-        
-        {filteredItems.length === 0 && (
-            <AnimatedDiv className="text-center py-16">
-                <p className="text-lg text-foreground/80">No se encontraron proyectos con los filtros seleccionados.</p>
-            </AnimatedDiv>
+
+        {visibleCount < filteredItems.length && (
+          <div className="mt-20 text-center">
+            <button
+              type="button"
+              onClick={() => setVisibleCount((v) => v + PAGE_SIZE)}
+              className="border border-border px-10 py-4 font-mono text-xs uppercase tracking-[0.25em] text-foreground transition-colors duration-300 hover:border-foreground"
+            >
+              Ver más casos
+            </button>
+          </div>
         )}
       </div>
     </section>
@@ -187,9 +179,15 @@ function WebsitePortfolioContent() {
 }
 
 export default function WebsitePortfolioSection() {
-    return (
-        <Suspense fallback={<div className="py-20 text-center">Cargando portafolio...</div>}>
-            <WebsitePortfolioContent />
-        </Suspense>
-    )
+  return (
+    <Suspense
+      fallback={
+        <div className="py-24 text-center text-muted-foreground">
+          Cargando casos…
+        </div>
+      }
+    >
+      <WebsitePortfolioContent />
+    </Suspense>
+  );
 }

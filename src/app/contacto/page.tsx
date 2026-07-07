@@ -1,59 +1,112 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contacto | Agencia de Marketing Digital y Desarrollo Web México',
-  description: 'Contáctanos para impulsar tu empresa con marketing digital, desarrollo web y apps en México. Solicita una sesión estratégica gratuita con nuestros expertos.',
+  title: 'Contacto — MAW Soluciones',
+  description: 'Contacto de MAW Soluciones. Oficina y estudio en Benito Juárez, Ciudad de México. Correo, teléfono y horario de atención.',
   keywords: ['contacto agencia marketing México', 'contratar agencia digital México', 'consultoría marketing digital', 'agencia desarrollo web contacto'],
   alternates: { canonical: 'https://mawsoluciones.com/contacto' },
   openGraph: {
     url: 'https://mawsoluciones.com/contacto',
-    title: 'Contáctanos | MAW Soluciones - Agencia Digital México',
-    description: 'Reserva tu sesión estratégica gratuita. Expertos en marketing digital, desarrollo web y apps listos para potenciar tu negocio en México.',
+    title: 'Contacto — MAW Soluciones',
+    description: 'Oficina y estudio en Benito Juárez, Ciudad de México. Correo, teléfono y horario de atención.',
   },
 };
 
 import ContactForm from "@/components/contact-form";
-import { Button } from "@/components/ui/button";
-import { Mail, Phone, Megaphone } from "lucide-react";
-import WhatsappIcon from "@/components/icons/whatsapp-icon";
-import AnimatedDiv from "@/components/animated-div";
-import AnimatedChatInvitation from "@/components/animated-chat-invitation";
+import { Eyebrow, FadeIn, Rule } from "@/components/editorial";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_TEL_HREF,
+  CONTACT_WHATSAPP_URL,
+} from "@/lib/contact";
 
 const ContactPage = () => {
   return (
-    <section id="contact" className="py-20 md:py-28">
-      <div className="container mx-auto px-4 md:px-6">
-        <AnimatedDiv className="max-w-3xl mx-auto text-center mb-12">
-          <h1 className="font-headline text-4xl sm:text-5xl font-bold flex items-center justify-center gap-4">
-             Hablemos
-          </h1>
-          <p className="mt-6 text-lg sm:text-xl text-foreground/80">
-            ¿Listo para llevar tu marca al siguiente nivel? Contáctanos o reserva una sesión estratégica.
-          </p>
-        </AnimatedDiv>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          <AnimatedDiv className="bg-card p-8 rounded-lg shadow-lg" transition={{ delay: 0.2 }}>
-            <h3 className="font-headline text-2xl font-bold mb-6">Información de Contacto</h3>
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <Mail className="w-5 h-5 text-primary" />
-                <a href="mailto:aldo@mawsoluciones.com" className="hover:text-primary transition-colors">aldo@mawsoluciones.com</a>
+    <section id="contact" className="bg-background py-24 md:py-36">
+      <div className="mx-auto w-full max-w-[1400px] px-6 md:px-12 lg:px-16">
+        <FadeIn>
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
+            <div className="md:col-span-9 lg:col-span-8">
+              <Eyebrow>Contacto</Eyebrow>
+              <h1 className="mt-6 font-display text-5xl leading-[1.05] tracking-[-0.015em] text-foreground md:text-display-md">
+                Hablemos de su operación
+              </h1>
+              <p className="mt-8 max-w-prose text-base leading-relaxed text-muted-foreground md:text-lg">
+                Cuéntenos qué necesita resolver. Revisamos cada mensaje con
+                atención y respondemos con una propuesta de conversación, no con
+                un discurso comercial.
+              </p>
+            </div>
+          </div>
+        </FadeIn>
+
+        <Rule className="my-16 md:my-20" />
+
+        <div className="grid grid-cols-1 gap-16 md:grid-cols-12 lg:gap-10">
+          <FadeIn className="md:col-span-4" delay={0.1}>
+            <div className="space-y-12">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  Correo
+                </p>
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="mt-3 inline-block text-lg text-foreground"
+                >
+                  <span className="border-b border-border pb-1 transition-colors duration-300 hover:border-foreground">
+                    {CONTACT_EMAIL}
+                  </span>
+                </a>
               </div>
-              <div className="flex items-center gap-4">
-                <Phone className="w-5 h-5 text-primary" />
-                <a href="tel:+5633774723" className="hover:text-primary transition-colors">55 4131 4150</a>
+
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  Teléfono
+                </p>
+                <a
+                  href={CONTACT_PHONE_TEL_HREF}
+                  className="mt-3 inline-block text-lg text-foreground"
+                >
+                  <span className="border-b border-border pb-1 transition-colors duration-300 hover:border-foreground">
+                    {CONTACT_PHONE_DISPLAY}
+                  </span>
+                </a>
               </div>
-               <div className="flex items-center gap-4">
-                <WhatsappIcon className="w-5 h-5 text-primary" />
-                <a href="https://wa.me/5633774723" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">55 4131 4150</a>
+
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  WhatsApp
+                </p>
+                <a
+                  href={CONTACT_WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-block text-lg text-foreground"
+                >
+                  <span className="border-b border-border pb-1 transition-colors duration-300 hover:border-foreground">
+                    {CONTACT_PHONE_DISPLAY}
+                  </span>
+                </a>
+              </div>
+
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  Horario
+                </p>
+                <p className="mt-3 text-lg text-foreground">
+                  Lunes a viernes, 9:00 a 18:00
+                </p>
               </div>
             </div>
-            <AnimatedChatInvitation />
-          </AnimatedDiv>
-          <AnimatedDiv id="booking" className="bg-card p-8 rounded-lg shadow-lg" transition={{ delay: 0.4 }}>
-            <h3 className="font-headline text-2xl font-bold mb-6">Envíanos un mensaje</h3>
-            <ContactForm />
-          </AnimatedDiv>
+          </FadeIn>
+
+          <div id="booking" className="md:col-span-7 md:col-start-6">
+            <FadeIn delay={0.2}>
+              <Eyebrow className="mb-10">Escríbanos</Eyebrow>
+              <ContactForm />
+            </FadeIn>
+          </div>
         </div>
       </div>
     </section>

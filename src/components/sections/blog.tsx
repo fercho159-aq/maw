@@ -1,83 +1,72 @@
-
 import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
-import AnimatedDiv from '@/components/animated-div';
-import { ArrowRight, Calendar, User } from 'lucide-react';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
-import { Button } from '../ui/button';
-import { getBlogPosts, type BlogPost } from '@/app/blog/_actions';
-import { Card, CardContent } from '../ui/card';
-import Image from 'next/image';
+import { FadeIn, SectionHeading } from '@/components/editorial';
+import { getBlogPosts } from '@/app/blog/_actions';
 
+/**
+ * Publicaciones recientes como índice editorial: fecha en mono, título en
+ * serif, categoría como metadato. Sin cards ni imágenes.
+ */
 export default async function BlogSection() {
   const allPosts = await getBlogPosts();
   const latestPosts = allPosts.slice(0, 3);
 
-  return (
-    <section id="blog" className="py-10 md:py-16 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
-        <AnimatedDiv className="max-w-3xl mx-auto text-center mb-16 relative group cursor-default">
-          <h2 className="font-headline text-4xl sm:text-5xl font-bold tracking-tight mb-4 transition-colors duration-500 hover:text-[#ffe28a] hover:drop-shadow-[0_0_20px_rgba(255,215,0,0.6)]">Últimas Publicaciones del Blog</h2>
-          <p className="mt-4 text-lg text-foreground/80">
-            Mantente al día con las últimas tendencias, entrevistas y consejos de marketing digital.
-          </p>
-        </AnimatedDiv>
+  if (latestPosts.length === 0) {
+    return null;
+  }
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {latestPosts.map((post) => (
-            <AnimatedDiv key={post.id}>
-              <Link href={`/blog/${post.slug}`} className="group block h-full">
-                <Card className="bg-card rounded-lg shadow-lg overflow-hidden h-full flex flex-col transform hover:-translate-y-2 transition-transform duration-300">
-                  {post.featured_image_url && (
-                    <div className="relative aspect-video">
-                        <Image 
-                          src={post.featured_image_url}
-                          alt={post.title}
-                          fill
-                          className="object-cover"
-                        />
-                    </div>
-                  )}
-                  <CardContent className="p-6 flex flex-col flex-grow">
-                    {post.category && <Badge variant="secondary" className="mb-2 w-fit">{post.category}</Badge>}
-                    <h3 className="font-headline text-lg font-bold mb-3 flex-grow group-hover:text-primary transition-colors">
-                      {post.title}
-                    </h3>
-                    <div className="flex items-center gap-4 text-xs text-foreground/70 mb-4">
-                       {post.author && (
-                        <div className="flex items-center gap-1.5">
-                          <User className="w-3 h-3" />
-                          <span>{post.author}</span>
-                        </div>
-                       )}
-                      <div className="flex items-center gap-1.5">
-                        <Calendar className="w-3 h-3" />
-                        <time dateTime={new Date(post.date).toISOString()}>{format(new Date(post.date), "dd MMM yyyy", { locale: es })}</time>
-                      </div>
-                    </div>
-                    {post.excerpt && (
-                      <p className="text-sm text-foreground/80 mb-4 line-clamp-3 flex-grow">
-                        {post.excerpt}
-                      </p>
-                    )}
-                    <div className="flex items-center text-sm text-primary mt-auto font-semibold">
-                       Leer más <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-                    </div>
-                  </CardContent>
-                </Card>
+  return (
+    <section id="blog" className="bg-background py-32 md:py-40">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
+        <div className="grid grid-cols-12 gap-x-6 gap-y-16">
+          <div className="col-span-12 lg:col-span-4">
+            <FadeIn>
+              <SectionHeading
+                number="05"
+                eyebrow="Publicaciones"
+                title="Notas desde la práctica."
+              />
+              <Link
+                href="/blog"
+                className="link-underline mt-8 inline-block font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground"
+              >
+                Ver todas las publicaciones
               </Link>
-            </AnimatedDiv>
-          ))}
-        </div>
-        <AnimatedDiv className="text-center mt-16">
-            <Button asChild size="lg">
-                <Link href="/blog">
-                    Visita nuestro Blog
-                    <ArrowRight className="w-4 h-4 ml-2"/>
+            </FadeIn>
+          </div>
+          <div className="col-span-12 lg:col-start-6 lg:col-span-7">
+            {latestPosts.map((post, index) => (
+              <FadeIn key={post.id} delay={index * 0.05}>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="group block border-t border-stone/40 py-8 last:border-b last:border-stone/40"
+                >
+                  <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:gap-8">
+                    <time
+                      dateTime={new Date(post.date).toISOString()}
+                      className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground md:w-40 md:shrink-0"
+                    >
+                      {format(new Date(post.date), 'dd MMM yyyy', {
+                        locale: es,
+                      })}
+                    </time>
+                    <div>
+                      <h3 className="font-display text-xl leading-snug text-foreground transition-colors duration-300 group-hover:text-primary md:text-2xl">
+                        {post.title}
+                      </h3>
+                      {post.category ? (
+                        <p className="mt-3 font-mono text-xs uppercase tracking-[0.2em] text-stone">
+                          {post.category}
+                        </p>
+                      ) : null}
+                    </div>
+                  </div>
                 </Link>
-            </Button>
-        </AnimatedDiv>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
