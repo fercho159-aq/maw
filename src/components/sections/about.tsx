@@ -1,4 +1,4 @@
-import { FadeIn, Rule, SectionHeading } from '@/components/editorial';
+import { EditorialImage, FadeIn, Rule, SectionHeading } from '@/components/editorial';
 
 const method = [
   {
@@ -40,6 +40,18 @@ export default function AboutSection() {
                 eyebrow="Método"
                 title="El crecimiento no se improvisa. Se diseña."
               />
+            </FadeIn>
+            <FadeIn delay={0.15} className="mt-16 hidden lg:block">
+              <EditorialImage
+                src="/images/charlesdeluvio-Lks7vei-eAg-unsplash.jpg"
+                alt="Sesión de trabajo frente a dos pantallas, en blanco y negro"
+                ratio="4:5"
+                sizes="(max-width: 1024px) 0vw, 35vw"
+                imgClassName="grayscale"
+              />
+              <p className="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                Sesión de diagnóstico — Oficina Xoco
+              </p>
             </FadeIn>
           </div>
           <div className="col-span-12 md:col-span-10 lg:col-start-7 lg:col-span-6">
