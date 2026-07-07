@@ -2242,7 +2242,7 @@ export const landings: Record<string, ServiceLanding> = {
     hero: {
       eyebrow: "Sistemas ERP y de operación a la medida",
       title: "Su operación ya rebasó al Excel.\nUn sistema la ordena — o la opera solo.",
-      subtitle: "Ventas, inventario, facturación CFDI y finanzas en un solo sistema, configurado a sus procesos y con sus datos migrados. Y cuando el modelo de negocio lo pide: reservas, pagos y control por QR para operar sin personal fijo.",
+      subtitle: "Ventas, inventario, facturación CFDI y finanzas en un solo sistema, armado sobre la forma en que su empresa ya trabaja. Si el modelo lo permite, el sistema también opera solo: reservas, pagos y accesos por QR.",
       primaryCta: {
         label: "Solicitar diagnóstico",
         href: "#cotizar"
@@ -2266,7 +2266,7 @@ export const landings: Record<string, ServiceLanding> = {
           label: "Facturación y finanzas integradas"
         },
         {
-          label: "Procesos conectados, no islas"
+          label: "Procesos conectados entre áreas"
         },
         {
           label: "Autoservicio: pagos, QR e IoT"
@@ -2278,7 +2278,7 @@ export const landings: Record<string, ServiceLanding> = {
     },
     features: {
       heading: "Toda la operación en un solo sistema",
-      subheading: "Configurado a sus procesos, con sus datos migrados y su equipo capacitado.",
+      subheading: "Lo configuramos sobre sus procesos reales y migramos sus datos. Nadie empieza de cero.",
       cards: [
         {
           title: "Inventario y almacén",
@@ -2301,8 +2301,8 @@ export const landings: Record<string, ServiceLanding> = {
           description: "Reservas, pagos y accesos por QR conectados a su equipo físico (IoT)."
         },
         {
-          title: "Adopción garantizada",
-          description: "Capacitamos por área con casos reales, hasta que el sistema se usa."
+          title: "Capacitación por área",
+          description: "Entrenamos a cada área con sus propios casos. Un sistema que nadie usa es dinero tirado."
         }
       ]
     },
@@ -2330,8 +2330,8 @@ export const landings: Record<string, ServiceLanding> = {
           label: "Toda la operación conectada"
         },
         {
-          value: "-70%",
-          label: "Menos captura duplicada"
+          value: "1 captura",
+          label: "Cada dato se registra una sola vez"
         },
         {
           value: "Tiempo real",
