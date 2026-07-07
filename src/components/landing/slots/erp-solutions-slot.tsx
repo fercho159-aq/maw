@@ -1,4 +1,4 @@
-import { FadeIn, Rule, SectionHeading } from "@/components/editorial";
+import { EditorialImage, FadeIn, Rule, SectionHeading } from "@/components/editorial";
 
 type SolutionCase = {
   title: string;
@@ -18,17 +18,6 @@ const flowSteps: string[] = [
 ];
 
 const cases: SolutionCase[] = [
-  {
-    title: "Pesaje y formulación industrial",
-    description:
-      "Básculas y terminales de pesaje conectados al sistema, con recetas y trazabilidad.",
-    steps: [
-      "La báscula o terminal se conecta al sistema",
-      "El operador pesa guiado por la receta",
-      "Lote trazable, etiquetado e inventario al día",
-    ],
-    tags: ["Básculas", "Trazabilidad", "Industria regulada"],
-  },
   {
     title: "Reportes que se descargan solos",
     description:
@@ -140,6 +129,40 @@ export default function ErpSolutionsSlot() {
             propietario administra la operación completa desde un panel.
           </p>
         </FadeIn>
+
+        <Rule className="my-20" />
+
+        {/* EL PRODUCTO EN PANTALLA */}
+        <div className="grid grid-cols-1 gap-x-10 gap-y-16 lg:grid-cols-2">
+          <FadeIn>
+            <EditorialImage
+              src="/images/studio/crm-bandeja.png"
+              alt="Bandeja unificada del CRM: conversaciones de WhatsApp por vendedor con asignación automática"
+              ratio="16:9"
+              sizes="(max-width: 1024px) 100vw, 45vw"
+              className="border border-border"
+              imgClassName="saturate-100"
+            />
+            <p className="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              CRM de ventas — bandeja unificada de WhatsApp con asignación
+              automática
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <EditorialImage
+              src="/images/studio/reportes-cadenas.jpg"
+              alt="Dashboard de reportes consolidados: ventas e inventario por cadena y top de productos por EAN"
+              ratio="16:9"
+              sizes="(max-width: 1024px) 100vw, 45vw"
+              className="border border-border"
+              imgClassName="saturate-100"
+            />
+            <p className="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              Consolidado multi-cadena — ventas, inventario y top de productos
+              por EAN
+            </p>
+          </FadeIn>
+        </div>
 
         <Rule className="my-20" />
 
