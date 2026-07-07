@@ -43,14 +43,14 @@ export default function AboutSection() {
             </FadeIn>
             <FadeIn delay={0.15} className="mt-16 hidden lg:block">
               <EditorialImage
-                src="/images/charlesdeluvio-Lks7vei-eAg-unsplash.jpg"
-                alt="Sesión de trabajo frente a dos pantallas, en blanco y negro"
+                src="/images/annie-spratt-QckxruozjRg-unsplash.jpg"
+                alt="Equipo de trabajo colaborando con laptops en una mesa"
                 ratio="4:5"
                 sizes="(max-width: 1024px) 0vw, 35vw"
                 imgClassName="grayscale"
               />
               <p className="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                Sesión de diagnóstico — Oficina Xoco
+                Equipo — Oficina Xoco
               </p>
             </FadeIn>
           </div>

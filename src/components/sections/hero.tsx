@@ -47,15 +47,15 @@ const Hero = () => {
           <div className="col-span-12 md:col-span-8 lg:col-span-4 lg:col-start-9">
             <FadeIn delay={0.25}>
               <EditorialImage
-                src="/images/studio/set-principal.jpg"
-                alt="Sesión de podcast a dos cámaras en el estudio de MAW Soluciones"
+                src="/images/charlesdeluvio-Lks7vei-eAg-unsplash.jpg"
+                alt="Sesión de trabajo frente a dos pantallas, en blanco y negro"
                 ratio="4:5"
                 sizes="(max-width: 768px) 100vw, 33vw"
                 priority
-                imgClassName="saturate-[0.6]"
+                imgClassName="grayscale"
               />
               <p className="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                Sesión en estudio propio — Del Valle
+                Sesión de trabajo — Oficina Xoco
               </p>
             </FadeIn>
           </div>
