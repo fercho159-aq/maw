@@ -26,8 +26,8 @@ const services = [
     description:
       'Sistemas de operación que ordenan inventario, ventas y administración. Menos hojas de cálculo, más control del negocio.',
     href: '/servicios/erp',
-    image: '/images/studio/crm.jpg',
-    imageAlt: 'Dashboard de operación con pendientes y carga de trabajo por persona',
+    image: '/images/studio/erp-panel.png',
+    imageAlt: 'Dashboard de pendientes del sistema de operación de MAW',
   },
   {
     number: '04',
