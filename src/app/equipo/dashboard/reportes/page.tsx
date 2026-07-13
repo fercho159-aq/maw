@@ -258,7 +258,7 @@ export default function ReportesPage() {
                             />
                             <div className="flex flex-wrap gap-2">
                                 <Badge variant={metaData ? "default" : "outline"}>
-                                    Meta {metaData ? `· ${metaData.adsCount} anuncios` : "· sin datos"}
+                                    Meta {metaData ? `· ${metaData.adsCount} ${metaData.level === "campaign" ? "campañas" : "anuncios"}` : "· sin datos"}
                                 </Badge>
                                 <Badge variant={googleData ? "default" : "outline"}>
                                     Google {googleData ? `· ${googleData.days.length} días` : "· sin datos"}

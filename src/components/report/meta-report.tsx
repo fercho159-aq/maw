@@ -3,7 +3,7 @@
 // Reporte Meta Ads — 2 páginas, réplica del formato de entrega MAW.
 
 import React from "react";
-import { MetaReportData, MetaTexts } from "@/lib/report/meta";
+import { MetaReportData, MetaTexts, indicatorLabel } from "@/lib/report/meta";
 import { fmtInt, fmtMoney } from "@/lib/report/csv";
 import {
     ReportPage, ReportHeader, KpiStrip, SectionLabel, BarChart, Bar,
@@ -50,6 +50,9 @@ export function MetaReportPages({ data, texts, brand, period, email, creativeUrl
     const maxExpensive = data.mostExpensive.length ? Math.max(...data.mostExpensive.map(a => a.costPerResult)) : 0;
     const expensiveLabel = data.mostExpensive.map(a => a.name.replace(/^Anuncio\s*/i, "")).join(" y ");
     const kicker = `Reporte Meta Ads · ${brand.clientName}`;
+    const isCampaign = data.level === "campaign";
+    const unit = isCampaign ? "resultados" : "conversaciones";
+    const unitSing = isCampaign ? "resultado" : "conversación";
 
     return (
         <>
@@ -57,20 +60,28 @@ export function MetaReportPages({ data, texts, brand, period, email, creativeUrl
             <ReportPage brand={brand}>
                 <ReportHeader brand={brand} kicker={kicker} title={texts.reportTitle} subtitle={`Facebook e Instagram · ${period}`} />
                 <KpiStrip kpis={[
-                    { value: fmtInt(data.totalResults), label: "Conversaciones iniciadas", accent: true },
-                    { value: fmtMoney(data.avgCostPerResult, 1), label: "Costo por conversación" },
+                    { value: fmtInt(data.totalResults), label: isCampaign ? "Resultados totales" : "Conversaciones iniciadas", accent: true },
+                    { value: fmtMoney(data.avgCostPerResult, 1), label: `Costo por ${unitSing}` },
                     { value: fmtInt(data.totalImpressions), label: "Impresiones" },
                     { value: fmtInt(data.totalReach), label: "Personas alcanzadas" },
                     { value: fmtMoney(data.totalSpend), label: "Inversión MXN" },
-                    { value: fmtInt(data.adsCount), label: "Anuncios probados", accent: true },
+                    { value: fmtInt(data.adsCount), label: isCampaign ? "Campañas activas" : "Anuncios probados", accent: true },
                 ]} />
                 <p className="mx-16 mt-4 border-b border-neutral-200 pb-4 text-[16px] text-neutral-600">
-                    <span className="font-bold text-neutral-900">Conversación</span> = un mensaje de un cliente potencial por WhatsApp o Messenger — el objetivo de esta campaña.
+                    {isCampaign ? (
+                        data.mixedIndicators ? (
+                            <><span className="font-bold text-neutral-900">Resultado</span> = el objetivo de cada campaña ({[...new Set(data.ads.map(a => indicatorLabel(a.resultIndicator)))].join(", ")}); cada una se mide con su propio indicador.</>
+                        ) : (
+                            <><span className="font-bold text-neutral-900">Resultado</span> = {indicatorLabel(data.dominantIndicator)} — el objetivo de estas campañas.</>
+                        )
+                    ) : (
+                        <><span className="font-bold text-neutral-900">Conversación</span> = un mensaje de un cliente potencial por WhatsApp o Messenger — el objetivo de esta campaña.</>
+                    )}
                 </p>
 
                 <div className="mx-16 mt-6 grid flex-1 grid-cols-[1.15fr_1fr_1fr] gap-12">
                     <div className="flex flex-col">
-                        <SectionLabel>Conversaciones por anuncio</SectionLabel>
+                        <SectionLabel>{isCampaign ? "Resultados por campaña" : "Conversaciones por anuncio"}</SectionLabel>
                         <div className="mt-6 flex-1">
                             <BarChart bars={bars} height={340} />
                         </div>
@@ -95,14 +106,14 @@ export function MetaReportPages({ data, texts, brand, period, email, creativeUrl
                     <div className="border-l border-neutral-200 pl-10 pt-1">
                         {data.cheapest && (
                             <HighlightCard big={fmtMoney(data.cheapest.costPerResult, 2)}>
-                                costo más bajo por conversación — <span className="font-bold">{data.cheapest.name}</span>
+                                costo más bajo por {unitSing} — <span className="font-bold">{data.cheapest.name}</span>
                                 {data.cheapest.active ? " (activo)" : ""}
                             </HighlightCard>
                         )}
                         <div className="mt-4 flex gap-4">
                             <MiniStat big={fmtMoney(data.avgCostPerResult, 1)} label="promedio general" />
                             {maxExpensive > 0 && (
-                                <MiniStat big={fmtMoney(maxExpensive)} label={`Anuncios ${expensiveLabel}`} accent />
+                                <MiniStat big={fmtMoney(maxExpensive)} label={isCampaign ? expensiveLabel : `Anuncios ${expensiveLabel}`} accent />
                             )}
                         </div>
                     </div>
@@ -168,7 +179,7 @@ export function MetaReportPages({ data, texts, brand, period, email, creativeUrl
 
                     {/* Anuncios ganadores */}
                     <div className="flex flex-col pt-1">
-                        <SectionLabel>Anuncios ganadores</SectionLabel>
+                        <SectionLabel>{isCampaign ? "Campañas ganadoras" : "Anuncios ganadores"}</SectionLabel>
                         <div className="mt-3">
                             {top.slice(0, 4).map((a, i) => (
                                 <div key={i} className="flex items-baseline justify-between border-b border-neutral-200 py-4">
@@ -178,10 +189,12 @@ export function MetaReportPages({ data, texts, brand, period, email, creativeUrl
                                             {a.active && <span className="ml-2 align-middle text-[12px] font-bold" style={{ color: "#16a34a" }}>● activo</span>}
                                         </p>
                                         <p className="mt-1 text-[13.5px] text-neutral-400">
-                                            {fmtMoney(a.costPerResult, 2)} c/conv · {fmtInt(a.impressions)} impresiones
+                                            {fmtMoney(a.costPerResult, 2)} c/{isCampaign ? "resultado" : "conv"} · {fmtInt(a.impressions)} impresiones
                                         </p>
                                     </div>
-                                    <p className="text-[18px] font-extrabold text-neutral-900 whitespace-nowrap">{fmtInt(a.results)} conv.</p>
+                                    <p className="text-[18px] font-extrabold text-neutral-900 whitespace-nowrap">
+                                        {fmtInt(a.results)} {isCampaign ? indicatorLabel(a.resultIndicator) : "conv."}
+                                    </p>
                                 </div>
                             ))}
                         </div>
@@ -189,14 +202,14 @@ export function MetaReportPages({ data, texts, brand, period, email, creativeUrl
                             <p className="text-[40px] font-extrabold leading-none">
                                 {fmtInt(data.totalResults)}
                                 <span className="ml-3 align-middle text-[16px] font-normal leading-tight text-neutral-300">
-                                    conversaciones<br />en {periodDays} días
+                                    {unit}<br />en {periodDays} días
                                 </span>
                             </p>
                             <p className="mt-3 text-[15px] leading-snug text-neutral-200">
                                 <span className="font-bold" style={{ color: "color-mix(in srgb, var(--brand) 70%, white)" }}>
                                     {fmtMoney(data.avgCostPerResult, 1)} MXN
                                 </span>{" "}
-                                costó, en promedio, cada mensaje de un cliente potencial.
+                                {isCampaign ? "costó, en promedio, cada resultado." : "costó, en promedio, cada mensaje de un cliente potencial."}
                             </p>
                         </div>
                     </div>
